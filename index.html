@@ -159,7 +159,7 @@
             }
         }
 
-        /* ----- HERO — ТЕКСТ ПОДНЯТ ВВЕРХУ ----- */
+        /* ----- HERO — имена+дата с отступом сверху, счётчик внизу с таким же отступом ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -168,7 +168,7 @@
             background-position: center 35%;
             background-attachment: fixed;
             display: flex;
-            align-items: flex-start;
+            align-items: center; /* вертикальное выравнивание содержимого */
             justify-content: center;
             text-align: center;
             color: white;
@@ -191,13 +191,23 @@
             background: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 100%);
         }
 
-        /* Имена и дата подняты к самому верху */
         .hero-content {
             position: relative;
             z-index: 2;
-            padding-top: 8vh;      /* ← было 22vh — теперь имена у верха */
-            animation: fadeInDown 1.2s ease-out;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5vh 0; /* одинаковый отступ сверху и снизу */
             max-width: 90%;
+            margin: 0 auto;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        /* Верхний блок: имена + дата */
+        .hero-top {
+            margin-top: 0;
         }
 
         .hero-veneer {
@@ -207,15 +217,6 @@
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
             margin-bottom: 1rem;
             color: rgba(255,248,235,0.95);
-        }
-
-        .hero-content h1 {
-            font-size: clamp(3.5rem, 12vw, 6.5rem);
-            font-weight: 800;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.25);
-            line-height: 1.2;
         }
 
         .hero-date {
@@ -230,14 +231,18 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Счётчик: опущен ниже и уменьшен */
+        /* Нижний блок: счётчик */
+        .hero-bottom {
+            margin-bottom: 0;
+        }
+
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 80px;
             padding: 12px 20px;
             max-width: 550px;
-            margin: 60px auto 0;   /* ← было 40px, теперь больше отступ сверху */
+            margin: 0 auto;
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
         }
@@ -604,30 +609,26 @@
             .form-card {
                 padding: 32px 24px;
             }
-            /* Поднимаем текст ещё выше на телефонах */
+            /* чуть уменьшаем отступы сверху/снизу на телефонах */
             .hero-content {
-                padding-top: 10vh;  /* было 28vh, теперь имена у самого верха */
+                padding: 3vh 0;
             }
         }
 
-        /* Специальные правки для счётчика на маленьких экранах (телефоны) */
+        /* Специальные правки для счётчика на маленьких экранах */
         @media (max-width: 600px) {
-            .countdown-wrapper {
-                margin-top: 80px;   /* дополнительно опускаем счётчик вниз */
-                padding: 10px 12px;
-            }
             .counter-grid {
-                gap: 12px;          /* уменьшаем расстояние между блоками */
+                gap: 12px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             .counter-number {
-                font-size: 1.2rem;  /* уменьшаем размер цифр */
-                padding: 4px 8px;   /* уменьшаем отступы внутри кружков */
-                min-width: 50px;    /* минимальная ширина блока */
+                font-size: 1.2rem;
+                padding: 4px 8px;
+                min-width: 50px;
             }
             .counter-label {
-                font-size: 0.65rem; /* чуть мельче подписи */
+                font-size: 0.65rem;
                 margin-top: 4px;
             }
         }
@@ -652,18 +653,22 @@
     </div>
 </nav>
 
-<!-- HERO: имена вверху, дата под ними, счётчик ниже и уменьшен -->
+<!-- HERO: имена+дата с отступом сверху, счётчик внизу с таким же отступом -->
 <div class="hero">
     <div class="hero-content">
-        <div class="hero-veneer veneer-text">Вадим & Мария</div>
-        <div class="hero-date">29 июня 2026</div>
-        <!-- Счетчик обратного отсчета (теперь ниже и компактнее) -->
-        <div class="countdown-wrapper fade-up">
-            <div class="counter-grid" id="countdownTimer">
-                <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
-                <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
-                <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
-                <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+        <div class="hero-top">
+            <div class="hero-veneer veneer-text">Вадим & Мария</div>
+            <div class="hero-date">29 июня 2026</div>
+        </div>
+        <div class="hero-bottom">
+            <!-- Счетчик обратного отсчета (теперь внизу) -->
+            <div class="countdown-wrapper fade-up">
+                <div class="counter-grid" id="countdownTimer">
+                    <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
+                    <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
+                    <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
+                    <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+                </div>
             </div>
         </div>
     </div>
