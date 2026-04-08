@@ -610,6 +610,32 @@
                 padding: 14vh 0 14vh 0; /* чуть меньше на телефонах, чтобы не прижимало */
             }
         }
+
+        /* ----- ДОБАВЛЕННЫЕ СТИЛИ ДЛЯ ПАРЯЩИХ СТРЕЛОК ----- */
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            z-index: 3;
+            animation: bounce 2s infinite;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+        }
+        .hero .scroll-hint {
+            color: rgba(255,255,255,0.8);
+        }
+        section .scroll-hint {
+            color: rgba(0,0,0,0.5);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
     </style>
 </head>
 <body>
@@ -649,6 +675,8 @@
             </div>
         </div>
     </div>
+    <!-- Стрелка вниз для hero -->
+    <div class="scroll-hint" onclick="scrollToNext()">↓ ЛИСТАЙТЕ ВНИЗ ↓</div>
 </div>
 
 <main>
@@ -664,6 +692,7 @@
                 </div>
             </div>
         </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ДАЛЕЕ ↓</div>
     </section>
 
     <section id="location" style="background: var(--bg-luxury);">
@@ -681,6 +710,7 @@
                 </div>
             </div>
         </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ПРОГРАММА ↓</div>
     </section>
 
     <section id="schedule">
@@ -693,6 +723,7 @@
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Финал вечера, прощальный фейерверк</div></div>
             </div>
         </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ДРЕСС-КОД ↓</div>
     </section>
 
     <section id="dresscode" style="background: var(--bg-luxury);">
@@ -711,6 +742,7 @@
                 <p style="margin-top: 15px; font-size: 0.95rem; font-style: italic;">Примеры нарядов, которые впишутся в атмосферу</p>
             </div>
         </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ ↓</div>
     </section>
 
     <section id="gifts">
@@ -723,6 +755,7 @@
                 <p>Пожалуйста, воздержитесь от цветов — мы не успеем насладиться их красотой. А вот книга с тёплыми пожеланиями внутри или бутылка изысканного красного вина станут прекрасным дополнением нашей домашней библиотеки и винотеки.</p>
             </div>
         </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ПОДТВЕРДИТЕ УЧАСТИЕ ↓</div>
     </section>
 
     <section id="rsvp" style="background: var(--bg-luxury);">
@@ -773,6 +806,8 @@
                 <p>💌 Вадим: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> | Мария: <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a></p>
             </div>
         </div>
+        <!-- Для секции RSVP стрелка ведёт к финальной, но можно и оставить -->
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ДО СКОРОЙ ВСТРЕЧИ ↓</div>
     </section>
 
     <section id="final">
@@ -786,6 +821,7 @@
                 <p style="font-size: 1.2rem; margin-top: 8px;">Вадим & Мария</p>
             </div>
         </div>
+        <!-- На последней секции стрелку не ставим -->
     </section>
 </main>
 
@@ -879,6 +915,24 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // ДОБАВЛЕННАЯ ФУНКЦИЯ ДЛЯ ПРОКРУТКИ К СЛЕДУЮЩЕЙ СЕКЦИИ
+    function scrollToNext() {
+        const sections = document.querySelectorAll('.hero, section');
+        let currentIndex = -1;
+        for (let i = 0; i < sections.length; i++) {
+            const rect = sections[i].getBoundingClientRect();
+            if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+                currentIndex = i;
+                break;
+            }
+        }
+        if (currentIndex !== -1 && currentIndex + 1 < sections.length) {
+            sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+        } else if (currentIndex === -1 && sections.length) {
+            sections[0].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 </script>
 </body>
 </html>
