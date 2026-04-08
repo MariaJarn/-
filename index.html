@@ -159,7 +159,7 @@
             }
         }
 
-        /* ----- HERO — С ВЕНЗЕЛЬНЫМ ШРИФТОМ И ТЕКСТОМ ВВЕРХУ ----- */
+        /* ----- HERO — ТЕКСТ ПОДНЯТ ВВЕРХУ ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -191,10 +191,11 @@
             background: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 100%);
         }
 
+        /* Имена и дата подняты к самому верху */
         .hero-content {
             position: relative;
             z-index: 2;
-            padding-top: 22vh;
+            padding-top: 8vh;      /* ← было 22vh — теперь имена у верха */
             animation: fadeInDown 1.2s ease-out;
             max-width: 90%;
         }
@@ -227,6 +228,45 @@
             backdrop-filter: blur(4px);
             letter-spacing: 3px;
             font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Счётчик: опущен ниже и уменьшен */
+        .countdown-wrapper {
+            background: rgba(255,255,245,0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 80px;
+            padding: 12px 20px;
+            max-width: 550px;
+            margin: 60px auto 0;   /* ← было 40px, теперь больше отступ сверху */
+            text-align: center;
+            border: 1px solid rgba(212,175,106,0.5);
+        }
+        .counter-grid {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .counter-item {
+            text-align: center;
+        }
+        .counter-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            background: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            min-width: 70px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: inline-block;
+        }
+        .counter-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
+            color: var(--text-soft);
         }
 
         @keyframes fadeInDown {
@@ -551,43 +591,8 @@
             color: var(--text-soft);
             border-top: 1px solid rgba(212, 175, 106, 0.2);
         }
-        /* Счетчик */
-        .countdown-wrapper {
-            background: rgba(255,255,245,0.5);
-            backdrop-filter: blur(8px);
-            border-radius: 80px;
-            padding: 18px 25px;
-            max-width: 550px;
-            margin: 40px auto 0;
-            text-align: center;
-            border: 1px solid rgba(212,175,106,0.5);
-        }
-        .counter-grid {
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-        .counter-item {
-            text-align: center;
-        }
-        .counter-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--gold-dark);
-            background: white;
-            padding: 8px 16px;
-            border-radius: 40px;
-            min-width: 70px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        .counter-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 6px;
-            color: var(--text-soft);
-        }
+
+        /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
         @media (max-width: 800px) {
             .grid-2 {
                 grid-template-columns: 1fr;
@@ -599,8 +604,31 @@
             .form-card {
                 padding: 32px 24px;
             }
+            /* Поднимаем текст ещё выше на телефонах */
             .hero-content {
-                padding-top: 28vh;
+                padding-top: 10vh;  /* было 28vh, теперь имена у самого верха */
+            }
+        }
+
+        /* Специальные правки для счётчика на маленьких экранах (телефоны) */
+        @media (max-width: 600px) {
+            .countdown-wrapper {
+                margin-top: 80px;   /* дополнительно опускаем счётчик вниз */
+                padding: 10px 12px;
+            }
+            .counter-grid {
+                gap: 12px;          /* уменьшаем расстояние между блоками */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .counter-number {
+                font-size: 1.2rem;  /* уменьшаем размер цифр */
+                padding: 4px 8px;   /* уменьшаем отступы внутри кружков */
+                min-width: 50px;    /* минимальная ширина блока */
+            }
+            .counter-label {
+                font-size: 0.65rem; /* чуть мельче подписи */
+                margin-top: 4px;
             }
         }
     </style>
@@ -624,12 +652,12 @@
     </div>
 </nav>
 
-<!-- HERO: вензельный шрифт, текст не перекрывает молодоженов (смещён вверх) -->
+<!-- HERO: имена вверху, дата под ними, счётчик ниже и уменьшен -->
 <div class="hero">
     <div class="hero-content">
         <div class="hero-veneer veneer-text">Вадим & Мария</div>
         <div class="hero-date">29 июня 2026</div>
-        <!-- Счетчик обратного отсчета -->
+        <!-- Счетчик обратного отсчета (теперь ниже и компактнее) -->
         <div class="countdown-wrapper fade-up">
             <div class="counter-grid" id="countdownTimer">
                 <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
@@ -847,9 +875,9 @@
         }, 5000);
     });
 
-    // ТАЙМЕР ОБРАТНОГО ОТСЧЁТА до 29 июня 2026 00:00 (можно оставить полночь, но церемония днём)
+    // ТАЙМЕР ОБРАТНОГО ОТСЧЁТА до 29 июня 2026
     function updateCountdown() {
-        const weddingDate = new Date(2026, 5, 29, 0, 0, 0).getTime(); // 29 июня 2026
+        const weddingDate = new Date(2026, 5, 29, 0, 0, 0).getTime();
         const now = new Date().getTime();
         const distance = weddingDate - now;
         if (distance < 0) {
