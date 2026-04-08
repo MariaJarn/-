@@ -159,7 +159,7 @@
             }
         }
 
-        /* ----- HERO — имена+дата с отступом сверху, счётчик внизу с таким же отступом ----- */
+        /* ----- HERO — имена на месте бывшей даты, дата над счётчиком, счётчик внизу ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -168,7 +168,7 @@
             background-position: center 35%;
             background-attachment: fixed;
             display: flex;
-            align-items: center; /* вертикальное выравнивание содержимого */
+            align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
@@ -205,9 +205,18 @@
             animation: fadeInDown 1.2s ease-out;
         }
 
-        /* Верхний блок: имена + дата */
+        /* Верхний блок: только имена */
         .hero-top {
             margin-top: 0;
+        }
+
+        /* Нижний блок: дата + счётчик */
+        .hero-bottom {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* расстояние между датой и счётчиком */
         }
 
         .hero-veneer {
@@ -215,7 +224,7 @@
             letter-spacing: 4px;
             font-weight: 400;
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-            margin-bottom: 1rem;
+            margin-bottom: 0;
             color: rgba(255,248,235,0.95);
         }
 
@@ -231,11 +240,7 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Нижний блок: счётчик */
-        .hero-bottom {
-            margin-bottom: 0;
-        }
-
+        /* Счётчик: уменьшен, адаптивен */
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
@@ -609,13 +614,12 @@
             .form-card {
                 padding: 32px 24px;
             }
-            /* чуть уменьшаем отступы сверху/снизу на телефонах */
             .hero-content {
-                padding: 3vh 0;
+                padding: 3vh 0; /* чуть меньше отступы на телефонах */
             }
         }
 
-        /* Специальные правки для счётчика на маленьких экранах */
+        /* Специальные правки для счётчика на маленьких экранах (телефоны) */
         @media (max-width: 600px) {
             .counter-grid {
                 gap: 12px;
@@ -630,6 +634,13 @@
             .counter-label {
                 font-size: 0.65rem;
                 margin-top: 4px;
+            }
+            .hero-date {
+                font-size: 1.3rem;
+                padding: 8px 20px;
+            }
+            .hero-veneer {
+                font-size: 2rem;
             }
         }
     </style>
@@ -653,15 +664,16 @@
     </div>
 </nav>
 
-<!-- HERO: имена+дата с отступом сверху, счётчик внизу с таким же отступом -->
+<!-- HERO: имена на месте старой даты, дата над счётчиком, счётчик внизу -->
 <div class="hero">
     <div class="hero-content">
+        <!-- Верхний блок: только имена (на месте бывшей даты) -->
         <div class="hero-top">
             <div class="hero-veneer veneer-text">Вадим & Мария</div>
-            <div class="hero-date">29 июня 2026</div>
         </div>
+        <!-- Нижний блок: дата + счётчик (дата над счётчиком) -->
         <div class="hero-bottom">
-            <!-- Счетчик обратного отсчета (теперь внизу) -->
+            <div class="hero-date">29 июня 2026</div>
             <div class="countdown-wrapper fade-up">
                 <div class="counter-grid" id="countdownTimer">
                     <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
