@@ -6,12 +6,15 @@
     <meta name="description" content="Свадьба Вадима и Марии. Приглашение на торжество 29 июня 2026 года. Элегантный вечер, любовь и счастье.">
     <title>Вадим & Мария | Свадебное приглашение | 29 июня 2026</title>
     
+    <!-- Google Fonts: Премиальная коллекция + вензельный шрифт -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- Favicon элегантное кольцо -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c0a080'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
     
     <style>
+        /* ----- ROOT: Палитра "Золотая Элегантность" ----- */
         :root {
             --bg-cream: #fdf9f3;
             --bg-luxury: #faf5ea;
@@ -58,7 +61,7 @@
             padding: 0 32px;
         }
 
-        /* Навигация */
+        /* ----- ПЛАВАЮЩАЯ НАВИГАЦИЯ ПРЕМИУМ ----- */
         .navbar {
             position: fixed;
             top: 0;
@@ -84,11 +87,13 @@
             font-size: 2rem;
             font-weight: 600;
             letter-spacing: 1.5px;
+            color: var(--gold-dark);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
             background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-decoration: none;
         }
 
         .nav-links {
@@ -154,7 +159,7 @@
             }
         }
 
-        /* HERO — КОРОЛЕВСКАЯ КОМПОЗИЦИЯ */
+        /* ----- HERO — ИЗМЕНЕНО ТОЛЬКО РАСПОЛОЖЕНИЕ БЛОКОВ ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -162,6 +167,10 @@
             background-size: cover;
             background-position: center 35%;
             background-attachment: fixed;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: center;
             color: white;
         }
 
@@ -180,122 +189,131 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 100%);
-            pointer-events: none;
         }
 
+        /* Контентный блок — центрирован по горизонтали, с отступом сверху, чтобы навигация не перекрывала */
         .hero-content {
             position: relative;
             z-index: 2;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 100px 5% 60px 5%; /* верхний отступ, чтобы не перекрывалось навигацией */
+            padding-top: 18vh; /* увеличен отступ, чтобы имена не уходили под навбар */
+            max-width: 90%;
+            animation: fadeInDown 1.2s ease-out;
         }
 
-        /* Верхний блок: имена и дата по центру */
-        .hero-header {
-            text-align: center;
-            margin-top: 0;
-        }
-
-        .hero-names {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            letter-spacing: 6px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, #fff8e7, #f3e5c0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
+        .hero-veneer {
+            font-size: 2.8rem;
+            letter-spacing: 4px;
+            font-weight: 400;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            color: rgba(255,248,235,0.95);
         }
 
         .hero-date {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 400;
             display: inline-block;
             border-top: 1.5px solid rgba(255,245,225,0.7);
             border-bottom: 1.5px solid rgba(255,245,225,0.7);
-            padding: 10px 24px;
-            backdrop-filter: blur(8px);
-            letter-spacing: 4px;
+            padding: 12px 32px;
+            backdrop-filter: blur(4px);
+            letter-spacing: 3px;
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Счётчик в правой части на уровне взгляда (45% от верха) */
-        .countdown-luxury {
+        /* Счётчик — абсолютное позиционирование справа, на уровне 45% от верха */
+        .countdown-wrapper {
             position: absolute;
             right: 5%;
             top: 45%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(12px);
-            padding: 20px 30px;
-            border-radius: 60px;
-            border-right: 4px solid var(--gold-light);
-            text-align: right;
-            max-width: 380px;
+            background: rgba(255,255,245,0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 80px;
+            padding: 18px 25px;
+            max-width: 450px;
+            width: auto;
+            text-align: center;
+            border: 1px solid rgba(212,175,106,0.5);
+            z-index: 3;
         }
 
-        .countdown-label {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            font-weight: 300;
-            color: rgba(255,245,225,0.9);
+        .counter-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: nowrap;
         }
 
-        .countdown-timer {
-            font-size: 1.4rem;
-            font-weight: 600;
-            font-family: 'Playfair Display', serif;
-            white-space: nowrap;
+        .counter-item {
+            text-align: center;
         }
 
-        .countdown-timer span {
+        .counter-number {
             font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--gold-light);
-            margin: 0 2px;
+            font-weight: 700;
+            color: var(--gold-dark);
+            background: white;
+            padding: 8px 12px;
+            border-radius: 40px;
+            min-width: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* Адаптация для мобильных */
+        .counter-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
+            color: var(--text-soft);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Адаптация для мобильных: счётчик становится статичным, под датой */
         @media (max-width: 800px) {
             .hero-content {
-                padding: 80px 5% 40px 5%;
+                padding-top: 22vh;
             }
-            .countdown-luxury {
+            .countdown-wrapper {
                 position: static;
                 transform: none;
-                margin-top: 30px;
-                text-align: center;
+                margin: 40px auto 0;
                 right: auto;
-                width: auto;
-                max-width: none;
-                background: rgba(0,0,0,0.6);
+                top: auto;
+                max-width: 90%;
             }
-            .countdown-timer {
-                font-size: 1rem;
-                white-space: normal;
-                word-break: keep-all;
+            .counter-grid {
+                gap: 12px;
+                flex-wrap: wrap;
             }
-            .countdown-timer span {
+            .counter-number {
                 font-size: 1.2rem;
+                padding: 4px 8px;
+                min-width: 50px;
             }
-            .hero-names {
-                letter-spacing: 3px;
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .hero-date {
-                font-size: 1.3rem;
-                padding: 6px 16px;
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .form-card {
+                padding: 32px 24px;
             }
         }
 
-        /* Остальные стили без изменений (секции, форма и т.д.) — они идут дальше */
+        /* ----- ОСТАЛЬНЫЕ СТИЛИ (НЕ МЕНЯЛИСЬ) ----- */
         section {
             padding: 100px 0;
             position: relative;
@@ -372,6 +390,7 @@
             line-height: 1.55;
             font-weight: 400;
             color: var(--text-soft);
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .btn-gold {
@@ -494,6 +513,7 @@
             max-width: 820px;
             margin: 0 auto;
             border: 1px solid rgba(212, 175, 106, 0.3);
+            transition: var(--transition-smooth);
         }
         .gift-box p {
             font-size: 1.25rem;
@@ -505,6 +525,7 @@
             color: var(--gold-dark);
             text-decoration: none;
             border-bottom: 1px dashed var(--gold-light);
+            transition: 0.2s;
         }
         .phone-link:hover {
             color: #9e7659;
@@ -526,6 +547,7 @@
             margin-bottom: 12px;
             display: block;
             font-size: 1.2rem;
+            letter-spacing: 0.3px;
         }
         input, select, textarea {
             width: 100%;
@@ -568,6 +590,7 @@
             transition: 0.3s;
             width: 100%;
             font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
         }
         button:hover {
             background: linear-gradient(135deg, #9e7659, #b48c48);
@@ -595,19 +618,6 @@
             color: var(--text-soft);
             border-top: 1px solid rgba(212, 175, 106, 0.2);
         }
-
-        @media (max-width: 800px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-            .form-card {
-                padding: 32px 24px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -629,19 +639,19 @@
     </div>
 </nav>
 
-<!-- HERO: премиум композиция -->
+<!-- HERO: имена и дата по центру вверху, счётчик — справа на уровне глаз -->
 <div class="hero">
     <div class="hero-content">
-        <div class="hero-header">
-            <div class="hero-names">Вадим & Мария</div>
-            <div class="hero-date">29 июня 2026</div>
-        </div>
-        <!-- Счётчик в правой части на уровне глаз -->
-        <div class="countdown-luxury">
-            <div class="countdown-label">До нашей свадьды</div>
-            <div class="countdown-timer" id="luxuryCountdown">
-                <!-- сюда динамически вставляется таймер -->
-            </div>
+        <div class="hero-veneer veneer-text">Вадим & Мария</div>
+        <div class="hero-date">29 июня 2026</div>
+    </div>
+    <!-- Счётчик обратного отсчета — теперь справа, на 45% высоты -->
+    <div class="countdown-wrapper fade-up">
+        <div class="counter-grid" id="countdownTimer">
+            <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
+            <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
+            <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
+            <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
         </div>
     </div>
 </div>
@@ -813,7 +823,7 @@
         });
     });
 
-    // Плавный скролл
+    // Плавный скролл к якорям
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -828,7 +838,7 @@
         });
     });
 
-    // Форма
+    // Обработка формы RSVP
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
     form.addEventListener('submit', function(e) {
@@ -851,24 +861,29 @@
         }, 5000);
     });
 
-    // Таймер обратного отсчёта в премиум-блоке
-    function updateLuxuryCountdown() {
+    // ТАЙМЕР ОБРАТНОГО ОТСЧЁТА
+    function updateCountdown() {
         const weddingDate = new Date(2026, 5, 29, 0, 0, 0).getTime();
         const now = new Date().getTime();
         const distance = weddingDate - now;
         if (distance < 0) {
-            document.getElementById('luxuryCountdown').innerHTML = '<span>Событие наступило!</span>';
+            document.getElementById('days').innerText = '00';
+            document.getElementById('hours').innerText = '00';
+            document.getElementById('minutes').innerText = '00';
+            document.getElementById('seconds').innerText = '00';
             return;
         }
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (86400000)) / (3600000));
         const minutes = Math.floor((distance % 3600000) / 60000);
         const seconds = Math.floor((distance % 60000) / 1000);
-        const text = `<span>${days}</span> дн · <span>${hours}</span> ч · <span>${minutes}</span> мин · <span>${seconds}</span> сек`;
-        document.getElementById('luxuryCountdown').innerHTML = text;
+        document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+        document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+        document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
     }
-    updateLuxuryCountdown();
-    setInterval(updateLuxuryCountdown, 1000);
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>
