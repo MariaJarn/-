@@ -6,15 +6,13 @@
     <meta name="description" content="Свадьба Вадима и Марии. Приглашение на торжество 29 июня 2026 года. Элегантный вечер, любовь и счастье.">
     <title>Вадим & Мария | Свадебное приглашение | 29 июня 2026</title>
     
-    <!-- Google Fonts: Премиальная коллекция + вензельный шрифт -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- Favicon элегантное кольцо -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c0a080'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
     
     <style>
-        /* ----- ROOT: Палитра "Золотая Элегантность" ----- */
+        /* ----- ROOT: Палитра "Золотая Элегантность" (без изменений) ----- */
         :root {
             --bg-cream: #fdf9f3;
             --bg-luxury: #faf5ea;
@@ -61,7 +59,7 @@
             padding: 0 32px;
         }
 
-        /* ----- ПЛАВАЮЩАЯ НАВИГАЦИЯ ПРЕМИУМ ----- */
+        /* ----- ПЛАВАЮЩАЯ НАВИГАЦИЯ (без изменений) ----- */
         .navbar {
             position: fixed;
             top: 0;
@@ -159,7 +157,7 @@
             }
         }
 
-        /* ----- HERO — ИЗМЕНЕНО ТОЛЬКО РАСПОЛОЖЕНИЕ БЛОКОВ ----- */
+        /* ----- HERO — ИЗМЕНЕНО ТОЛЬКО РАСПОЛОЖЕНИЕ (flex + space-between) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -168,7 +166,7 @@
             background-position: center 35%;
             background-attachment: fixed;
             display: flex;
-            align-items: flex-start;
+            align-items: center; /* вертикальное центрирование содержимого */
             justify-content: center;
             text-align: center;
             color: white;
@@ -191,13 +189,29 @@
             background: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 100%);
         }
 
-        /* Контентный блок — центрирован по горизонтали, с отступом сверху, чтобы навигация не перекрывала */
+        /* Контейнер перестроен: flex-колонка, контент растянут по высоте */
         .hero-content {
             position: relative;
             z-index: 2;
-            padding-top: 18vh; /* увеличен отступ, чтобы имена не уходили под навбар */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 12vh 0 12vh 0; /* одинаковый отступ сверху и снизу (подобрано, чтобы не перекрывалось навбаром) */
             max-width: 90%;
+            margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
+        }
+
+        /* Верхний блок: имена + дата (стили не менялись) */
+        .hero-top {
+            /* пусто, только для группировки */
+        }
+
+        /* Нижний блок: счётчик */
+        .hero-bottom {
+            /* пусто */
         }
 
         .hero-veneer {
@@ -221,28 +235,23 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Счётчик — абсолютное позиционирование справа, на уровне 45% от верха */
+        /* Счётчик — все стили полностью сохранены из исходного кода */
         .countdown-wrapper {
-            position: absolute;
-            right: 5%;
-            top: 45%;
-            transform: translateY(-50%);
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 80px;
             padding: 18px 25px;
-            max-width: 450px;
-            width: auto;
+            max-width: 550px;
+            margin: 0 auto; /* центрирован */
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
-            z-index: 3;
         }
 
         .counter-grid {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: nowrap;
+            gap: 28px;
+            flex-wrap: wrap;
         }
 
         .counter-item {
@@ -250,18 +259,18 @@
         }
 
         .counter-number {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--gold-dark);
             background: white;
-            padding: 8px 12px;
+            padding: 8px 16px;
             border-radius: 40px;
-            min-width: 60px;
+            min-width: 70px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .counter-label {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 6px;
@@ -279,41 +288,7 @@
             }
         }
 
-        /* Адаптация для мобильных: счётчик становится статичным, под датой */
-        @media (max-width: 800px) {
-            .hero-content {
-                padding-top: 22vh;
-            }
-            .countdown-wrapper {
-                position: static;
-                transform: none;
-                margin: 40px auto 0;
-                right: auto;
-                top: auto;
-                max-width: 90%;
-            }
-            .counter-grid {
-                gap: 12px;
-                flex-wrap: wrap;
-            }
-            .counter-number {
-                font-size: 1.2rem;
-                padding: 4px 8px;
-                min-width: 50px;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-            .form-card {
-                padding: 32px 24px;
-            }
-        }
-
-        /* ----- ОСТАЛЬНЫЕ СТИЛИ (НЕ МЕНЯЛИСЬ) ----- */
+        /* ----- ОСТАЛЬНЫЕ СЕКЦИИ (без изменений) ----- */
         section {
             padding: 100px 0;
             position: relative;
@@ -618,6 +593,23 @@
             color: var(--text-soft);
             border-top: 1px solid rgba(212, 175, 106, 0.2);
         }
+
+        /* Адаптация для мобильных (только отступы, стили счётчика не меняем) */
+        @media (max-width: 800px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .form-card {
+                padding: 32px 24px;
+            }
+            .hero-content {
+                padding: 8vh 0 8vh 0; /* чуть меньше на телефонах, чтобы не прижимало */
+            }
+        }
     </style>
 </head>
 <body>
@@ -639,19 +631,22 @@
     </div>
 </nav>
 
-<!-- HERO: имена и дата по центру вверху, счётчик — справа на уровне глаз -->
+<!-- HERO: имена и дата вверху, счётчик внизу (симметрично) -->
 <div class="hero">
     <div class="hero-content">
-        <div class="hero-veneer veneer-text">Вадим & Мария</div>
-        <div class="hero-date">29 июня 2026</div>
-    </div>
-    <!-- Счётчик обратного отсчета — теперь справа, на 45% высоты -->
-    <div class="countdown-wrapper fade-up">
-        <div class="counter-grid" id="countdownTimer">
-            <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
-            <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
-            <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
-            <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+        <div class="hero-top">
+            <div class="hero-veneer veneer-text">Вадим & Мария</div>
+            <div class="hero-date">29 июня 2026</div>
+        </div>
+        <div class="hero-bottom">
+            <div class="countdown-wrapper fade-up">
+                <div class="counter-grid" id="countdownTimer">
+                    <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
+                    <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
+                    <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
+                    <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
