@@ -154,7 +154,7 @@
             }
         }
 
-        /* HERO — полностью переработанная композиция */
+        /* HERO — КОРОЛЕВСКАЯ КОМПОЗИЦИЯ */
         .hero {
             position: relative;
             height: 100vh;
@@ -162,9 +162,6 @@
             background-size: cover;
             background-position: center 35%;
             background-attachment: fixed;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
             color: white;
         }
 
@@ -186,111 +183,119 @@
             pointer-events: none;
         }
 
-        /* Контейнер для текстовых блоков — используем абсолютное позиционирование */
-        .hero-text {
+        .hero-content {
             position: relative;
             z-index: 2;
             width: 100%;
             height: 100%;
-            padding: 100px 5% 0 5%; /* отступ сверху, чтобы не перекрывалось navbar */
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: flex-start;
+            padding: 100px 5% 60px 5%; /* верхний отступ, чтобы не перекрывалось навигацией */
         }
 
-        /* Блок имён — левый верхний угол */
+        /* Верхний блок: имена и дата по центру */
+        .hero-header {
+            text-align: center;
+            margin-top: 0;
+        }
+
         .hero-names {
-            text-align: left;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(6px);
-            padding: 16px 28px;
-            border-radius: 60px;
-            border-left: 3px solid var(--gold-light);
-        }
-
-        .hero-names .hero-veneer {
-            font-size: 2.8rem;
-            letter-spacing: 4px;
-            font-weight: 400;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-            color: rgba(255,248,235,0.95);
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        /* Блок даты и счётчика — правый верхний угол */
-        .hero-info {
-            text-align: right;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(6px);
-            padding: 16px 28px;
-            border-radius: 60px;
-            border-right: 3px solid var(--gold-light);
-            max-width: 400px;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 6px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff8e7, #f3e5c0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
         }
 
         .hero-date {
             font-size: 1.8rem;
-            font-weight: 500;
-            letter-spacing: 2px;
+            font-weight: 400;
+            display: inline-block;
+            border-top: 1.5px solid rgba(255,245,225,0.7);
+            border-bottom: 1.5px solid rgba(255,245,225,0.7);
+            padding: 10px 24px;
+            backdrop-filter: blur(8px);
+            letter-spacing: 4px;
             font-family: 'Cormorant Garamond', serif;
-            border-bottom: 1px solid rgba(255,245,225,0.5);
-            display: inline-block;
+        }
+
+        /* Счётчик в правой части на уровне взгляда (45% от верха) */
+        .countdown-luxury {
+            position: absolute;
+            right: 5%;
+            top: 45%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(12px);
+            padding: 20px 30px;
+            border-radius: 60px;
+            border-right: 4px solid var(--gold-light);
+            text-align: right;
+            max-width: 380px;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             margin-bottom: 12px;
-            padding-bottom: 6px;
+            font-weight: 300;
+            color: rgba(255,245,225,0.9);
         }
 
-        /* Новый компактный счётчик в виде строки */
-        .countdown-inline {
-            font-size: 1.2rem;
-            font-weight: 500;
+        .countdown-timer {
+            font-size: 1.4rem;
+            font-weight: 600;
             font-family: 'Playfair Display', serif;
-            background: rgba(0,0,0,0.3);
-            padding: 8px 16px;
-            border-radius: 40px;
-            display: inline-block;
-            margin-top: 8px;
+            white-space: nowrap;
         }
 
-        .countdown-inline span {
-            font-weight: 700;
+        .countdown-timer span {
+            font-size: 1.8rem;
+            font-weight: 800;
             color: var(--gold-light);
-            font-size: 1.3rem;
+            margin: 0 2px;
         }
 
-        /* Адаптация под мобильные: блоки друг над другом */
+        /* Адаптация для мобильных */
         @media (max-width: 800px) {
-            .hero-text {
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                gap: 20px;
-                padding-top: 90px;
+            .hero-content {
+                padding: 80px 5% 40px 5%;
             }
-            .hero-names, .hero-info {
-                text-align: left;
-                border-left: 3px solid var(--gold-light);
-                border-right: none;
+            .countdown-luxury {
+                position: static;
+                transform: none;
+                margin-top: 30px;
+                text-align: center;
+                right: auto;
                 width: auto;
+                max-width: none;
+                background: rgba(0,0,0,0.6);
             }
-            .hero-info {
-                text-align: left;
+            .countdown-timer {
+                font-size: 1rem;
+                white-space: normal;
+                word-break: keep-all;
+            }
+            .countdown-timer span {
+                font-size: 1.2rem;
+            }
+            .hero-names {
+                letter-spacing: 3px;
             }
             .hero-date {
-                font-size: 1.4rem;
-            }
-            .countdown-inline {
-                font-size: 1rem;
-            }
-            .countdown-inline span {
-                font-size: 1.1rem;
-            }
-            .hero-names .hero-veneer {
-                font-size: 2rem;
+                font-size: 1.3rem;
+                padding: 6px 16px;
             }
         }
 
-        /* Остальные стили без изменений (секции, таймлайн, форма и т.д.) */
+        /* Остальные стили без изменений (секции, форма и т.д.) — они идут дальше */
         section {
             padding: 100px 0;
             position: relative;
@@ -624,18 +629,18 @@
     </div>
 </nav>
 
-<!-- HERO: новая композиция -->
+<!-- HERO: премиум композиция -->
 <div class="hero">
-    <div class="hero-text">
-        <!-- Левый верх: имена -->
-        <div class="hero-names">
-            <div class="hero-veneer veneer-text">Вадим & Мария</div>
-        </div>
-        <!-- Правый верх: дата + счётчик (взгляд пары направлен сюда) -->
-        <div class="hero-info">
+    <div class="hero-content">
+        <div class="hero-header">
+            <div class="hero-names">Вадим & Мария</div>
             <div class="hero-date">29 июня 2026</div>
-            <div class="countdown-inline" id="countdownInline">
-                <!-- сюда будет вставлен текст таймера -->
+        </div>
+        <!-- Счётчик в правой части на уровне глаз -->
+        <div class="countdown-luxury">
+            <div class="countdown-label">До нашей свадьды</div>
+            <div class="countdown-timer" id="luxuryCountdown">
+                <!-- сюда динамически вставляется таймер -->
             </div>
         </div>
     </div>
@@ -846,24 +851,24 @@
         }, 5000);
     });
 
-    // Обновление таймера в новом компактном виде
-    function updateCountdown() {
+    // Таймер обратного отсчёта в премиум-блоке
+    function updateLuxuryCountdown() {
         const weddingDate = new Date(2026, 5, 29, 0, 0, 0).getTime();
         const now = new Date().getTime();
         const distance = weddingDate - now;
         if (distance < 0) {
-            document.getElementById('countdownInline').innerHTML = '<span>Событие наступило!</span>';
+            document.getElementById('luxuryCountdown').innerHTML = '<span>Событие наступило!</span>';
             return;
         }
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (86400000)) / (3600000));
         const minutes = Math.floor((distance % 3600000) / 60000);
         const seconds = Math.floor((distance % 60000) / 1000);
-        const text = `Осталось: <span>${days}</span> дн · <span>${hours}</span> ч · <span>${minutes}</span> мин · <span>${seconds}</span> сек`;
-        document.getElementById('countdownInline').innerHTML = text;
+        const text = `<span>${days}</span> дн · <span>${hours}</span> ч · <span>${minutes}</span> мин · <span>${seconds}</span> сек`;
+        document.getElementById('luxuryCountdown').innerHTML = text;
     }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    updateLuxuryCountdown();
+    setInterval(updateLuxuryCountdown, 1000);
 </script>
 </body>
 </html>
