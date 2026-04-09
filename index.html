@@ -20,7 +20,7 @@
             --gold-mid: #d4af6a;
             --gold-dark: #b48c48;
             --rose-powder: #e3cbc1;
-            --text-dark: #3a2e26;      /* шоколадный оттенок вместо чёрного */
+            --text-dark: #3a2e26;
             --text-soft: #6b5d53;
             --white-linen: #ffffff;
             --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(212, 175, 106, 0.1);
@@ -378,7 +378,11 @@
             transform: scale(1.02);
         }
 
-        /* Основной текст – шоколадный оттенок */
+        /* Текст приглашения по центру */
+        .invite-text {
+            text-align: center;
+        }
+
         .invite-text p,
         .timeline-desc,
         .gift-box p,
@@ -491,6 +495,7 @@
             .timeline-desc { padding-left: 0; }
         }
 
+        /* Дресс-код: галерея без подписей */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -511,35 +516,19 @@
             border-radius: 24px;
             margin-bottom: 12px;
         }
+        .dress-card span {
+            display: none; /* убираем подписи */
+        }
 
-        /* ----- БЛОК ДАРОВ (рамка чуть шире, шрифт унифицирован) ----- */
+        /* ----- БЛОК ДАРОВ (без рамки, как дресс-код) ----- */
         .gift-box {
             background: var(--white-linen);
             padding: 40px 35px;
             border-radius: 50px;
             text-align: center;
-            box-shadow: 0 30px 40px -25px rgba(0,0,0,0.08), 0 0 0 1px rgba(212,175,106,0.25);  /* тонкая золотистая рамка */
+            box-shadow: var(--shadow-glow);
             max-width: 820px;
             margin: 0 auto;
-            position: relative;
-        }
-        .gift-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 20%;
-            right: 20%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold-dark), var(--gold-light), transparent);
-        }
-        .gift-box::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 20%;
-            right: 20%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold-dark), var(--gold-light), transparent);
         }
 
         .gift-box p {
@@ -750,7 +739,7 @@
             </div>
         </div>
     </div>
-    <div class="scroll-hint" onclick="scrollToNext()">↓ ЛИСТАЙТЕ ВНИЗ ↓</div>
+    <div class="scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
 </div>
 
 <main>
@@ -792,8 +781,11 @@
             <h2 class="section-title fade-up">План торжества</h2>
             <div class="timeline-elegant fade-up-delayed">
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub">лёгкие закуски и напитки</span></div></div>
-              <div class="timeline-node"><div class="timeline-node">
-    <div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub">самый трогательный момент</span></div></div>
+                <div class="timeline-node">
+                    <div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div>
+                    <div class="timeline-time">16:30</div>
+                    <div class="timeline-desc">Свадебная церемония <span class="timeline-sub">самый трогательный момент</span></div>
+                </div>
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub">тёплая атмосфера</span></div></div>
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества</div></div>
             </div>
@@ -819,19 +811,17 @@
                     <div class="palette-item" style="background: linear-gradient(145deg, #1a3a4a, #2c5b72);"></div>
                 </div>
                 
-                <div class="scroll-hint" style="margin-top: 5px;" onclick="scrollToNext()">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
-
                 <p style="margin-top: 20px; color: var(--text-dark);"><strong>Джентльменам</strong> предлагаем надеть классические костюмы. Светлые тона — в особом почёте, чёрный вовсе не обязателен.</p>
                 <div class="dress-gallery">
-                    <div class="dress-card"><img src="men-example.jpg" alt="Мужской образ"><span>Классический костюм</span></div>
+                    <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
                 </div>
                 <p style="color: var(--text-dark);"><strong>Милым дамам</strong> — коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
                 <div class="dress-gallery">
-                    <div class="dress-card"><img src="women-example.jpg" alt="Женский образ"><span>Платье природных тонов</span></div>
+                    <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                 </div>
             </div>
         </div>
-      
+        <!-- Удалена лишняя стрелка внутри секции -->
     </section>
 
     <section id="gifts">
@@ -849,9 +839,9 @@
 
     <section id="rsvp">
         <div class="container">
-            <h2 class="section-title fade-up">Присутствие</h2>
+            <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
             <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <p style="margin-bottom: 12px; color: var(--text-dark);">Пожалуйста, сообщите о своём решении до <strong>01.05.2026</strong>.</p>
+                <p style="margin-bottom: 12px; color: var(--text-dark);">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
                 <p style="margin-bottom: 6px; color: var(--text-dark);">Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
                 <p style="margin-bottom: 16px; color: var(--text-dark);">Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
