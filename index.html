@@ -219,7 +219,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 12vh 0 18vh 0;  /* имена выше, таймер ниже */
+            padding: 12vh 0 18vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1s ease-out;
@@ -310,9 +310,10 @@
 
         /* ----- СЕКЦИИ ----- */
         section {
-            padding: 40px 20px;
+            padding: 50px 20px;
             position: relative;
             background: transparent;
+            scroll-margin-top: 90px; /* фикс для якорей */
         }
 
         @media (min-width: 1024px) {
@@ -325,7 +326,7 @@
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             font-weight: 400;
             line-height: 1.2;
             background: linear-gradient(135deg, #6b4423 0%, #b48c48 40%, #8b5e3c 70%, #a67c42 100%);
@@ -366,8 +367,8 @@
 
         .fade-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.5s ease;
         }
         .fade-up.visible {
             opacity: 1;
@@ -376,8 +377,8 @@
 
         .fade-up-delayed {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.1s, transform 0.6s ease 0.1s;
+            transform: translateY(20px);
+            transition: opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.1s, transform 0.5s ease 0.1s;
         }
         .fade-up-delayed.visible {
             opacity: 1;
@@ -547,11 +548,12 @@
             margin: 40px 0 20px;
         }
         .dress-card {
-            width: 220px;
+            width: 280px;
+            max-width: 90%;
             text-align: center;
             background: var(--white-linen);
             border-radius: 36px;
-            padding: 20px 12px;
+            padding: 24px 16px;
             box-shadow: var(--shadow-glow);
             transition: var(--transition-smooth);
         }
@@ -559,6 +561,17 @@
             width: 100%;
             border-radius: 24px;
             margin-bottom: 12px;
+        }
+
+        .dress-text {
+            font-size: 1.25rem;
+            margin: 20px 0 30px;
+            color: var(--text-dark);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* ----- БЛОК ДАРОВ ----- */
@@ -702,7 +715,7 @@
             animation: bounce 2s infinite;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
-            margin: 30px 0 20px;
+            margin: 40px 0 30px;
             color: var(--gold-dark);
             transition: color 0.3s;
         }
@@ -712,7 +725,7 @@
         @media (max-width: 800px) {
             .mobile-scroll-hint {
                 display: block;
-                margin: 20px 0 10px;
+                margin: 30px 0 20px;
             }
         }
         @keyframes bounce {
@@ -760,22 +773,6 @@
 
         .schedule-spacer {
             margin-top: 30px;
-        }
-
-        /* Заметная дата и время */
-        .highlight-date {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold-dark);
-            margin-top: 25px;
-            background: rgba(212, 175, 106, 0.08);
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 50px;
-            border: 1px dashed var(--gold-mid);
-        }
-        .highlight-date i {
-            margin-right: 10px;
         }
 
         @media (max-width: 800px) {
@@ -856,10 +853,8 @@
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
                     <p style="font-size: 1.1rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
-                    <div class="highlight-date">
-                        <i class="far fa-calendar-alt"></i> 29 июня 2026 года<br>
-                        <i class="far fa-clock" style="margin-top: 8px;"></i> Сбор гостей с 16:00
-                    </div>
+                    <p style="margin-top: 35px; font-size: 1.6rem; font-weight: 500; color: var(--gold-dark);"><i class="far fa-calendar-alt" style="margin-right: 10px;"></i>29 июня 2026 года</p>
+                    <p style="font-size: 1.3rem; color: var(--text-dark);"><i class="far fa-clock" style="margin-right: 10px;"></i>Сбор гостей с 16:00</p>
                 </div>
             </div>
         </div>
@@ -902,16 +897,18 @@
                     <div class="palette-item" style="background: linear-gradient(145deg, #1a3a4a, #2c5b72);"></div>
                 </div>
                 
-                <div class="scroll-hint" onclick="scrollToNext()">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
-                
-                <p style="margin-top: 20px; color: var(--text-dark);"><strong>Джентльменам</strong> предлагаем надеть классические костюмы. Светлые тона — в особом почёте, чёрный вовсе не обязателен.</p>
+                <!-- Стрелка ПРИМЕРЫ НАРЯДОВ перенесена выше текстов -->
+                <div class="scroll-hint" onclick="scrollToNext()" style="margin: 30px 0 10px;">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
+
+                <!-- Примеры нарядов (изображения) -->
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
-                </div>
-                <p style="color: var(--text-dark);"><strong>Милым дамам</strong> — коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
-                <div class="dress-gallery">
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                 </div>
+
+                <!-- Тексты после фото -->
+                <p class="dress-text"><strong>Джентльменам</strong> предлагаем надеть классические костюмы. Светлые тона — в особом почёте, чёрный вовсе не обязателен.</p>
+                <p class="dress-text"><strong>Милым дамам</strong> — коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
             </div>
         </div>
     </section>
@@ -922,7 +919,7 @@
             <div class="gifts-text fade-up-delayed">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария</p>
+                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
                     <img src="bank.jpg" alt="Семейный банк">
@@ -941,13 +938,12 @@
                 </div>
             </div>
         </div>
-        <!-- Плавающая стрелка перед формой (перенесена сюда) -->
         <div class="scroll-hint fade-up-delayed" onclick="document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'})">
             ↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓
         </div>
     </section>
 
-    <!-- ФОРМА (без внутренней стрелки) -->
+    <!-- ФОРМА -->
     <section id="rsvp">
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
@@ -1001,6 +997,10 @@
                 </form>
             </div>
         </div>
+        <!-- НОВАЯ СТРЕЛКА ПОСЛЕ ФОРМЫ -->
+        <div class="scroll-hint fade-up-delayed" onclick="document.getElementById('final').scrollIntoView({behavior: 'smooth'})">
+            ↓ ДО ВСТРЕЧИ ↓
+        </div>
     </section>
 
     <!-- ФИНАЛЬНОЕ ФОТО И ФРАЗА -->
@@ -1040,7 +1040,7 @@
         link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
 
-    // Плавный скролл с учётом шапки
+    // Плавный скролл с учётом шапки (используется scroll-margin-top)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1048,9 +1048,7 @@
             if (!targetId) return;
             const target = document.getElementById(targetId);
             if (target) {
-                const offset = 90;
-                const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-                window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
