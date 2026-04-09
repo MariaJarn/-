@@ -679,36 +679,6 @@
             transform: scale(1.01);
         }
 
-        /* Плавающая фраза перед формой */
-        .form-prompt {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .prompt-badge {
-            display: inline-block;
-            background: rgba(212, 175, 106, 0.18);
-            backdrop-filter: blur(6px);
-            padding: 14px 32px;
-            border-radius: 60px;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            color: var(--gold-dark);
-            font-weight: 500;
-            border: 1px solid rgba(212, 175, 106, 0.4);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            animation: gentleBounce 2.2s infinite ease-in-out;
-        }
-        .prompt-badge i {
-            margin: 0 6px;
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
         /* Стрелки */
         .scroll-hint {
             position: relative;
@@ -920,7 +890,7 @@
             <div class="gifts-text fade-up-delayed">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
                     <img src="bank.jpg" alt="Семейный банк">
@@ -953,11 +923,9 @@
                 <p style="color: var(--text-dark);">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
             </div>
 
-            <!-- Плавающая фраза перед формой -->
-            <div class="form-prompt fade-up-delayed">
-                <div class="prompt-badge">
-                    <i class="fas fa-chevron-down"></i> ФОРМА ПОДТВЕРЖДЕНИЯ <i class="fas fa-chevron-down"></i>
-                </div>
+            <!-- Плавающая фраза в стиле стрелок -->
+            <div class="scroll-hint fade-up-delayed" onclick="document.getElementById('weddingForm').scrollIntoView({behavior: 'smooth', block: 'center'})">
+                ↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓
             </div>
 
             <div class="form-card fade-up-delayed">
