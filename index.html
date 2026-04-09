@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="description" content="Свадьба Вадима и Марии. Приглашение на торжество 29 июня 2026 года. Элегантный вечер, любовь и счастье.">
     <title>Вадим & Мария | Свадебное приглашение | 29 июня 2026</title>
     
@@ -37,9 +37,10 @@
 
         html {
             scroll-padding-top: 90px;
+            overflow-x: hidden;
+            max-width: 100vw;
         }
 
-        /* ----- ПЛАВНЫЙ ГРАДИЕНТНЫЙ ФОН (замена резких переходов) ----- */
         body {
             background: linear-gradient(180deg, 
                 #fdf9f3 0%, 
@@ -49,13 +50,15 @@
                 #fdf9f3 100%);
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-dark);
-            line-height: 1.5;
+            line-height: 1.3;           /* уменьшен межстрочный интервал глобально */
             scroll-behavior: smooth;
             overflow-x: hidden;
+            max-width: 100vw;
         }
 
         h1, h2, h3, .nav-links a, .btn, .timeline-time, .form-label, .counter-number {
             font-family: 'Playfair Display', serif;
+            line-height: 1.2;
         }
 
         .veneer-text {
@@ -286,21 +289,21 @@
             }
         }
 
-        /* ----- ОБЩИЕ СТИЛИ СЕКЦИЙ (убраны резкие фоны, теперь всё на градиенте body) ----- */
+        /* ----- ОБЩИЕ СТИЛИ СЕКЦИЙ ----- */
         section {
             padding: 15px 15px;
             position: relative;
-            background: transparent; /* убираем любые фоны секций */
+            background: transparent;
         }
 
-        /* ----- ЗАГОЛОВКИ СЕКЦИЙ (уменьшен межстрочный интервал) ----- */
+        /* ----- ЗАГОЛОВКИ СЕКЦИЙ ----- */
         .section-title {
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
             text-align: center;
-            margin-bottom: 30px;  /* уменьшено для компактности */
+            margin-bottom: 30px;
             font-weight: 400;
-            line-height: 1.2;     /* уменьшен межстрочный интервал */
+            line-height: 1.2;
             background: linear-gradient(135deg, #6b4423 0%, #b48c48 40%, #8b5e3c 70%, #a67c42 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -344,7 +347,7 @@
             }
         }
 
-        /* ----- АНИМАЦИЯ ПОЯВЛЕНИЯ (с задержкой для текста) ----- */
+        /* ----- АНИМАЦИЯ ПОЯВЛЕНИЯ ----- */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -356,7 +359,6 @@
             transform: translateY(0);
         }
 
-        /* Небольшая задержка для текста, чтобы он появлялся почти сразу за заголовком */
         .fade-up-delayed {
             opacity: 0;
             transform: translateY(40px);
@@ -393,7 +395,7 @@
             transform: scale(1.02);
         }
 
-        /* Унификация текстовых блоков */
+        /* Унификация текста */
         .invite-text p,
         .timeline-desc,
         .gift-box p,
@@ -402,11 +404,11 @@
         .final-photo p {
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-dark);
+            line-height: 1.3;
         }
 
         .invite-text p {
             font-size: 1.4rem;
-            line-height: 1.4;      /* уменьшен межстрочный интервал */
             font-weight: 400;
             color: var(--text-soft);
         }
@@ -593,31 +595,32 @@
             color: #9e7659;
         }
 
+        /* ----- ФОРМА (компактнее) ----- */
         .form-card {
             background: var(--white-linen);
             border-radius: 48px;
-            padding: 48px 50px;
+            padding: 40px 30px;
             box-shadow: var(--shadow-premium);
             max-width: 920px;
             margin: 0 auto;
         }
         .form-group {
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         .form-label {
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 0.3px;
         }
         input, select, textarea {
             width: 100%;
-            padding: 16px 22px;
+            padding: 14px 18px;
             border: 1px solid #e6ddd2;
-            border-radius: 50px;
+            border-radius: 40px;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
+            font-size: 1rem;
             background: #fffefc;
             transition: 0.25s;
         }
@@ -627,42 +630,39 @@
             box-shadow: 0 0 0 4px rgba(212, 175, 106, 0.2);
         }
 
+        /* Исправление для радио и чекбоксов (теперь вертикально на мобильных) */
         .radio-group, .checkbox-group {
             display: flex;
-            flex-wrap: wrap;
-            gap: 28px;
-            margin-top: 12px;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 10px;
         }
         .radio-group label, .checkbox-group label {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: normal;
             cursor: pointer;
-            font-size: 1.05rem;
+            font-size: 1rem;
             text-align: left;
             line-height: 1.3;
-            white-space: nowrap;
+            word-break: break-word;
         }
-        @media (max-width: 500px) {
-            .radio-group, .checkbox-group {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .radio-group label, .checkbox-group label {
-                white-space: normal;
-                width: 100%;
-            }
+        /* Убираем принудительный nowrap, чтобы текст переносился */
+        @media (max-width: 600px) {
             .form-card {
                 padding: 28px 18px;
                 border-radius: 32px;
+            }
+            .radio-group, .checkbox-group {
+                gap: 12px;
             }
         }
 
         button {
             background: linear-gradient(135deg, var(--gold-dark), var(--gold-mid));
             border: none;
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: 60px;
             color: white;
             font-weight: 600;
@@ -685,7 +685,7 @@
             margin: 0 auto;
         }
 
-        /* ----- СТРЕЛКИ С ТЕКСТОМ (уменьшен отступ на всех, кроме hero) ----- */
+        /* ----- СТРЕЛКИ С ТЕКСТОМ (увеличен отступ после стрелок на мобильных) ----- */
         .scroll-hint {
             position: relative;
             text-align: center;
@@ -696,7 +696,8 @@
             animation: bounce 2s infinite;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            margin-top: 20px;       /* уменьшен для всех */
+            margin-top: 20px;
+            margin-bottom: 10px;
             color: var(--gold-dark);
         }
         .hero .scroll-hint {
@@ -707,12 +708,17 @@
             margin-top: 0;
             color: rgba(255,255,255,0.8);
         }
+        @media (max-width: 800px) {
+            .scroll-hint {
+                margin-bottom: 25px;  /* больше отступ после стрелок на мобильных */
+            }
+        }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
         }
 
-        /* ----- НОВАЯ ПРОГРАММИРУЕМАЯ ПАЛИТРА ЦВЕТОВ (вместо картинки) ----- */
+        /* ----- НОВАЯ ПАЛИТРА ДРЕСС-КОДА (природные градиенты) ----- */
         .palette-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -724,7 +730,7 @@
         .palette-item {
             aspect-ratio: 1 / 1;
             border-radius: 20px;
-            box-shadow: 0 8px 12px -6px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 12px -6px rgba(0,0,0,0.15), 0 0 0 1px rgba(212, 175, 106, 0.3);
             transition: transform 0.3s ease;
         }
         .palette-item:hover {
@@ -883,21 +889,21 @@
             <div class="fade-up-delayed" style="text-align: center;">
                 <p style="margin-bottom: 20px; font-size: 1.2rem;">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите нашу цветовую палитру.</p>
                 
-                <!-- НОВАЯ ПРОГРАММИРУЕМАЯ ПАЛИТРА -->
+                <!-- НОВАЯ ПРИРОДНАЯ ПАЛИТРА -->
                 <div class="palette-grid">
-                    <div class="palette-item" style="background: linear-gradient(135deg, #ebc6ac, #dd9d7a);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #e6aba5, #bb645b);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #f2b9c8, #c7556e);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #bf94a5, #8f4369);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #b6ade2, #644d79);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #9fa9cc, #46506b);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #7797a4, #3f687a);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #71aea9, #256763);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #80aaa9, #53726a);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #acbf9f, #455934);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #b5b18b, #60553f);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #b99b82, #4e4438);"></div>
-                    <div class="palette-item" style="background: linear-gradient(135deg, #c3a293, #433431);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f 0%, #a15252 100%);"></div> <!-- бордовый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #8f4b4b 0%, #bc6c6c 100%);"></div> <!-- розово-бордовый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #3d5a4b 0%, #5f7f6b 100%);"></div> <!-- тёмно-зелёный -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #2e5a4c 0%, #4a7c6a 100%);"></div> <!-- глубокий зелёный -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #1e3b4d 0%, #3b6178 100%);"></div> <!-- синий полуночный -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #2e4e6b 0%, #4f789b 100%);"></div> <!-- синий -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #4d3e2e 0%, #7a6246 100%);"></div> <!-- тёмный шоколад -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #6b4f3a 0%, #9e7555 100%);"></div> <!-- коричневый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #5f4c3f 0%, #8e7360 100%);"></div> <!-- тёплый серо-коричневый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #7a5242 0%, #b07d62 100%);"></div> <!-- терракотовый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #6e5c4b 0%, #9e8872 100%);"></div> <!-- оливково-коричневый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #4b5e4b 0%, #6f846f 100%);"></div> <!-- оливковый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #3d5040 0%, #637a65 100%);"></div> <!-- зелёный лес -->
                 </div>
 
                 <p><strong>Уважаемые мужчины</strong>, мы будем рады видеть вас в классических костюмах. Не ограничивайтесь только чёрным — светлые оттенки приветствуются.</p>
@@ -927,8 +933,8 @@
     <section id="rsvp">
         <div class="container">
             <h2 class="section-title fade-up">Присутствие</h2>
-            <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 35px;">
-                <p>Пожалуйста, сообщите о своём решении до <strong>01.05.2026</strong> любым удобным способом. Если вы выберете не заполнять форму ниже, пожалуйста, не забудьте сообщить нам об ограничениях в питании и выборе напитков. Надеемся увидеть ваш положительный ответ!</p>
+            <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
+                <p style="margin-bottom: 10px;">Пожалуйста, сообщите о своём решении до <strong>01.05.2026</strong> любым удобным способом. Если вы выберете не заполнять форму ниже, пожалуйста, не забудьте сообщить нам об ограничениях в питании и выборе напитков. Надеемся увидеть ваш положительный ответ!</p>
                 <p>Если вы будете с парой, просьба заполнить две заявки.</p>
             </div>
             <div class="form-card fade-up-delayed">
@@ -946,7 +952,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Предпочтения по напиткам (можно выбрать несколько)</label>
+                        <label class="form-label">Предпочтения по напиткам</label>
                         <div class="checkbox-group">
                             <label><input type="checkbox" name="drinks" value="Безалкогольные"> Безалкогольные</label>
                             <label><input type="checkbox" name="drinks" value="Вино красное"> Вино красное</label>
@@ -955,20 +961,20 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Аллергии / непереносимость продуктов</label>
+                        <label class="form-label">Аллергии / непереносимость</label>
                         <textarea rows="2" id="allergies" placeholder="Напишите, если есть ограничения в еде"></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Телефон / Telegram (для связи)</label>
+                        <label class="form-label">Телефон / Telegram</label>
                         <input type="text" id="contact" placeholder="+7 ... или @username">
                     </div>
                     <div class="form-group">
                         <button type="submit">Отправить ответ</button>
                     </div>
-                    <div id="formMessage" style="margin-top: 20px; text-align: center; color: #b48c48; font-weight: 500;"></div>
+                    <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48; font-weight: 500;"></div>
                 </form>
             </div>
-            <div class="fade-up-delayed" style="text-align:center; margin-top: 45px;">
+            <div class="fade-up-delayed" style="text-align:center; margin-top: 30px;">
                 <p>Или напишите нам напрямую:</p>
                 <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
                 <p>Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
@@ -996,7 +1002,7 @@
 </footer>
 
 <script>
-    // Анимация появления (работает и с fade-up-delayed)
+    // Анимация появления
     const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
