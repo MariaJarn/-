@@ -169,7 +169,7 @@
             }
         }
 
-        /* ----- HERO (восстановлен исходный вид) ----- */
+        /* ----- HERO (имена и дата подняты, стрелка опущена) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -209,7 +209,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 18vh 0 12vh 0;
+            padding: 14vh 0 16vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -279,7 +279,7 @@
 
         .hero .scroll-hint {
             position: absolute;
-            bottom: 2.5rem;
+            bottom: 3.8rem;
             left: 0;
             right: 0;
             margin-top: 0;
@@ -421,7 +421,7 @@
             box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
-        /* Таймлайн (линия обрезана) */
+        /* Таймлайн (линия строго до последнего круга) */
         .timeline-elegant {
             max-width: 800px;
             margin: 0 auto;
@@ -436,7 +436,7 @@
             width: 2px;
             background: linear-gradient(to bottom, var(--gold-light), var(--rose-powder), var(--gold-light));
             transform: translateX(-50%);
-            height: calc(100% - 55px); /* обрезаем до последнего узла */
+            height: calc(100% - 55px);
         }
         .timeline-node {
             display: flex;
@@ -444,6 +444,9 @@
             position: relative;
             padding-left: 90px;
             align-items: center;
+        }
+        .timeline-node:last-child {
+            margin-bottom: 0;
         }
         .timeline-icon {
             position: absolute;
@@ -572,7 +575,7 @@
             font-size: 1.2rem;
         }
 
-        /* ----- ФОРМА (переработана) ----- */
+        /* ----- ФОРМА ----- */
         .form-card {
             background: var(--white-linen);
             border-radius: 48px;
@@ -683,20 +686,46 @@
             50% { transform: translateY(10px); }
         }
 
-        /* Финальная секция */
+        /* Финальное фото и стрелка поверх */
+        .final-photo-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .final-photo {
+            text-align: center;
+        }
         .final-title {
             font-family: 'Great Vibes', cursive;
             font-size: 2.2rem;
             color: var(--gold-dark);
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
         .final-subtitle {
             font-family: 'Great Vibes', cursive;
             font-size: 2rem;
             color: var(--gold-dark);
             text-align: center;
-            margin-top: 5px;
+            margin-bottom: 25px;
+        }
+        .overlay-hint {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            z-index: 4;
+            animation: bounce 2s infinite;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            background: transparent;
+            pointer-events: auto;
         }
 
         footer {
@@ -705,6 +734,7 @@
             padding: 45px 20px;
             color: var(--text-soft);
             border-top: 1px solid rgba(212, 175, 106, 0.2);
+            font-size: 1rem;
         }
 
         @media (max-width: 800px) {
@@ -740,7 +770,7 @@
     </div>
 </nav>
 
-<!-- HERO (восстановлен) -->
+<!-- HERO -->
 <div class="hero">
     <div class="hero-content">
         <div class="hero-top">
@@ -786,7 +816,7 @@
                 </div>
                 <div>
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
-                    <p style="font-size: 1.25rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
+                    <p style="font-size: 1.1rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="#" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
                     <p style="margin-top: 35px; color: var(--text-dark);"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
                 </div>
@@ -856,7 +886,6 @@
                     <img src="bank.jpg" alt="Семейный банк">
                 </div>
                 
-                <!-- Лаконичный разделитель в стиле сайта -->
                 <div class="divider-elegant">
                     <span class="divider-line"></span>
                     <span class="divider-icon">✦</span>
@@ -872,18 +901,18 @@
         </div>
     </section>
 
-    <!-- Итоговое фото и подпись перемещены сюда -->
+    <!-- Итоговое фото + подпись НАД ним, стрелка поверх -->
     <section id="final">
         <div class="container">
-            <div class="final-photo fade-up">
+            <div class="final-photo-wrapper fade-up">
+                <h3 class="final-title">С нетерпением ждём вас,</h3>
+                <h3 class="final-subtitle">Вадим и Мария</h3>
                 <div class="img-card">
                     <img src="final.jpg" alt="Вадим и Мария">
                 </div>
-                <h3 class="final-title">С нетерпением ждём вас,</h3>
-                <h3 class="final-subtitle">Вадим и Мария</h3>
+                <div class="overlay-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
             </div>
         </div>
-        <div class="scroll-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
     </section>
 
     <section id="rsvp">
@@ -938,8 +967,7 @@
 </main>
 
 <footer>
-    <p>29 июня 2026 | Наша свадьба</p>
-    <p style="margin-top: 10px;">© Вадим & Мария | Свадебное приглашение</p>
+    <p>Свадебное приглашение | Вадим & Мария | 29 июня 2026</p>
 </footer>
 
 <script>
