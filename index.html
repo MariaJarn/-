@@ -36,7 +36,7 @@
         }
 
         html {
-            scroll-padding-top: 90px; /* чтобы заголовки не перекрывались меню */
+            scroll-padding-top: 90px;
         }
 
         body {
@@ -286,14 +286,14 @@
             position: relative;
         }
 
-        /* ----- ЗАГОЛОВКИ СЕКЦИЙ (изменено) ----- */
+        /* ----- ЗАГОЛОВКИ СЕКЦИЙ (КОРРЕКТИРОВКА: более тёмный шоколадно-золотой градиент) ----- */
         .section-title {
-            font-family: 'Great Vibes', cursive;   /* изменено */
-            font-size: 3.2rem;                      /* изменено */
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
             text-align: center;
-            margin-bottom: 50px;                     /* уменьшено, в мобильной ещё меньше */
+            margin-bottom: 50px;
             font-weight: 400;
-            background: linear-gradient(135deg, #b48c48 0%, #e4c48e 40%, #d4af6a 70%, #c9a96b 100%);
+            background: linear-gradient(135deg, #8b5e3c 0%, #d4af6a 40%, #b48c48 70%, #c9a96b 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -325,17 +325,17 @@
         @media (max-width: 800px) {
             .section-title {
                 font-size: 2.6rem;
-                margin-bottom: 30px !important;    /* уменьшен отступ */
+                margin-bottom: 30px !important;
             }
         }
 
         @media (max-width: 600px) {
             .section-title:after {
-                width: 80px;                        /* для мобильных уже */
+                width: 80px;
             }
         }
 
-        /* ----- АНИМАЦИЯ ПОЯВЛЕНИЯ (изменён порог) ----- */
+        /* ----- АНИМАЦИЯ ПОЯВЛЕНИЯ ----- */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -373,12 +373,22 @@
             transform: scale(1.02);
         }
 
+        /* Унификация текстовых блоков */
+        .invite-text p,
+        .timeline-desc,
+        .gift-box p,
+        .form-card p,
+        .dress-card span,
+        .final-photo p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+        }
+
         .invite-text p {
             font-size: 1.4rem;
             line-height: 1.55;
             font-weight: 400;
             color: var(--text-soft);
-            font-family: 'Cormorant Garamond', serif;
         }
 
         .btn-gold {
@@ -462,7 +472,6 @@
             color: var(--text-dark);
         }
 
-        /* Подпись-пояснение в тайминге (изменено) */
         .timeline-sub {
             display: block;
             font-size: 1rem;
@@ -516,7 +525,7 @@
             color: var(--text-soft);
         }
 
-        /* ----- БЛОК "О ДАРАХ СЕРДЦА" (изменён) ----- */
+        /* ----- БЛОК "О ДАРАХ СЕРДЦА" (без рамки, с изящными линиями) ----- */
         .gift-box {
             background: var(--white-linen);
             padding: 48px 40px;
@@ -596,7 +605,7 @@
             box-shadow: 0 0 0 4px rgba(212, 175, 106, 0.2);
         }
 
-        /* Исправление выравнивания кнопок выбора (изменено) */
+        /* КОРРЕКТИРОВКА: выравнивание радио/чекбоксов */
         .radio-group, .checkbox-group {
             display: flex;
             flex-wrap: wrap;
@@ -605,13 +614,20 @@
         }
         .radio-group label, .checkbox-group label {
             display: flex;
-            align-items: flex-start;
+            align-items: center;      /* выравнивание по центру */
             gap: 10px;
             font-weight: normal;
             cursor: pointer;
             font-size: 1.05rem;
             text-align: left;
             line-height: 1.3;
+            white-space: nowrap;      /* текст не переносится */
+        }
+        /* на мобильных разрешаем перенос */
+        @media (max-width: 500px) {
+            .radio-group label, .checkbox-group label {
+                white-space: normal;
+            }
         }
 
         @media (max-width: 500px) {
@@ -654,42 +670,31 @@
             margin: 0 auto;
         }
 
-        /* Плавающие стрелки (новый дизайн) */
-        .scroll-indicator {
+        /* КОРРЕКТИРОВКА: возвращён старый scroll-hint */
+        .scroll-hint {
             position: relative;
-            width: 40px;
-            height: 40px;
-            margin: 10px auto 0;    /* подняты выше */
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            z-index: 3;
+            animation: bounce 2s infinite;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            margin-top: 60px;
+            color: var(--gold-dark);
         }
-        .scroll-indicator:hover {
-            opacity: 1;
+        .hero .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 0;
+            right: 0;
+            margin-top: 0;
+            color: rgba(255,255,255,0.8);
         }
-        .scroll-chevron {
-            display: block;
-            width: 20px;
-            height: 20px;
-            border-right: 2px solid var(--gold-dark);
-            border-bottom: 2px solid var(--gold-dark);
-            transform: rotate(45deg);
-            margin: -6px 0;
-            animation: chevronPulse 2s infinite;
-        }
-        .scroll-chevron:first-child {
-            animation-delay: 0s;
-        }
-        .scroll-chevron:last-child {
-            animation-delay: 0.3s;
-        }
-        @keyframes chevronPulse {
-            0%, 100% { opacity: 0.4; transform: rotate(45deg) translate(0,0); }
-            50% { opacity: 1; transform: rotate(45deg) translate(4px,4px); }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
         }
 
         footer {
@@ -755,11 +760,8 @@
             </div>
         </div>
     </div>
-    <!-- ИЗМЕНЕНО: новая стрелка -->
-    <div class="scroll-indicator" onclick="scrollToNext()">
-        <span class="scroll-chevron"></span>
-        <span class="scroll-chevron"></span>
-    </div>
+    <!-- КОРРЕКТИРОВКА: вернул старую стрелку с текстом -->
+    <div class="scroll-hint" onclick="scrollToNext()">↓ ЛИСТАЙТЕ ВНИЗ ↓</div>
 </div>
 
 <main>
@@ -775,10 +777,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-chevron"></span>
-            <span class="scroll-chevron"></span>
-        </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ДАЛЕЕ ↓</div>
     </section>
 
     <section id="location" style="background: var(--bg-luxury);">
@@ -796,17 +795,13 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-chevron"></span>
-            <span class="scroll-chevron"></span>
-        </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ПРОГРАММА ↓</div>
     </section>
 
     <section id="schedule">
         <div class="container">
             <h2 class="section-title fade-up">План торжества</h2>
             <div class="timeline-elegant fade-up">
-                <!-- ИЗМЕНЕНО: добавлены timeline-sub -->
                 <div class="timeline-node">
                     <div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div>
                     <div class="timeline-time">16:00</div>
@@ -841,10 +836,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-chevron"></span>
-            <span class="scroll-chevron"></span>
-        </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ДРЕСС-КОД ↓</div>
     </section>
 
     <section id="dresscode" style="background: var(--bg-luxury);">
@@ -863,10 +855,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-chevron"></span>
-            <span class="scroll-chevron"></span>
-        </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ ↓</div>
     </section>
 
     <section id="gifts">
@@ -879,10 +868,7 @@
                 <p>Пожалуйста, не дарите нам цветы — мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина. Так наша домашняя библиотека и винотека наполнятся смыслом.</p>
             </div>
         </div>
-        <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-chevron"></span>
-            <span class="scroll-chevron"></span>
-        </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
     </section>
 
     <section id="rsvp" style="background: var(--bg-luxury);">
@@ -935,10 +921,7 @@
                 <p>Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
             </div>
         </div>
-        <div class="scroll-indicator" onclick="scrollToNext()">
-            <span class="scroll-chevron"></span>
-            <span class="scroll-chevron"></span>
-        </div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ С НЕТЕРПЕНИЕМ ЖДЁМ ВАС! ↓</div>
     </section>
 
     <section id="final">
@@ -960,7 +943,7 @@
 </footer>
 
 <script>
-    // Анимация появления (изменён порог и rootMargin)
+    // Анимация появления
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -968,7 +951,7 @@
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1, rootMargin: "0px 0px -10px 0px" });   // ИЗМЕНЕНО
+    }, { threshold: 0.1, rootMargin: "0px 0px -10px 0px" });
     fadeElements.forEach(el => observer.observe(el));
 
     // Бургер-меню
@@ -983,7 +966,7 @@
         });
     });
 
-    // Плавный скролл к якорям (увеличен offset)
+    // Плавный скролл к якорям
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -991,7 +974,7 @@
             if (targetId === "") return;
             const target = document.getElementById(targetId);
             if (target) {
-                const offset = 90;   // ИЗМЕНЕНО
+                const offset = 90;
                 const elementPosition = target.getBoundingClientRect().top + window.scrollY;
                 window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
             }
@@ -1045,7 +1028,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Функция для прокрутки к следующей секции (работает с новыми стрелками)
+    // Функция для прокрутки к следующей секции
     function scrollToNext() {
         const sections = document.querySelectorAll('.hero, section');
         let currentIndex = -1;
