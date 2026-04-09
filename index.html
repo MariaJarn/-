@@ -169,7 +169,7 @@
             }
         }
 
-        /* ----- HERO ----- */
+        /* ----- HERO (поднято выше) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -208,8 +208,8 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 18vh 0 12vh 0;
+            justify-content: flex-start;
+            padding-top: 12vh;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -234,6 +234,7 @@
             backdrop-filter: blur(4px);
             letter-spacing: 3px;
             font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 5vh;
         }
 
         .countdown-wrapper {
@@ -275,6 +276,15 @@
             letter-spacing: 1px;
             margin-top: 10px;
             color: var(--text-soft);
+        }
+
+        .hero .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 0;
+            right: 0;
+            margin-top: 0;
+            color: rgba(255,255,255,0.8);
         }
 
         @keyframes fadeInDown {
@@ -383,17 +393,6 @@
             text-align: center;
         }
 
-        .invite-text p,
-        .timeline-desc,
-        .form-card p,
-        .dress-card span,
-        .final-photo p {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--text-dark);
-            line-height: 1.4;
-            font-weight: 500;
-        }
-
         .invite-text p {
             font-size: 1.4rem;
             color: var(--text-soft);
@@ -494,7 +493,7 @@
             .timeline-desc { padding-left: 0; }
         }
 
-        /* Палитра (возвращена как сетка) */
+        /* Палитра */
         .palette-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -509,11 +508,8 @@
             box-shadow: 0 0 0 1px rgba(212,175,106,0.5), 0 4px 8px rgba(0,0,0,0.05);
             transition: transform 0.3s;
         }
-        .palette-item:hover {
-            transform: scale(1.05);
-        }
 
-        /* Дресс-код: галерея без подписей */
+        /* Дресс-код */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -535,7 +531,7 @@
             margin-bottom: 12px;
         }
 
-        /* ----- БЛОК ДАРОВ (без рамки, прозрачный) ----- */
+        /* ----- БЛОК ДАРОВ (прозрачный) ----- */
         .gifts-text {
             text-align: center;
             max-width: 820px;
@@ -546,7 +542,6 @@
         .gifts-text p {
             font-size: 1.25rem;
             margin-bottom: 18px;
-            font-family: 'Cormorant Garamond', serif;
             color: var(--text-dark);
         }
         .phone-link {
@@ -556,6 +551,9 @@
             text-decoration: none;
             border-bottom: 1px dashed var(--gold-light);
         }
+        .contacts-small {
+            font-size: 1rem !important;
+        }
         .gold-divider {
             margin: 30px auto;
             text-align: center;
@@ -563,8 +561,19 @@
             color: var(--gold-mid);
             letter-spacing: 8px;
         }
+        .divider-squiggle {
+            display: block;
+            width: 180px;
+            height: 30px;
+            margin: 25px auto;
+            background: url('data:image/svg+xml;utf8,<svg width="180" height="30" viewBox="0 0 180 30" xmlns="http://www.w3.org/2000/svg"><path d="M 10 15 Q 30 5 50 15 T 90 15 T 130 15 T 170 15" stroke="%23b48c48" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M 10 15 Q 30 25 50 15 T 90 15 T 130 15 T 170 15" stroke="%23b48c48" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+        }
 
-        /* ----- ФОРМА (исправлено вылезание текста за экран) ----- */
+        /* ----- ФОРМА (переработана) ----- */
         .form-card {
             background: var(--white-linen);
             border-radius: 48px;
@@ -592,39 +601,48 @@
             font-size: 1rem;
             background: #fffefc;
         }
-
-        /* Радио и чекбоксы: текст переносится, не вылезает */
-        .radio-group, .checkbox-group {
+        /* Новые стили для радиогрупп */
+        .radio-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: 10px;
+            margin-top: 8px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .radio-group label, .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+            word-break: break-word;
+            white-space: normal;
+            padding: 2px 0;
+        }
+        .radio-group input, .checkbox-group input {
+            width: auto;
+            margin-right: 4px;
         }
         @media (min-width: 600px) {
-            .radio-group, .checkbox-group {
+            .radio-group {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+            .checkbox-group {
                 flex-direction: row;
                 flex-wrap: wrap;
                 gap: 24px;
             }
         }
-        .radio-group label, .checkbox-group label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: normal;
-            cursor: pointer;
-            font-size: 1rem;
-            line-height: 1.3;
-            color: var(--text-dark);
-            word-break: break-word;
-            white-space: normal;
-        }
-        @media (max-width: 600px) {
-            .radio-group label, .checkbox-group label {
-                padding-left: 8px;
-            }
-        }
-
         button {
             background: linear-gradient(135deg, var(--gold-dark), var(--gold-mid));
             border: none;
@@ -653,21 +671,13 @@
             margin-bottom: 10px;
             color: var(--gold-dark);
         }
-        .hero .scroll-hint {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 0;
-            right: 0;
-            margin-top: 0;
-            color: rgba(255,255,255,0.8);
-        }
         .mobile-scroll-hint {
             display: none;
         }
         @media (max-width: 800px) {
             .mobile-scroll-hint {
                 display: block;
-                margin: 20px 0;
+                margin: 15px 0 5px;
             }
         }
         @keyframes bounce {
@@ -689,10 +699,6 @@
             color: var(--gold-dark);
             text-align: center;
             margin-top: 5px;
-        }
-        @media (max-width: 500px) {
-            .final-title { font-size: 1.8rem; }
-            .final-subtitle { font-size: 1.6rem; }
         }
 
         footer {
@@ -739,18 +745,14 @@
 <!-- HERO -->
 <div class="hero">
     <div class="hero-content">
-        <div class="hero-top">
-            <div class="hero-veneer veneer-text">Вадим & Мария</div>
-            <div class="hero-date">29 июня 2026</div>
-        </div>
-        <div class="hero-bottom">
-            <div class="countdown-wrapper fade-up">
-                <div class="counter-grid" id="countdownTimer">
-                    <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
-                    <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
-                    <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
-                    <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
-                </div>
+        <div class="hero-veneer veneer-text">Вадим & Мария</div>
+        <div class="hero-date">29 июня 2026</div>
+        <div class="countdown-wrapper fade-up">
+            <div class="counter-grid" id="countdownTimer">
+                <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
+                <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
+                <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
+                <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
             </div>
         </div>
     </div>
@@ -764,7 +766,6 @@
             <div class="grid-2">
                 <div class="invite-text fade-up-delayed">
                     <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
-                    <!-- Стрелка под текстом, появляется только на мобильных перед фото -->
                     <div class="mobile-scroll-hint scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
                 </div>
                 <div class="img-card fade-up-delayed">
@@ -779,11 +780,11 @@
             <h2 class="section-title fade-up">Место и время</h2>
             <div class="grid-2 fade-up-delayed">
                 <div class="img-card">
-                    <img src="venue.jpg" alt="Celebreio Hall">
+                    <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
                 <div>
-                    <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebreio Hall</h3>
-                    <p style="font-size: 1.25rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
+                    <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
+                    <p style="font-size: 1.25rem; margin: 15px 0; color: var(--text-dark); white-space: nowrap;">Банкетный зал и парк у реки, Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="#" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
                     <p style="margin-top: 35px; color: var(--text-dark);"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
                 </div>
@@ -815,7 +816,6 @@
             <div class="fade-up-delayed" style="text-align: center;">
                 <p style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-dark);">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
                 
-                <!-- ПАЛИТРА ВОЗВРАЩЕНА КАК СЕТКА -->
                 <div class="palette-grid">
                     <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f, #a15252);"></div>
                     <div class="palette-item" style="background: linear-gradient(145deg, #a55b4b, #c2816e);"></div>
@@ -848,21 +848,20 @@
             <div class="gifts-text fade-up-delayed">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <p>Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария</p>
                 
-                <!-- Золотой вензельный разделитель -->
-                <div class="gold-divider">❦</div>
+                <!-- Фото банка перенесено сюда -->
+                <div class="img-card" style="max-width: 400px; margin: 25px auto;">
+                    <img src="bank.jpg" alt="Семейный банк">
+                </div>
+                
+                <!-- Горизонтальная завитушка -->
+                <div class="divider-squiggle"></div>
                 
                 <p>Пожалуйста, не дарите нам цветы — мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина.</p>
                 
-                <!-- Фото под блок про букет (бутылка и книга) -->
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
                     <img src="gift.jpg" alt="Подарки: книга и вино">
-                </div>
-                
-                <!-- Фото под блок с подарками (семейный банк) -->
-                <div class="img-card" style="max-width: 400px; margin: 25px auto;">
-                    <img src="bank.jpg" alt="Семейный банк">
                 </div>
             </div>
         </div>
@@ -876,7 +875,7 @@
                 <p style="margin-bottom: 12px; color: var(--text-dark);">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
                 <p style="margin-bottom: 6px; color: var(--text-dark);">Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
-                <p style="margin-bottom: 16px; color: var(--text-dark);">Мария пока что Ж. — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
+                <p style="margin-bottom: 16px; color: var(--text-dark); white-space: nowrap;">Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
                 <p style="color: var(--text-dark);">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
             </div>
             <div class="form-card fade-up-delayed">
