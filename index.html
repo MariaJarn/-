@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="description" content="Свадьба Вадима и Марии. Приглашение на торжество 29 июня 2026 года. Элегантный вечер, любовь и счастье.">
+    <meta name="description" content="Свадьба Вадима и Марии. Приглашение на торжество 29 июня 2026 года.">
     <title>Вадим & Мария | Свадебное приглашение | 29 июня 2026</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -71,7 +71,7 @@
             padding: 0 32px;
         }
 
-        /* ----- ПЛАВАЮЩАЯ НАВИГАЦИЯ ----- */
+        /* ----- НАВИГАЦИЯ ----- */
         .navbar {
             position: fixed;
             top: 0;
@@ -282,14 +282,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ----- ОБЩИЕ СТИЛИ СЕКЦИЙ ----- */
+        /* ----- СЕКЦИИ ----- */
         section {
             padding: 15px 15px;
             position: relative;
             background: transparent;
         }
 
-        /* Заголовки секций */
         .section-title {
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
@@ -333,7 +332,6 @@
             }
         }
 
-        /* Анимация */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -380,7 +378,6 @@
             transform: scale(1.02);
         }
 
-        /* Основной текст – премиум вид */
         .invite-text p,
         .timeline-desc,
         .gift-box p,
@@ -388,7 +385,7 @@
         .dress-card span,
         .final-photo p {
             font-family: 'Cormorant Garamond', serif;
-            color: #2c241e;
+            color: var(--text-dark);
             line-height: 1.4;
             font-weight: 500;
         }
@@ -520,12 +517,12 @@
             padding: 48px 40px;
             border-radius: 60px;
             text-align: center;
-            box-shadow: 0 30px 40px -25px rgba(0,0,0,0.08); /* только мягкая тень */
+            box-shadow: 0 30px 40px -25px rgba(0,0,0,0.08);
             max-width: 820px;
             margin: 0 auto;
             position: relative;
-            border: none;
-            outline: none;
+            border: 0 none;
+            outline: 0;
         }
         .gift-box::before {
             content: '';
@@ -549,6 +546,8 @@
         .gift-box p {
             font-size: 1.25rem;
             margin-bottom: 18px;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
         }
         .phone-link {
             font-size: 1.2rem;
@@ -558,7 +557,7 @@
             border-bottom: 1px dashed var(--gold-light);
         }
 
-        /* ----- ФОРМА (исправлены радио/чекбоксы) ----- */
+        /* ----- ФОРМА (текст справа от радио/чекбоксов) ----- */
         .form-card {
             background: var(--white-linen);
             border-radius: 48px;
@@ -586,34 +585,28 @@
             background: #fffefc;
         }
 
-        /* РАДИО И ЧЕКБОКСЫ: ТЕКСТ РЯДОМ, НЕ ВЕРТИКАЛЬНО */
+        /* Радио и чекбоксы: на десктопе в строку, на мобильных — вертикально, но текст рядом */
         .radio-group, .checkbox-group {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             margin-top: 10px;
+        }
+        @media (min-width: 600px) {
+            .radio-group, .checkbox-group {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 24px;
+            }
         }
         .radio-group label, .checkbox-group label {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: normal;
             cursor: pointer;
             font-size: 1rem;
             line-height: 1.3;
-            word-break: break-word;
-        }
-
-        @media (max-width: 600px) {
-            .form-card {
-                padding: 28px 18px;
-                border-radius: 32px;
-            }
-            /* На мобильных кнопки и текст в одной строке, перенос разрешён */
-            .radio-group label, .checkbox-group label {
-                white-space: normal;
-                flex-wrap: wrap;
-            }
         }
 
         button {
@@ -629,7 +622,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Стрелки (первая не трогаем, последнюю убрали) */
+        /* Стрелки */
         .scroll-hint {
             position: relative;
             text-align: center;
@@ -657,27 +650,36 @@
             50% { transform: translateY(10px); }
         }
 
-        /* НОВАЯ ПАЛИТРА (природные градиенты, компактнее) */
+        /* Палитра с золотым контуром */
         .palette-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            max-width: 360px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            max-width: 340px;
             margin: 20px auto 30px;
             padding: 0 10px;
         }
         .palette-item {
             aspect-ratio: 1 / 1;
-            border-radius: 16px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            box-shadow: 0 0 0 1px rgba(212,175,106,0.4), 0 4px 8px rgba(0,0,0,0.05);
             transition: transform 0.3s;
         }
         .palette-item:hover {
             transform: scale(1.05);
         }
+
+        /* Финальная фраза в одну строку */
+        .final-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--gold-dark);
+            white-space: nowrap;
+        }
         @media (max-width: 500px) {
-            .palette-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .final-title {
+                font-size: 1.8rem;
+                white-space: nowrap;
             }
         }
 
@@ -796,7 +798,7 @@
             <div class="fade-up-delayed" style="text-align: center;">
                 <p style="margin-bottom: 20px; font-size: 1.2rem;">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
                 
-                <!-- Компактная палитра природных градиентов -->
+                <!-- Палитра с золотым контуром -->
                 <div class="palette-grid">
                     <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f, #a15252);"></div> <!-- бордо -->
                     <div class="palette-item" style="background: linear-gradient(145deg, #a55b4b, #c2816e);"></div> <!-- терракота -->
@@ -804,6 +806,9 @@
                     <div class="palette-item" style="background: linear-gradient(145deg, #b25d5d, #d69090);"></div> <!-- пыльная роза -->
                     <div class="palette-item" style="background: linear-gradient(145deg, #5f7a8c, #8da3b5);"></div> <!-- небесный -->
                     <div class="palette-item" style="background: linear-gradient(145deg, #886b4f, #b29678);"></div> <!-- коричневый -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #d4b58e, #b28b5e);"></div> <!-- песочный -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #1e4d2b, #2c6e3f);"></div> <!-- глубокий зелёный -->
+                    <div class="palette-item" style="background: linear-gradient(145deg, #1a3a4a, #2c5b72);"></div> <!-- глубокий синий -->
                 </div>
 
                 <p><strong>Джентльменам</strong> предлагаем надеть классические костюмы. Светлые тона — в особом почёте, чёрный вовсе не обязателен.</p>
@@ -836,8 +841,10 @@
         <div class="container">
             <h2 class="section-title fade-up">Присутствие</h2>
             <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <p>Пожалуйста, сообщите о своём решении до <strong>01.05.2026</strong>. Если вы не заполните форму, пожалуйста, сообщите нам об ограничениях в питании и напитках лично.</p>
-                <p>Если вы будете с парой, просьба заполнить две заявки.</p>
+                <p>Пожалуйста, сообщите о своём решении до <strong>01.05.2026</strong>. Заполните форму ниже или свяжитесь с нами напрямую:<br>
+                Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)<br>
+                Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
+                <p>Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
             </div>
             <div class="form-card fade-up-delayed">
                 <form id="weddingForm">
@@ -876,13 +883,7 @@
                     <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48;"></div>
                 </form>
             </div>
-            <div class="fade-up-delayed" style="text-align:center; margin-top: 30px;">
-                <p>Или напишите нам напрямую:</p>
-                <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
-                <p>Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
-            </div>
         </div>
-        <!-- Последнюю стрелку убрали -->
     </section>
 
     <section id="final">
@@ -891,8 +892,8 @@
                 <div class="img-card">
                     <img src="final.jpg" alt="Вадим и Мария">
                 </div>
-                <hr class="gold">
-                <h3 style="font-family:'Great Vibes', cursive; font-size: 2.4rem; color: var(--gold-dark);">С нетерпением ждём вас,<br>Вадим и Мария</h3>
+                <!-- Полоска удалена -->
+                <h3 class="final-title">С нетерпением ждём вас, Вадим и Мария</h3>
             </div>
         </div>
     </section>
