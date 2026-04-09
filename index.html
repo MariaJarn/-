@@ -169,7 +169,7 @@
             }
         }
 
-        /* ----- HERO (имена и дата подняты, стрелка опущена) ----- */
+        /* ----- HERO (стрелка опущена) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -279,7 +279,7 @@
 
         .hero .scroll-hint {
             position: absolute;
-            bottom: 3.8rem;
+            bottom: 3.2rem;
             left: 0;
             right: 0;
             margin-top: 0;
@@ -421,11 +421,12 @@
             box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
-        /* Таймлайн (линия строго до последнего круга) */
+        /* Таймлайн */
         .timeline-elegant {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
+            padding-bottom: 10px;
         }
         .timeline-elegant:before {
             content: '';
@@ -686,7 +687,7 @@
             50% { transform: translateY(10px); }
         }
 
-        /* Финальное фото и стрелка поверх */
+        /* Финальное фото и стрелка поверх (поднята) */
         .final-photo-wrapper {
             position: relative;
             max-width: 900px;
@@ -711,7 +712,7 @@
         }
         .overlay-hint {
             position: absolute;
-            bottom: 15px;
+            bottom: 30px;
             left: 0;
             right: 0;
             text-align: center;
@@ -735,6 +736,11 @@
             color: var(--text-soft);
             border-top: 1px solid rgba(212, 175, 106, 0.2);
             font-size: 1rem;
+        }
+
+        /* Увеличенный отступ после тайминга */
+        .schedule-spacer {
+            margin-top: 30px;
         }
 
         @media (max-width: 800px) {
@@ -817,7 +823,7 @@
                 <div>
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
                     <p style="font-size: 1.1rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
-                    <a href="#" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
+                    <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
                     <p style="margin-top: 35px; color: var(--text-dark);"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
                 </div>
             </div>
@@ -838,6 +844,8 @@
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub">тёплая атмосфера</span></div></div>
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub">обнимашки и тёплые прощания</span></div></div>
             </div>
+            <!-- Увеличенный отступ перед стрелкой -->
+            <div class="schedule-spacer"></div>
         </div>
         <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
     </section>
@@ -901,7 +909,7 @@
         </div>
     </section>
 
-    <!-- Итоговое фото + подпись НАД ним, стрелка поверх -->
+    <!-- Итоговое фото + подпись над ним, стрелка поверх -->
     <section id="final">
         <div class="container">
             <div class="final-photo-wrapper fade-up">
@@ -922,7 +930,7 @@
                 <p style="margin-bottom: 12px; color: var(--text-dark);">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
                 <p style="margin-bottom: 6px; color: var(--text-dark);">Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
-                <p style="margin-bottom: 16px; color: var(--text-dark); white-space: nowrap;">Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
+                <p style="margin-bottom: 16px; color: var(--text-dark); white-space: nowrap;">Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
                 <p style="color: var(--text-dark);">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
             </div>
             <div class="form-card fade-up-delayed">
@@ -936,7 +944,7 @@
                         <div class="radio-group">
                             <label><input type="radio" name="attendance" value="Приду с удовольствием!"> Приду с удовольствием!</label>
                             <label><input type="radio" name="attendance" value="К сожалению, не смогу"> К сожалению, не смогу</label>
-                            <label><input type="radio" name="attendance" value="Ещё не знаю, уточню до 01.05.2026"> Ещё не знаю, уточню до 01.05.2026</label>
+                            <label><input type="radio" name="attendance" value="Пока в раздумьях"> Пока в раздумьях</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -967,7 +975,8 @@
 </main>
 
 <footer>
-    <p>Свадебное приглашение | Вадим & Мария | 29 июня 2026</p>
+    <p>Свадебное приглашение</p>
+    <p>Вадим & Мария | 29 июня 2026</p>
 </footer>
 
 <script>
