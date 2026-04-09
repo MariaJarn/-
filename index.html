@@ -39,8 +39,14 @@
             scroll-padding-top: 90px;
         }
 
+        /* ----- ПЛАВНЫЙ ГРАДИЕНТНЫЙ ФОН (замена резких переходов) ----- */
         body {
-            background: var(--bg-cream);
+            background: linear-gradient(180deg, 
+                #fdf9f3 0%, 
+                #fcf6ed 20%, 
+                #faf5ea 50%, 
+                #fcf6ed 80%, 
+                #fdf9f3 100%);
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-dark);
             line-height: 1.5;
@@ -280,19 +286,21 @@
             }
         }
 
-        /* ----- ОБЩИЕ СТИЛИ СЕКЦИЙ ----- */
+        /* ----- ОБЩИЕ СТИЛИ СЕКЦИЙ (убраны резкие фоны, теперь всё на градиенте body) ----- */
         section {
             padding: 15px 15px;
             position: relative;
+            background: transparent; /* убираем любые фоны секций */
         }
 
-        /* ----- ЗАГОЛОВКИ СЕКЦИЙ (тёмный шоколадно-золотой градиент) ----- */
+        /* ----- ЗАГОЛОВКИ СЕКЦИЙ (уменьшен межстрочный интервал) ----- */
         .section-title {
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;  /* уменьшено для компактности */
             font-weight: 400;
+            line-height: 1.2;     /* уменьшен межстрочный интервал */
             background: linear-gradient(135deg, #6b4423 0%, #b48c48 40%, #8b5e3c 70%, #a67c42 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -311,6 +319,7 @@
             display: block;
             margin-bottom: 5px;
             opacity: 0.9;
+            line-height: 1;
         }
 
         .section-title:after {
@@ -335,7 +344,7 @@
             }
         }
 
-        /* ----- АНИМАЦИЯ ПОЯВЛЕНИЯ ----- */
+        /* ----- АНИМАЦИЯ ПОЯВЛЕНИЯ (с задержкой для текста) ----- */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -343,6 +352,17 @@
         }
 
         .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Небольшая задержка для текста, чтобы он появлялся почти сразу за заголовком */
+        .fade-up-delayed {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.15s, transform 1s ease 0.15s;
+        }
+        .fade-up-delayed.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -386,7 +406,7 @@
 
         .invite-text p {
             font-size: 1.4rem;
-            line-height: 1.55;
+            line-height: 1.4;      /* уменьшен межстрочный интервал */
             font-weight: 400;
             color: var(--text-soft);
         }
@@ -525,7 +545,7 @@
             color: var(--text-soft);
         }
 
-        /* ----- БЛОК "О ДАРАХ СЕРДЦА" (полностью без рамки) ----- */
+        /* ----- БЛОК "О ДАРАХ СЕРДЦА" ----- */
         .gift-box {
             background: var(--white-linen);
             padding: 48px 40px;
@@ -607,7 +627,6 @@
             box-shadow: 0 0 0 4px rgba(212, 175, 106, 0.2);
         }
 
-        /* Исправление выравнивания радио/чекбоксов */
         .radio-group, .checkbox-group {
             display: flex;
             flex-wrap: wrap;
@@ -666,7 +685,7 @@
             margin: 0 auto;
         }
 
-        /* ----- СТРЕЛКИ С ТЕКСТОМ (восстановлены) ----- */
+        /* ----- СТРЕЛКИ С ТЕКСТОМ (уменьшен отступ на всех, кроме hero) ----- */
         .scroll-hint {
             position: relative;
             text-align: center;
@@ -677,7 +696,7 @@
             animation: bounce 2s infinite;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            margin-top: 60px;
+            margin-top: 20px;       /* уменьшен для всех */
             color: var(--gold-dark);
         }
         .hero .scroll-hint {
@@ -691,6 +710,30 @@
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
+        }
+
+        /* ----- НОВАЯ ПРОГРАММИРУЕМАЯ ПАЛИТРА ЦВЕТОВ (вместо картинки) ----- */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 500px;
+            margin: 20px auto 35px;
+            padding: 0 10px;
+        }
+        .palette-item {
+            aspect-ratio: 1 / 1;
+            border-radius: 20px;
+            box-shadow: 0 8px 12px -6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .palette-item:hover {
+            transform: scale(1.03);
+        }
+        @media (max-width: 500px) {
+            .palette-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         footer {
@@ -763,11 +806,11 @@
     <section id="invitation">
         <div class="container">
             <h2 class="section-title fade-up">Наши дорогие родные и друзья!</h2>
-            <div class="grid-2 fade-up">
-                <div class="invite-text">
+            <div class="grid-2">
+                <div class="invite-text fade-up-delayed">
                     <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми. Мы будем бесконечно рады вашему присутствию и с нетерпением ждём встречи с каждым из вас.</p>
                 </div>
-                <div class="img-card">
+                <div class="img-card fade-up-delayed">
                     <img src="couple2.jpg" alt="Вадим и Мария">
                 </div>
             </div>
@@ -775,10 +818,10 @@
         <div class="scroll-hint" onclick="scrollToNext()">↓ ДАЛЕЕ ↓</div>
     </section>
 
-    <section id="location" style="background: var(--bg-luxury);">
+    <section id="location">
         <div class="container">
             <h2 class="section-title fade-up">Место и время</h2>
-            <div class="grid-2 fade-up">
+            <div class="grid-2 fade-up-delayed">
                 <div class="img-card">
                     <img src="venue.jpg" alt="Celebreio Hall">
                 </div>
@@ -796,7 +839,7 @@
     <section id="schedule">
         <div class="container">
             <h2 class="section-title fade-up">План торжества</h2>
-            <div class="timeline-elegant fade-up">
+            <div class="timeline-elegant fade-up-delayed">
                 <div class="timeline-node">
                     <div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div>
                     <div class="timeline-time">16:00</div>
@@ -834,14 +877,29 @@
         <div class="scroll-hint" onclick="scrollToNext()">↓ ДРЕСС-КОД ↓</div>
     </section>
 
-    <section id="dresscode" style="background: var(--bg-luxury);">
+    <section id="dresscode">
         <div class="container">
             <h2 class="section-title fade-up">Дресс-код</h2>
-            <div class="fade-up" style="text-align: center;">
+            <div class="fade-up-delayed" style="text-align: center;">
                 <p style="margin-bottom: 20px; font-size: 1.2rem;">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите нашу цветовую палитру.</p>
-                <div class="img-card" style="max-width: 420px; margin: 0 auto 35px;">
-                    <img src="palette.jpg" alt="Цветовая палитра">
+                
+                <!-- НОВАЯ ПРОГРАММИРУЕМАЯ ПАЛИТРА -->
+                <div class="palette-grid">
+                    <div class="palette-item" style="background: linear-gradient(135deg, #ebc6ac, #dd9d7a);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #e6aba5, #bb645b);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #f2b9c8, #c7556e);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #bf94a5, #8f4369);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #b6ade2, #644d79);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #9fa9cc, #46506b);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #7797a4, #3f687a);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #71aea9, #256763);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #80aaa9, #53726a);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #acbf9f, #455934);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #b5b18b, #60553f);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #b99b82, #4e4438);"></div>
+                    <div class="palette-item" style="background: linear-gradient(135deg, #c3a293, #433431);"></div>
                 </div>
+
                 <p><strong>Уважаемые мужчины</strong>, мы будем рады видеть вас в классических костюмах. Не ограничивайтесь только чёрным — светлые оттенки приветствуются.</p>
                 <p><strong>Милые дамы</strong>, будем благодарны, если в этот день белый останется привилегией невесты. По желанию вы можете выбрать наряды в природных оттенках.</p>
                 <div class="dress-gallery">
@@ -856,7 +914,7 @@
     <section id="gifts">
         <div class="container">
             <h2 class="section-title fade-up">О дарах сердца</h2>
-            <div class="gift-box fade-up">
+            <div class="gift-box fade-up-delayed">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
                 <p>Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария</p>
@@ -866,14 +924,14 @@
         <div class="scroll-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
     </section>
 
-    <section id="rsvp" style="background: var(--bg-luxury);">
+    <section id="rsvp">
         <div class="container">
             <h2 class="section-title fade-up">Присутствие</h2>
-            <div class="fade-up" style="text-align:center; max-width: 720px; margin: 0 auto 35px;">
+            <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 35px;">
                 <p>Пожалуйста, сообщите о своём решении до <strong>01.05.2026</strong> любым удобным способом. Если вы выберете не заполнять форму ниже, пожалуйста, не забудьте сообщить нам об ограничениях в питании и выборе напитков. Надеемся увидеть ваш положительный ответ!</p>
                 <p>Если вы будете с парой, просьба заполнить две заявки.</p>
             </div>
-            <div class="form-card fade-up">
+            <div class="form-card fade-up-delayed">
                 <form id="weddingForm">
                     <div class="form-group">
                         <label class="form-label">Ваше имя и фамилия *</label>
@@ -910,7 +968,7 @@
                     <div id="formMessage" style="margin-top: 20px; text-align: center; color: #b48c48; font-weight: 500;"></div>
                 </form>
             </div>
-            <div class="fade-up" style="text-align:center; margin-top: 45px;">
+            <div class="fade-up-delayed" style="text-align:center; margin-top: 45px;">
                 <p>Или напишите нам напрямую:</p>
                 <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
                 <p>Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
@@ -938,8 +996,8 @@
 </footer>
 
 <script>
-    // Анимация появления
-    const fadeElements = document.querySelectorAll('.fade-up');
+    // Анимация появления (работает и с fade-up-delayed)
+    const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
