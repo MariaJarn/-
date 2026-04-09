@@ -273,7 +273,7 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 6px;
+            margin-top: 10px;
             color: var(--text-soft);
         }
 
@@ -434,7 +434,7 @@
             position: absolute;
             left: 38px;
             top: 25px;
-            bottom: 25px;
+            bottom: 0;
             width: 2px;
             background: linear-gradient(to bottom, var(--gold-light), var(--rose-powder), var(--gold-light));
             transform: translateX(-50%);
@@ -494,6 +494,25 @@
             .timeline-desc { padding-left: 0; }
         }
 
+        /* Палитра (возвращена как сетка) */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            max-width: 340px;
+            margin: 20px auto 10px;
+            padding: 0 10px;
+        }
+        .palette-item {
+            aspect-ratio: 1 / 1;
+            border-radius: 18px;
+            box-shadow: 0 0 0 1px rgba(212,175,106,0.5), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .palette-item:hover {
+            transform: scale(1.05);
+        }
+
         /* Дресс-код: галерея без подписей */
         .dress-gallery {
             display: flex;
@@ -536,6 +555,13 @@
             color: var(--gold-dark);
             text-decoration: none;
             border-bottom: 1px dashed var(--gold-light);
+        }
+        .gold-divider {
+            margin: 30px auto;
+            text-align: center;
+            font-size: 2rem;
+            color: var(--gold-mid);
+            letter-spacing: 8px;
         }
 
         /* ----- ФОРМА (исправлено вылезание текста за экран) ----- */
@@ -635,6 +661,15 @@
             margin-top: 0;
             color: rgba(255,255,255,0.8);
         }
+        .mobile-scroll-hint {
+            display: none;
+        }
+        @media (max-width: 800px) {
+            .mobile-scroll-hint {
+                display: block;
+                margin: 20px 0;
+            }
+        }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
@@ -729,13 +764,14 @@
             <div class="grid-2">
                 <div class="invite-text fade-up-delayed">
                     <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
+                    <!-- Стрелка под текстом, появляется только на мобильных перед фото -->
+                    <div class="mobile-scroll-hint scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
                 </div>
                 <div class="img-card fade-up-delayed">
                     <img src="couple2.jpg" alt="Вадим и Мария">
                 </div>
             </div>
         </div>
-        <div class="scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
     </section>
 
     <section id="location">
@@ -753,7 +789,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-hint" onclick="scrollToNext()">↓ ПРОГРАММА ↓</div>
+        <div class="scroll-hint" onclick="scrollToNext()">↓ САМОЕ ИНТЕРЕСНОЕ ↓</div>
     </section>
 
     <section id="schedule">
@@ -770,7 +806,6 @@
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества</div></div>
             </div>
         </div>
-        <!-- Стрелка после программы (оставляем) -->
         <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
     </section>
 
@@ -780,10 +815,19 @@
             <div class="fade-up-delayed" style="text-align: center;">
                 <p style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-dark);">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
                 
-                <!-- ПАЛИТРА КАК ИЗОБРАЖЕНИЕ -->
-                <img src="palette.jpg" alt="Цветовая палитра" style="max-width: 280px; width: 100%; border-radius: 24px; margin: 20px auto; display: block; box-shadow: 0 0 0 1px rgba(212,175,106,0.3);">
+                <!-- ПАЛИТРА ВОЗВРАЩЕНА КАК СЕТКА -->
+                <div class="palette-grid">
+                    <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f, #a15252);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #a55b4b, #c2816e);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #4f6d5e, #6e8f7c);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #b25d5d, #d69090);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #5f7a8c, #8da3b5);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #886b4f, #b29678);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #d4b58e, #b28b5e);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #1e4d2b, #2c6e3f);"></div>
+                    <div class="palette-item" style="background: linear-gradient(145deg, #1a3a4a, #2c5b72);"></div>
+                </div>
                 
-                <!-- НОВАЯ СТРЕЛКА ПОСЛЕ ПАЛИТРЫ -->
                 <div class="scroll-hint" onclick="scrollToNext()">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
                 
                 <p style="margin-top: 20px; color: var(--text-dark);"><strong>Джентльменам</strong> предлагаем надеть классические костюмы. Светлые тона — в особом почёте, чёрный вовсе не обязателен.</p>
@@ -796,7 +840,6 @@
                 </div>
             </div>
         </div>
-        <!-- Стрелка после дресс-кода не требуется, следующая секция gifts -->
     </section>
 
     <section id="gifts">
@@ -805,8 +848,22 @@
             <div class="gifts-text fade-up-delayed">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <p>Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария</p>
+                <p>Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                
+                <!-- Золотой вензельный разделитель -->
+                <div class="gold-divider">❦</div>
+                
                 <p>Пожалуйста, не дарите нам цветы — мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина.</p>
+                
+                <!-- Фото под блок про букет (бутылка и книга) -->
+                <div class="img-card" style="max-width: 400px; margin: 25px auto;">
+                    <img src="gift.jpg" alt="Подарки: книга и вино">
+                </div>
+                
+                <!-- Фото под блок с подарками (семейный банк) -->
+                <div class="img-card" style="max-width: 400px; margin: 25px auto;">
+                    <img src="bank.jpg" alt="Семейный банк">
+                </div>
             </div>
         </div>
         <div class="scroll-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
@@ -819,7 +876,7 @@
                 <p style="margin-bottom: 12px; color: var(--text-dark);">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
                 <p style="margin-bottom: 6px; color: var(--text-dark);">Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
-                <p style="margin-bottom: 16px; color: var(--text-dark);">Мария — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
+                <p style="margin-bottom: 16px; color: var(--text-dark);">Мария пока что Ж. — <a href="tel:+89041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
                 <p style="color: var(--text-dark);">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
             </div>
             <div class="form-card fade-up-delayed">
