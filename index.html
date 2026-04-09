@@ -169,7 +169,7 @@
             }
         }
 
-        /* ----- HERO (поднято выше) ----- */
+        /* ----- HERO (восстановлен исходный вид) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -208,8 +208,8 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            padding-top: 12vh;
+            justify-content: space-between;
+            padding: 18vh 0 12vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -234,7 +234,6 @@
             backdrop-filter: blur(4px);
             letter-spacing: 3px;
             font-family: 'Cormorant Garamond', serif;
-            margin-bottom: 5vh;
         }
 
         .countdown-wrapper {
@@ -422,7 +421,7 @@
             box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
-        /* Таймлайн */
+        /* Таймлайн (линия обрезана) */
         .timeline-elegant {
             max-width: 800px;
             margin: 0 auto;
@@ -437,6 +436,7 @@
             width: 2px;
             background: linear-gradient(to bottom, var(--gold-light), var(--rose-powder), var(--gold-light));
             transform: translateX(-50%);
+            height: calc(100% - 55px); /* обрезаем до последнего узла */
         }
         .timeline-node {
             display: flex;
@@ -554,23 +554,22 @@
         .contacts-small {
             font-size: 1rem !important;
         }
-        .gold-divider {
+        .divider-elegant {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             margin: 30px auto;
-            text-align: center;
-            font-size: 2rem;
-            color: var(--gold-mid);
-            letter-spacing: 8px;
+            max-width: 300px;
         }
-        .divider-squiggle {
-            display: block;
-            width: 180px;
-            height: 30px;
-            margin: 25px auto;
-            background: url('data:image/svg+xml;utf8,<svg width="180" height="30" viewBox="0 0 180 30" xmlns="http://www.w3.org/2000/svg"><path d="M 10 15 Q 30 5 50 15 T 90 15 T 130 15 T 170 15" stroke="%23b48c48" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M 10 15 Q 30 25 50 15 T 90 15 T 130 15 T 170 15" stroke="%23b48c48" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.7;
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+        }
+        .divider-icon {
+            color: var(--gold-dark);
+            font-size: 1.2rem;
         }
 
         /* ----- ФОРМА (переработана) ----- */
@@ -601,7 +600,6 @@
             font-size: 1rem;
             background: #fffefc;
         }
-        /* Новые стили для радиогрупп */
         .radio-group {
             display: flex;
             flex-direction: column;
@@ -742,17 +740,21 @@
     </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO (восстановлен) -->
 <div class="hero">
     <div class="hero-content">
-        <div class="hero-veneer veneer-text">Вадим & Мария</div>
-        <div class="hero-date">29 июня 2026</div>
-        <div class="countdown-wrapper fade-up">
-            <div class="counter-grid" id="countdownTimer">
-                <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
-                <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
-                <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
-                <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+        <div class="hero-top">
+            <div class="hero-veneer veneer-text">Вадим & Мария</div>
+            <div class="hero-date">29 июня 2026</div>
+        </div>
+        <div class="hero-bottom">
+            <div class="countdown-wrapper fade-up">
+                <div class="counter-grid" id="countdownTimer">
+                    <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
+                    <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
+                    <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
+                    <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+                </div>
             </div>
         </div>
     </div>
@@ -784,7 +786,7 @@
                 </div>
                 <div>
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
-                    <p style="font-size: 1.25rem; margin: 15px 0; color: var(--text-dark); white-space: nowrap;">Банкетный зал и парк у реки, Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
+                    <p style="font-size: 1.25rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="#" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
                     <p style="margin-top: 35px; color: var(--text-dark);"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
                 </div>
@@ -804,7 +806,7 @@
                     <div class="timeline-desc">Свадебная церемония <span class="timeline-sub">самый трогательный момент</span></div>
                 </div>
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub">тёплая атмосфера</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества</div></div>
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub">обнимашки и тёплые прощания</span></div></div>
             </div>
         </div>
         <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
@@ -850,19 +852,35 @@
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
                 <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария</p>
                 
-                <!-- Фото банка перенесено сюда -->
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
                     <img src="bank.jpg" alt="Семейный банк">
                 </div>
                 
-                <!-- Горизонтальная завитушка -->
-                <div class="divider-squiggle"></div>
+                <!-- Лаконичный разделитель в стиле сайта -->
+                <div class="divider-elegant">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">✦</span>
+                    <span class="divider-line"></span>
+                </div>
                 
                 <p>Пожалуйста, не дарите нам цветы — мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
                     <img src="gift.jpg" alt="Подарки: книга и вино">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Итоговое фото и подпись перемещены сюда -->
+    <section id="final">
+        <div class="container">
+            <div class="final-photo fade-up">
+                <div class="img-card">
+                    <img src="final.jpg" alt="Вадим и Мария">
+                </div>
+                <h3 class="final-title">С нетерпением ждём вас,</h3>
+                <h3 class="final-subtitle">Вадим и Мария</h3>
             </div>
         </div>
         <div class="scroll-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
@@ -914,18 +932,6 @@
                     </div>
                     <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48;"></div>
                 </form>
-            </div>
-        </div>
-    </section>
-
-    <section id="final">
-        <div class="container">
-            <div class="final-photo fade-up">
-                <div class="img-card">
-                    <img src="final.jpg" alt="Вадим и Мария">
-                </div>
-                <h3 class="final-title">С нетерпением ждём вас,</h3>
-                <h3 class="final-subtitle">Вадим и Мария</h3>
             </div>
         </div>
     </section>
