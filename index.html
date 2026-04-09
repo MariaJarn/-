@@ -169,7 +169,7 @@
             }
         }
 
-        /* ----- HERO (стрелка опущена) ----- */
+        /* ----- HERO (восстановлено исходное расположение) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -209,7 +209,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 14vh 0 16vh 0;
+            padding: 18vh 0 12vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -279,7 +279,7 @@
 
         .hero .scroll-hint {
             position: absolute;
-            bottom: 3.2rem;
+            bottom: 2.5rem;
             left: 0;
             right: 0;
             margin-top: 0;
@@ -387,7 +387,6 @@
             transform: scale(1.02);
         }
 
-        /* Текст приглашения по центру */
         .invite-text {
             text-align: center;
         }
@@ -535,7 +534,7 @@
             margin-bottom: 12px;
         }
 
-        /* ----- БЛОК ДАРОВ (прозрачный) ----- */
+        /* ----- БЛОК ДАРОВ ----- */
         .gifts-text {
             text-align: center;
             max-width: 820px;
@@ -687,7 +686,7 @@
             50% { transform: translateY(10px); }
         }
 
-        /* Финальное фото и стрелка поверх (поднята) */
+        /* Финальное фото */
         .final-photo-wrapper {
             position: relative;
             max-width: 900px;
@@ -738,7 +737,6 @@
             font-size: 1rem;
         }
 
-        /* Увеличенный отступ после тайминга */
         .schedule-spacer {
             margin-top: 30px;
         }
@@ -776,7 +774,7 @@
     </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO (восстановлен) -->
 <div class="hero">
     <div class="hero-content">
         <div class="hero-top">
@@ -844,7 +842,6 @@
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub">тёплая атмосфера</span></div></div>
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub">обнимашки и тёплые прощания</span></div></div>
             </div>
-            <!-- Увеличенный отступ перед стрелкой -->
             <div class="schedule-spacer"></div>
         </div>
         <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
@@ -909,7 +906,6 @@
         </div>
     </section>
 
-    <!-- Итоговое фото + подпись над ним, стрелка поверх -->
     <section id="final">
         <div class="container">
             <div class="final-photo-wrapper fade-up">
@@ -980,6 +976,33 @@
 </footer>
 
 <script>
+    // === TELEGRAM BOT INTEGRATION ===
+    const TELEGRAM_TOKEN = '8502606446:AAGREGXzyG0ImVrMajSScfPn-XArAPn7eiE';
+    const TELEGRAM_CHAT_ID = 'ЗАМЕНИТЕ_НА_ВАШ_CHAT_ID'; // ⚠️ ВАЖНО: Укажите ваш Chat ID (получить можно через @userinfobot)
+
+    async function sendToTelegram(message) {
+        if (TELEGRAM_CHAT_ID.includes('ЗАМЕНИТЕ')) {
+            console.warn('Telegram Chat ID не указан. Сообщение не отправлено.');
+            return false;
+        }
+        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Ошибка отправки в Telegram:', error);
+            return false;
+        }
+    }
+
     // Анимация
     const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
     const observer = new IntersectionObserver((entries) => {
@@ -1012,10 +1035,10 @@
         });
     });
 
-    // Форма
+    // Форма с отправкой в Telegram
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         const fullname = document.getElementById('fullname').value.trim();
         const attendanceRadio = document.querySelector('input[name="attendance"]:checked');
@@ -1023,7 +1046,30 @@
             alert('Пожалуйста, заполните имя и выберите вариант присутствия.');
             return;
         }
-        messageDiv.innerHTML = `Спасибо, ${fullname}! Ваш ответ учтён.`;
+
+        // Сбор данных
+        const attendance = attendanceRadio.value;
+        const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked')).map(cb => cb.value).join(', ') || 'не указано';
+        const allergies = document.getElementById('allergies').value.trim() || 'не указано';
+        const contact = document.getElementById('contact').value.trim() || 'не указано';
+
+        // Формирование сообщения для Telegram
+        const telegramMessage = `
+🕊️ <b>Новый ответ на приглашение</b>
+👤 <b>Имя:</b> ${fullname}
+✅ <b>Присутствие:</b> ${attendance}
+🥂 <b>Напитки:</b> ${drinks}
+⚠️ <b>Аллергии:</b> ${allergies}
+📞 <b>Контакты:</b> ${contact}
+        `.trim();
+
+        // Отправка в Telegram
+        const sent = await sendToTelegram(telegramMessage);
+        if (sent) {
+            messageDiv.innerHTML = `Спасибо, ${fullname}! Ваш ответ отправлен.`;
+        } else {
+            messageDiv.innerHTML = `Спасибо, ${fullname}! (Отправка в Telegram не настроена, но мы вас услышали)`;
+        }
         form.reset();
         setTimeout(() => messageDiv.innerHTML = '', 5000);
     });
