@@ -54,6 +54,32 @@
             max-width: 100vw;
         }
 
+        /* Единый стиль для основного текста */
+        .main-text, 
+        .invite-text p,
+        .location-description p,
+        .dresscode-center,
+        .dresscode-left,
+        .gifts-text p:not(.contacts-small),
+        .final-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        /* Уточнения, мелкий текст */
+        .small-text, 
+        .contacts-small,
+        .radio-hint,
+        .timeline-sub {
+            font-size: 1rem;
+            color: var(--text-soft);
+        }
+        .radio-hint {
+            font-size: 0.75rem;
+        }
+
         h1, h2, h3, .nav-links a, .btn, .timeline-time, .form-label, .counter-number {
             font-family: 'Playfair Display', serif;
             line-height: 1.2;
@@ -235,10 +261,10 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Таймер внизу hero — уже, выше */
+        /* Таймер — короче, выше */
         .hero-timer-wrapper {
             position: absolute;
-            bottom: 60px;
+            bottom: 70px;
             left: 0;
             right: 0;
             display: flex;
@@ -249,7 +275,7 @@
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 10px 20px;
+            padding: 6px 20px;
             max-width: 360px;
             width: 90%;
             text-align: center;
@@ -283,10 +309,10 @@
         }
         @media (max-width: 768px) {
             .hero-timer-wrapper {
-                bottom: 50px;
+                bottom: 65px;
             }
             .countdown-wrapper {
-                padding: 6px 12px;
+                padding: 4px 12px;
                 max-width: 320px;
             }
             .counter-number {
@@ -298,7 +324,7 @@
 
         .hero .scroll-hint {
             position: absolute;
-            bottom: 1rem;
+            bottom: 1.5rem;
             left: 0;
             right: 0;
             margin-top: 0;
@@ -374,16 +400,6 @@
             transform: translateY(0);
         }
 
-        .fade-up-delayed {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.15s, transform 1s ease 0.15s;
-        }
-        .fade-up-delayed.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .img-card {
             border-radius: 32px;
             overflow: hidden;
@@ -397,19 +413,15 @@
             object-fit: cover;
         }
 
-        /* Секция приглашения: заголовок → фото → текст */
+        /* Секция приглашения */
         .invite-photo {
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto 30px;
         }
         .invite-text {
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
-        }
-        .invite-text p {
-            font-size: 1.4rem;
-            color: var(--text-soft);
         }
 
         .btn-gold {
@@ -494,11 +506,9 @@
         }
         .timeline-sub {
             display: block;
-            font-size: 1rem;
             font-family: 'Raleway', sans-serif;
             font-weight: 400;
             font-style: normal;
-            color: #a3968a;
             margin-top: 5px;
         }
 
@@ -578,21 +588,15 @@
             }
         }
 
-        .dresscode-center {
-            text-align: center;
+        .dresscode-center,
+        .dresscode-left {
             max-width: 700px;
             margin: 20px auto;
-            font-size: 1.2rem;
-            color: var(--text-dark);
         }
         .dresscode-left {
             text-align: justify;
-            max-width: 700px;
-            margin: 20px auto;
             padding-left: 20px;
             border-left: 3px solid var(--gold-light);
-            font-size: 1.2rem;
-            color: var(--text-dark);
         }
         .dresscode-left p {
             margin-bottom: 10px;
@@ -610,9 +614,7 @@
             padding: 0;
         }
         .gifts-text p {
-            font-size: 1.25rem;
             margin-bottom: 18px;
-            color: var(--text-dark);
         }
         .phone-link {
             font-size: 1.2rem;
@@ -620,9 +622,6 @@
             color: var(--gold-dark);
             text-decoration: none;
             border-bottom: 1px dashed var(--gold-light);
-        }
-        .contacts-small {
-            font-size: 1rem !important;
         }
         .divider-elegant {
             display: flex;
@@ -696,11 +695,6 @@
             width: auto;
             margin: 0;
         }
-        .radio-hint {
-            font-size: 0.75rem;
-            color: rgba(107, 93, 83, 0.6);
-            margin-left: 28px;
-        }
         .checkbox-group label {
             display: flex;
             align-items: center;
@@ -756,13 +750,6 @@
             margin: 30px 0;
             color: var(--gold-dark);
         }
-        .hero .scroll-hint {
-            margin: 0;
-            position: absolute;
-            bottom: 1rem;
-            left: 0;
-            right: 0;
-        }
         .mobile-scroll-hint {
             display: none;
         }
@@ -813,6 +800,9 @@
             gap: 60px;
             align-items: center;
         }
+        .location-description p {
+            margin: 15px 0;
+        }
         @media (max-width: 800px) {
             .grid-2 {
                 grid-template-columns: 1fr;
@@ -854,7 +844,6 @@
             <div class="hero-date">29 июня 2026</div>
         </div>
     </div>
-    <!-- Таймер внизу -->
     <div class="hero-timer-wrapper">
         <div class="countdown-wrapper">
             <div class="counter-grid" id="countdownTimer">
@@ -872,13 +861,12 @@
     <section id="invitation">
         <div class="container">
             <h2 class="section-title fade-up">Наши дорогие родные и друзья!</h2>
-            <!-- Фото между заголовком и текстом -->
-            <div class="invite-photo fade-up-delayed">
+            <div class="invite-photo fade-up">
                 <div class="img-card">
                     <img src="couple2.jpg" alt="Вадим и Мария">
                 </div>
             </div>
-            <div class="invite-text fade-up-delayed">
+            <div class="invite-text fade-up">
                 <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
                 <div class="mobile-scroll-hint scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
             </div>
@@ -888,15 +876,15 @@
     <section id="location">
         <div class="container">
             <h2 class="section-title fade-up">Место и время</h2>
-            <div class="grid-2 fade-up-delayed">
+            <div class="grid-2 fade-up">
                 <div class="img-card">
                     <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
-                <div>
+                <div class="location-description">
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
-                    <p style="font-size: 1.1rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
+                    <p>Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
-                    <p style="margin-top: 35px; color: var(--text-dark); font-size: 1.3rem; font-weight: 500;"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
+                    <p style="margin-top: 35px;"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
                 </div>
             </div>
         </div>
@@ -906,11 +894,11 @@
     <section id="schedule">
         <div class="container">
             <h2 class="section-title fade-up">План торжества</h2>
-            <div class="timeline-elegant fade-up-delayed">
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub">Вас ждут новые знакомства, лёгкие закуски и прохладительные напитки</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub">Самый трогательный момент нашего праздника</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub">Время танцев и безудержного веселья</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub">Обнимашки и тёплые прощания</span></div></div>
+            <div class="timeline-elegant fade-up">
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub small-text">Вас ждут новые знакомства, лёгкие закуски и прохладительные напитки</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub small-text">Самый трогательный момент нашего праздника</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub small-text">Время танцев и безудержного веселья</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub small-text">Обнимашки и тёплые прощания</span></div></div>
             </div>
         </div>
         <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
@@ -919,8 +907,8 @@
     <section id="dresscode">
         <div class="container">
             <h2 class="section-title fade-up">Дресс-код</h2>
-            <div class="fade-up-delayed">
-                <div class="dresscode-center">
+            <div class="fade-up">
+                <div class="dresscode-center main-text">
                     Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.
                 </div>
                 
@@ -942,7 +930,7 @@
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                 </div>
                 
-                <div class="dresscode-left">
+                <div class="dresscode-left main-text">
                     <p>Милым дамам предлагаем надеть коктейльные или вечерние платья.</p>
                     <p>Будем благодарны, если белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
                 </div>
@@ -961,7 +949,7 @@
                     <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
                 </div>
                 
-                <div class="dresscode-left">
+                <div class="dresscode-left main-text">
                     Джентльменов будем рады видеть в классике. Светлые тона в особом почёте, чёрный вовсе не обязателен.
                 </div>
             </div>
@@ -971,10 +959,10 @@
     <section id="gifts">
         <div class="container">
             <h2 class="section-title fade-up">О дарах сердца</h2>
-            <div class="gifts-text fade-up-delayed">
+            <div class="gifts-text fade-up">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                <p class="contacts-small small-text">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 30px auto;">
                     <img src="bank.jpg" alt="Семейный банк">
@@ -999,15 +987,15 @@
     <section id="rsvp">
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
-            <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <p style="margin-bottom: 12px; color: var(--text-dark); font-size: 1.2rem;">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
-                <p style="margin-bottom: 6px; color: var(--text-dark); font-size: 1.2rem;">Заполните форму ниже или свяжитесь с нами напрямую:</p>
-                <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
-                <p style="margin-bottom: 16px; color: var(--text-dark); white-space: nowrap;">Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
-                <p style="color: var(--text-dark); font-size: 1.2rem;">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
-                <p style="margin-top: 12px; color: var(--text-dark); font-size: 1.2rem;">Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
+            <div class="fade-up" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
+                <p style="margin-bottom: 12px;">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
+                <p style="margin-bottom: 6px;">Заполните форму ниже или свяжитесь с нами напрямую:</p>
+                <p style="margin-bottom: 2px;">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
+                <p style="margin-bottom: 16px; white-space: nowrap;">Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
+                <p>Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
+                <p style="margin-top: 12px;">Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
             </div>
-            <div class="form-card fade-up-delayed">
+            <div class="form-card fade-up">
                 <form id="weddingForm">
                     <div class="form-group">
                         <label class="form-label">Ваше имя и фамилия</label>
@@ -1021,21 +1009,21 @@
                                     <input type="radio" name="attendance" value="Приду с удовольствием!" id="attend_yes">
                                     <label for="attend_yes">Приду с удовольствием!</label>
                                 </div>
-                                <div class="radio-hint">(Правильный ответ)</div>
+                                <div class="radio-hint small-text">(Правильный ответ)</div>
                             </div>
                             <div class="radio-option">
                                 <div class="radio-row">
                                     <input type="radio" name="attendance" value="К сожалению, не смогу" id="attend_no">
                                     <label for="attend_no">К сожалению, не смогу</label>
                                 </div>
-                                <div class="radio-hint">(Нежелательный ответ)</div>
+                                <div class="radio-hint small-text">(Нежелательный ответ)</div>
                             </div>
                             <div class="radio-option">
                                 <div class="radio-row">
                                     <input type="radio" name="attendance" value="Пока в раздумьях, уточню до 01.05.2026" id="attend_maybe">
                                     <label for="attend_maybe">Пока в раздумьях, уточню до 01.05.2026</label>
                                 </div>
-                                <div class="radio-hint">(Подозрительный ответ)</div>
+                                <div class="radio-hint small-text">(Подозрительный ответ)</div>
                             </div>
                         </div>
                     </div>
@@ -1090,32 +1078,25 @@
     };
     history.scrollRestoration = 'manual';
 
-    // === НАВИГАЦИЯ (плавный скролл к разделам) ===
+    // === НАВИГАЦИЯ ===
     const navbar = document.querySelector('.navbar');
-    const navLinksList = document.querySelectorAll('.nav-links a');
-    
-    function scrollToSection(targetId) {
-        const target = document.getElementById(targetId);
-        if (target) {
-            const navbarHeight = navbar.offsetHeight;
-            const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({ top: elementPosition - navbarHeight - 20, behavior: 'smooth' });
-        }
-    }
-
-    navLinksList.forEach(anchor => {
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             if (targetId) {
-                scrollToSection(targetId);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    const navbarHeight = navbar.offsetHeight;
+                    const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top: elementPosition - navbarHeight - 20, behavior: 'smooth' });
+                }
             }
-            // Закрыть мобильное меню
             document.getElementById('navLinks').classList.remove('active');
         });
     });
 
-    // Закрытие меню при клике вне его области
+    // Закрытие меню при клике вне его
     document.addEventListener('click', function(event) {
         const nav = document.getElementById('navLinks');
         const burger = document.getElementById('burgerMenu');
@@ -1179,7 +1160,7 @@
     });
 
     // === АНИМАЦИЯ ПОЯВЛЕНИЯ ===
-    const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
+    const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1187,7 +1168,7 @@
     }, { threshold: 0.1, rootMargin: "0px 0px 100px 0px" });
     fadeElements.forEach(el => observer.observe(el));
 
-    // === ТАЙМЕР ОБРАТНОГО ОТСЧЁТА ===
+    // === ТАЙМЕР ===
     function updateCountdown() {
         const weddingDate = new Date(2026, 5, 29, 0, 0, 0).getTime();
         const now = new Date().getTime();
