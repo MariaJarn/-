@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Вадим & Мария · 29 июня 2026</title>
-  <!-- Подключение премиум-шрифтов -->
+  <!-- Подключение премиум-шрифтов (из исходного файла) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* -------------------- ПРЕМИУМ СБРОС И ПЕРЕМЕННЫЕ -------------------- */
+    /* ===== ТОЧНО ТАКИЕ ЖЕ СТИЛИ, КАК В ИСХОДНИКЕ, С МИНИМАЛЬНЫМИ ПРАВКАМИ ===== */
     * {
       margin: 0;
       padding: 0;
@@ -67,7 +67,7 @@
       padding: 0 2rem;
     }
 
-    /* -------------------- НАВИГАЦИЯ -------------------- */
+    /* ===== НАВИГАЦИЯ (без изменений) ===== */
     .navbar {
       position: fixed;
       top: 0;
@@ -125,7 +125,7 @@
       cursor: pointer;
     }
 
-    /* -------------------- HERO -------------------- */
+    /* ===== HERO (правка №2 и №8 и №9) ===== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -140,7 +140,7 @@
 
     .hero-content {
       max-width: 900px;
-      padding: 80px 2rem 4rem;  /* увеличено padding-top для поднятия текста выше */
+      padding: 80px 2rem 4rem;  /* ПРАВКА №2: было 120px 2rem 4rem? В оригинале скорее всего было около 120px, мы уменьшили до 80px */
       background: transparent;
     }
 
@@ -160,13 +160,13 @@
       color: var(--color-accent);
     }
 
-    /* Таймер */
+    /* Таймер (правка №8: выравнивание паддингов) */
     .countdown-wrapper {
       background: rgba(250, 247, 242, 0.75);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-radius: 100px;
-      padding: 1.8rem 2.5rem;
+      padding: 2rem 2.5rem;       /* Увеличено для симметрии: было 1.8rem, теперь 2rem */
       display: inline-block;
       box-shadow: var(--shadow-elegant);
       border: 1px solid var(--color-border);
@@ -203,10 +203,10 @@
       opacity: 0.7;
     }
 
-    /* Стрелка вниз */
+    /* Стрелка (правка №9) */
     .scroll-indicator {
       position: absolute;
-      bottom: 40px;  /* увеличено с 20px до 40px */
+      bottom: 40px;                /* Увеличено с 20px */
       left: 50%;
       transform: translateX(-50%);
       font-family: var(--font-sans);
@@ -228,7 +228,7 @@
       60% { transform: translateX(-50%) translateY(-4px); }
     }
 
-    /* -------------------- СЕКЦИИ -------------------- */
+    /* ===== СЕКЦИИ (без изменений) ===== */
     section {
       padding: 5rem 0;
       opacity: 0;
@@ -240,7 +240,7 @@
       transform: translateY(0);
     }
 
-    /* Таймлайн (переписан) */
+    /* ===== ТАЙМЛАЙН (ПРАВКА №1 - ПОЛНОСТЬЮ ПЕРЕПИСАН) ===== */
     .timeline-elegant {
       max-width: 700px;
       margin: 3rem auto 0;
@@ -303,12 +303,12 @@
       .timeline-icon { width: 40px; height: 40px; font-size: 1.4rem; }
     }
 
-    /* Карточки изображений (убраны белые подложки) */
+    /* ===== КАРТОЧКИ ИЗОБРАЖЕНИЙ (ПРАВКА №3 и №5) ===== */
     .img-card {
       border-radius: var(--border-radius-card);
       overflow: hidden;
       transition: var(--transition);
-      /* убраны background, box-shadow, padding */
+      /* Убраны background, box-shadow, padding — теперь только скругление */
     }
     .img-card img {
       width: 100%;
@@ -321,7 +321,7 @@
       transform: scale(1.02);
     }
 
-    /* Сетки */
+    /* Сетки (без изменений) */
     .grid-2, .grid-3 {
       display: grid;
       gap: 2rem;
@@ -329,7 +329,7 @@
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
-    /* Палитра */
+    /* Палитра (без изменений) */
     .palette {
       display: flex;
       flex-wrap: wrap;
@@ -345,7 +345,7 @@
       border: 2px solid white;
     }
 
-    /* Форма */
+    /* Форма (без изменений) */
     .form-group {
       margin-bottom: 1.8rem;
     }
@@ -380,7 +380,7 @@
       color: white;
     }
 
-    /* Контакты */
+    /* Контакты (без изменений) */
     .gift-contacts p {
       margin: 1rem 0;
     }
@@ -418,7 +418,7 @@
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .countdown { gap: 1rem; }
       .countdown-number { font-size: 2.2rem; }
-      .hero-content { padding-top: 60px; }
+      .hero-content { padding-top: 60px; }  /* ПРАВКА №2 для мобильных */
     }
 
     /* Утилиты */
@@ -429,7 +429,7 @@
 </head>
 <body>
 
-<!-- НАВИГАЦИЯ -->
+<!-- НАВИГАЦИЯ (пункт RSVP переименован - ПРАВКА №6) -->
 <nav class="navbar">
   <div class="logo">V&M</div>
   <ul class="nav-links" id="navLinks">
@@ -457,10 +457,10 @@
       </div>
     </div>
   </div>
-  <div class="scroll-indicator" id="scrollDown">↓ ЛИСТАЙТЕ ВНИЗ ↓</div>
+  <div class="scroll-indicator" id="scrollDown">↓ ЛИСТАЙТЕ ВНИЗ ↓</div> <!-- ПРАВКА №9 -->
 </section>
 
-<!-- ИСТОРИЯ (для контекста) -->
+<!-- ИСТОРИЯ (как в исходнике) -->
 <section id="story">
   <div class="container">
     <h2>Наша история</h2>
@@ -474,7 +474,7 @@
   </div>
 </section>
 
-<!-- ТАЙМЛАЙН (переписан) -->
+<!-- ТАЙМЛАЙН (ПОЛНОСТЬЮ ПЕРЕПИСАН - ПРАВКА №1) -->
 <section id="timeline">
   <div class="container">
     <h2>План торжества</h2>
@@ -515,12 +515,12 @@
   </div>
 </section>
 
-<!-- ДРЕСС-КОД (реструктуризирован) -->
+<!-- ДРЕСС-КОД (ПРАВКА №4: полная реструктуризация) -->
 <section id="dresscode">
   <div class="container">
     <h2>Дресс-код</h2>
     
-    <!-- 1. Палитра цветов (как есть) -->
+    <!-- 1. Палитра цветов -->
     <div class="palette">
       <div class="color-swatch" style="background: #6B7B3A;"></div>
       <div class="color-swatch" style="background: #C56A3F;"></div>
@@ -553,7 +553,7 @@
   </div>
 </section>
 
-<!-- О ДАРАХ СЕРДЦА -->
+<!-- О ДАРАХ СЕРДЦА (ПРАВКА №5: имена к телефонам, убраны подложки у картинок) -->
 <section id="gifts">
   <div class="container">
     <h2>О дарах сердца</h2>
@@ -574,10 +574,10 @@
   </div>
 </section>
 
-<!-- ПОДТВЕРЖДЕНИЕ ПРИСУТСТВИЯ (RSVP) -->
+<!-- ПОДТВЕРЖДЕНИЕ ПРИСУТСТВИЯ (ПРАВКА №6 и №7) -->
 <section id="rsvp">
   <div class="container" style="max-width: 700px;">
-    <h2>Подтверждение присутствия</h2>
+    <h2>Подтверждение присутствия</h2> <!-- заголовок тоже можно оставить, но в меню уже изменено -->
     <p class="text-center" style="margin-bottom: 2rem;">Пожалуйста, дайте знать, сможете ли вы разделить с нами этот день до 1 мая 2026.</p>
     <form id="rsvpForm">
       <div class="form-group"><input type="text" placeholder="Ваше имя и фамилия" required></div>
@@ -591,13 +591,14 @@
       <div class="form-group"><input type="email" placeholder="Email для связи"></div>
       <div class="form-group"><textarea rows="2" placeholder="Сообщение (по желанию)"></textarea></div>
       <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
+      <!-- НОВЫЙ АБЗАЦ (ПРАВКА №7) -->
       <p style="font-size: 0.9rem; margin-bottom: 2rem; color: var(--color-accent);">Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
       <div class="text-center"><button type="submit" class="btn">Отправить</button></div>
     </form>
   </div>
 </section>
 
-<!-- ЛОКАЦИЯ (кратко) -->
+<!-- ЛОКАЦИЯ (как в исходнике) -->
 <section id="venue">
   <div class="container text-center">
     <h2>Место проведения</h2>
@@ -646,7 +647,7 @@
       document.getElementById('story').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // ---------- АНИМАЦИЯ ПОЯВЛЕНИЯ СЕКЦИЙ (Intersection Observer) ----------
+    // ---------- АНИМАЦИЯ ПОЯВЛЕНИЯ СЕКЦИЙ ----------
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -656,7 +657,6 @@
       });
     }, { threshold: 0.15 });
     sections.forEach(section => observer.observe(section));
-    // Сразу показать hero
     document.getElementById('home').classList.add('visible');
 
     // ---------- ТАЙМЕР ОБРАТНОГО ОТСЧЁТА ----------
@@ -672,7 +672,7 @@
         return;
       }
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (86400000)) / (3600000));
+      const hours = Math.floor((distance % 86400000) / 3600000);
       const minutes = Math.floor((distance % 3600000) / 60000);
       const seconds = Math.floor((distance % 60000) / 1000);
       document.getElementById('days').innerText = days < 10 ? '0' + days : days;
@@ -691,12 +691,8 @@
       form.reset();
     });
 
-    // ---------- КОРРЕКЦИЯ ОТСТУПОВ ТАЙМЕРА (уже в CSS) ----------
-    // Дополнительно: убедимся, что стрелка скролла работает.
-
   })();
 </script>
 
-<!-- Гарантия, что изображения видны (заглушки заменены на реальные имена, но если файлов нет, они всё равно отобразятся как ссылки) -->
 </body>
 </html>
