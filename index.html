@@ -169,7 +169,7 @@
             }
         }
 
-        /* ----- HERO (таймер опущен) ----- */
+        /* ----- HERO (восстановлен) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -209,7 +209,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 18vh 0 14vh 0;
+            padding: 18vh 0 12vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -245,7 +245,7 @@
             margin: 0 auto;
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
-            margin-top: 6vh;
+            margin-top: 5vh;
         }
 
         .counter-grid {
@@ -292,9 +292,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ----- СЕКЦИИ (уменьшены отступы) ----- */
+        /* ----- СЕКЦИИ (нормальные отступы) ----- */
         section {
-            padding: 5px 15px;
+            padding: 15px 15px;
             position: relative;
             background: transparent;
         }
@@ -303,7 +303,7 @@
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-weight: 400;
             line-height: 1.2;
             background: linear-gradient(135deg, #6b4423 0%, #b48c48 40%, #8b5e3c 70%, #a67c42 100%);
@@ -333,7 +333,7 @@
             width: 120px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold-dark), var(--gold-light), transparent);
-            margin: 10px auto 0;
+            margin: 15px auto 0;
         }
 
         @media (max-width: 800px) {
@@ -365,7 +365,7 @@
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
 
@@ -513,24 +513,16 @@
             transition: transform 0.3s;
         }
 
-        /* Дресс-код (текст выровнен, межстрочный уменьшен) */
-        .dress-text {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            line-height: 1.3;
-            margin: 20px 0 10px;
-        }
-
+        /* Дресс-код (восстановлен) */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
             gap: 35px;
             justify-content: center;
-            margin: 30px 0 20px;
+            margin: 40px 0 20px;
         }
         .dress-card {
-            width: 220px;
+            width: 280px;
             text-align: center;
             background: var(--white-linen);
             border-radius: 36px;
@@ -582,6 +574,9 @@
         .divider-icon {
             color: var(--gold-dark);
             font-size: 1.2rem;
+        }
+        .rotate-left {
+            transform: rotate(-90deg);
         }
 
         /* ----- ФОРМА ----- */
@@ -677,7 +672,7 @@
             animation: bounce 2s infinite;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 10px;
             color: var(--gold-dark);
         }
@@ -709,14 +704,14 @@
             font-size: 2.2rem;
             color: var(--gold-dark);
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .final-subtitle {
             font-family: 'Great Vibes', cursive;
             font-size: 2rem;
             color: var(--gold-dark);
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .overlay-hint {
             position: absolute;
@@ -746,22 +741,16 @@
             font-size: 1rem;
         }
 
-        /* Доп. отступы */
-        .compact-margin {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-
         @media (max-width: 800px) {
             .grid-2 {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
             }
             .container {
                 padding: 0 20px;
             }
             section {
-                padding: 5px 10px;
+                padding: 10px 15px;
             }
         }
     </style>
@@ -785,7 +774,7 @@
     </div>
 </nav>
 
-<!-- HERO (таймер опущен) -->
+<!-- HERO -->
 <div class="hero">
     <div class="hero-content">
         <div class="hero-top">
@@ -831,9 +820,9 @@
                 </div>
                 <div>
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
-                    <p style="font-size: 1.1rem; margin: 10px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
+                    <p style="font-size: 1.1rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
-                    <p style="margin-top: 30px; color: var(--text-dark);"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
+                    <p style="margin-top: 35px; color: var(--text-dark);"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
                 </div>
             </div>
         </div>
@@ -861,7 +850,7 @@
         <div class="container">
             <h2 class="section-title fade-up">Дресс-код</h2>
             <div class="fade-up-delayed" style="text-align: center;">
-                <p style="margin-bottom: 15px; font-size: 1.2rem; color: var(--text-dark);">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
+                <p style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-dark);">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
                 
                 <div class="palette-grid">
                     <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f, #a15252);"></div>
@@ -877,11 +866,11 @@
                 
                 <div class="scroll-hint" onclick="scrollToNext()">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
                 
-                <p class="dress-text"><strong>Джентльменам</strong> предлагаем надеть классические костюмы. Светлые тона — в особом почёте, чёрный вовсе не обязателен.</p>
+                <p style="margin-top: 20px; color: var(--text-dark);"><strong>Джентльменам</strong> предлагаем надеть классические костюмы. Светлые тона — в особом почёте, чёрный вовсе не обязателен.</p>
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
                 </div>
-                <p class="dress-text"><strong>Милым дамам</strong> — коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
+                <p style="color: var(--text-dark);"><strong>Милым дамам</strong> — коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                     <div class="dress-card"><img src="women2.jpg" alt="Женский образ 2"></div>
@@ -898,8 +887,8 @@
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
                 <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария</p>
                 
-                <div class="img-card" style="max-width: 400px; margin: 20px auto;">
-                    <img src="bank.jpg" alt="Семейный банк">
+                <div class="img-card" style="max-width: 400px; margin: 25px auto;">
+                    <img src="bank.jpg" alt="Семейный банк" style="transform: rotate(-90deg);">
                 </div>
                 
                 <div class="divider-elegant">
@@ -910,7 +899,7 @@
                 
                 <p>Пожалуйста, не дарите нам цветы — мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина.</p>
                 
-                <div class="img-card" style="max-width: 400px; margin: 20px auto;">
+                <div class="img-card" style="max-width: 400px; margin: 25px auto;">
                     <img src="gift.jpg" alt="Подарки: книга и вино">
                 </div>
             </div>
@@ -933,8 +922,8 @@
     <section id="rsvp">
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
-            <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 20px;">
-                <p style="margin-bottom: 10px; color: var(--text-dark);">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
+            <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
+                <p style="margin-bottom: 12px; color: var(--text-dark);">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
                 <p style="margin-bottom: 6px; color: var(--text-dark);">Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
                 <p style="margin-bottom: 16px; color: var(--text-dark); white-space: nowrap;">Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
