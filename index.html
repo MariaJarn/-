@@ -59,7 +59,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             color: var(--text-dark);
-            line-height: 1.3;  /* уменьшен межстрочный интервал */
+            line-height: 1.3;
         }
 
         /* Уточнения, мелкий текст */
@@ -71,7 +71,7 @@
 
         .radio-hint {
             font-size: 0.75rem;
-            margin-left: 32px;  /* выравнивание под текстом, а не под кнопкой */
+            margin-left: 32px;
         }
 
         h1, h2, h3, .nav-links a, .btn, .timeline-time, .form-label, .counter-number {
@@ -228,7 +228,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 10vh 0 12vh 0;
+            padding: 10vh 0 5vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -255,74 +255,76 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Таймер — изменённые пропорции */
-        .hero-timer-wrapper {
-            position: absolute;
-            bottom: 50px;
-            left: 0;
-            right: 0;
+        /* Таймер и стрелка внизу hero — обычный поток */
+        .hero-bottom {
             display: flex;
-            justify-content: center;
-            z-index: 5;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2vh;
         }
+
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 12px 15px 6px 15px;
-            max-width: 300px;
+            padding: 12px 20px;
+            max-width: 360px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
         }
+
         .counter-grid {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
+
         .counter-item {
             text-align: center;
         }
+
         .counter-number {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--gold-dark);
             background: white;
-            padding: 2px 6px;
+            padding: 4px 8px;
             border-radius: 30px;
-            min-width: 34px;
+            min-width: 42px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
+
         .counter-label {
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 2px;
+            margin-top: 4px;
             color: var(--text-soft);
         }
+
         @media (max-width: 768px) {
-            .hero-timer-wrapper {
-                bottom: 45px;
-            }
             .countdown-wrapper {
-                padding: 8px 12px 4px 12px;
-                max-width: 260px;
+                padding: 8px 15px;
+                max-width: 320px;
             }
             .counter-number {
-                font-size: 0.9rem;
-                padding: 1px 4px;
-                min-width: 28px;
+                font-size: 1rem;
+                padding: 3px 6px;
+                min-width: 36px;
+            }
+            .hero-bottom {
+                margin-bottom: 3vh;
             }
         }
 
         .hero .scroll-hint {
-            position: absolute;
-            bottom: 1rem;
-            left: 0;
-            right: 0;
-            margin-top: 0;
+            position: static;
+            margin: 0;
             color: rgba(255,255,255,0.8);
+            animation: bounce 2s infinite;
         }
 
         @keyframes fadeInDown {
@@ -809,7 +811,6 @@
             }
         }
 
-        /* Дополнительное выравнивание для текста RSVP */
         .rsvp-info p {
             margin-bottom: 12px;
         }
@@ -844,18 +845,18 @@
             <div class="hero-veneer veneer-text">Вадим & Мария</div>
             <div class="hero-date">29 июня 2026</div>
         </div>
-    </div>
-    <div class="hero-timer-wrapper">
-        <div class="countdown-wrapper">
-            <div class="counter-grid" id="countdownTimer">
-                <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
-                <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
-                <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
-                <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+        <div class="hero-bottom">
+            <div class="countdown-wrapper">
+                <div class="counter-grid" id="countdownTimer">
+                    <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
+                    <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
+                    <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
+                    <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
+                </div>
             </div>
+            <div class="scroll-hint" onclick="scrollToNext()">↓ ЛИСТАЙТЕ ВНИЗ ↓</div>
         </div>
     </div>
-    <div class="scroll-hint" onclick="scrollToNext()">↓ ЛИСТАЙТЕ ВНИЗ ↓</div>
 </div>
 
 <main>
@@ -1049,9 +1050,9 @@
                     <div class="form-group">
                         <button type="submit">Отправить ответ</button>
                     </div>
-                    <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48;"></div>
+                    <div id="formMessage" style="margin-top: 15px; text-align: center; font-weight: 500;"></div>
                 </form>
-                <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ТУТ СМОТРИМ В ВАШИ ГЛАЗА, ЧТОБЫ ВЫ ПРИНЯЛИ ПРАВИЛЬНОЕ РЕШЕНИЕ ↓</div>
+                <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ КОЕ-ЧТО ДЛЯ ВАС ↓</div>
             </div>
         </div>
     </section>
@@ -1107,11 +1108,11 @@
         }
     });
 
-    // === ФОРМА ОТПРАВКИ (FormSubmit) — полностью переписана ===
+    // === ФОРМА ОТПРАВКИ (FormSubmit) — по инструкции ===
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const fullname = document.getElementById('fullname').value.trim();
@@ -1126,40 +1127,34 @@
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
-        const payload = {
-            _subject: 'Новый ответ на приглашение на свадьбу',
-            _captcha: 'false',
-            _template: 'table',
-            'Имя': fullname,
-            'Присутствие': attendance,
-            'Напитки': drinks,
-            'Аллергии': allergies,
-            'Контакт': contact
-        };
-
-        try {
-            const response = await fetch('https://formsubmit.co/ajax/masha1z@bk.ru', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            const result = await response.json();
-            console.log('Ответ FormSubmit:', result);
-            if (response.ok && result.success === true) {
-                messageDiv.innerHTML = `Спасибо, ${fullname}! Мы получили ваш ответ.`;
+        fetch('https://formsubmit.co/ajax/masha1z@bk.ru', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                _subject: 'Новый ответ на свадебное приглашение',
+                name: fullname,
+                attendance: attendance,
+                drinks: drinks,
+                allergies: allergies,
+                contact: contact,
+                _captcha: 'false'
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                messageDiv.innerHTML = 'Спасибо, ' + fullname + '! Ваш ответ отправлен. Мы свяжемся при необходимости.';
                 messageDiv.style.color = '#2c6e3f';
                 form.reset();
+                setTimeout(() => messageDiv.innerHTML = '', 5000);
             } else {
-                throw new Error('Ошибка при отправке');
+                throw new Error();
             }
-        } catch (error) {
-            console.error('Ошибка:', error);
-            messageDiv.innerHTML = `Спасибо, ${fullname}! (Ошибка отправки, попробуйте позже или напишите нам напрямую)`;
+        })
+        .catch(() => {
+            messageDiv.innerHTML = 'Ошибка отправки. Попробуйте позже или напишите нам напрямую.';
             messageDiv.style.color = '#b48c48';
-        }
-        setTimeout(() => {
-            messageDiv.innerHTML = '';
-        }, 5000);
+            setTimeout(() => messageDiv.innerHTML = '', 5000);
+        });
     });
 
     // === АНИМАЦИЯ ПОЯВЛЕНИЯ ===
