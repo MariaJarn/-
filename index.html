@@ -235,10 +235,10 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* НОВЫЙ ТАЙМЕР ВНИЗУ HERO */
+        /* Таймер внизу hero — уже, выше */
         .hero-timer-wrapper {
             position: absolute;
-            bottom: 80px;
+            bottom: 60px;
             left: 0;
             right: 0;
             display: flex;
@@ -249,8 +249,8 @@
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 12px 20px;
-            max-width: 480px;
+            padding: 10px 20px;
+            max-width: 360px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
@@ -265,39 +265,40 @@
             text-align: center;
         }
         .counter-number {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--gold-dark);
             background: white;
-            padding: 4px 8px;
+            padding: 3px 8px;
             border-radius: 30px;
-            min-width: 40px;
+            min-width: 38px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
         .counter-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 6px;
+            margin-top: 4px;
             color: var(--text-soft);
         }
         @media (max-width: 768px) {
             .hero-timer-wrapper {
-                bottom: 70px;
+                bottom: 50px;
             }
             .countdown-wrapper {
-                padding: 8px 12px;
+                padding: 6px 12px;
+                max-width: 320px;
             }
             .counter-number {
                 font-size: 1rem;
                 padding: 2px 6px;
-                min-width: 35px;
+                min-width: 32px;
             }
         }
 
         .hero .scroll-hint {
             position: absolute;
-            bottom: 1.2rem;
+            bottom: 1rem;
             left: 0;
             right: 0;
             margin-top: 0;
@@ -383,7 +384,6 @@
             transform: translateY(0);
         }
 
-        /* Фото — общие правила для скругления и пропорций */
         .img-card {
             border-radius: 32px;
             overflow: hidden;
@@ -397,18 +397,19 @@
             object-fit: cover;
         }
 
-        /* Секция приглашения: текст и фото в колонку */
+        /* Секция приглашения: заголовок → фото → текст */
+        .invite-photo {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
         .invite-text {
             text-align: center;
-            margin-bottom: 40px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .invite-text p {
             font-size: 1.4rem;
             color: var(--text-soft);
-        }
-        .invite-photo {
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .btn-gold {
@@ -735,6 +736,10 @@
             cursor: pointer;
             width: 100%;
             font-family: 'Playfair Display', serif;
+            transition: opacity 0.3s;
+        }
+        button:active {
+            transform: scale(0.98);
         }
 
         /* Стрелки */
@@ -754,7 +759,7 @@
         .hero .scroll-hint {
             margin: 0;
             position: absolute;
-            bottom: 1.2rem;
+            bottom: 1rem;
             left: 0;
             right: 0;
         }
@@ -801,7 +806,18 @@
             font-size: 1rem;
         }
 
+        /* Сетка для локации */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
         @media (max-width: 800px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
             .container {
                 padding: 0 20px;
             }
@@ -837,9 +853,8 @@
             <div class="hero-veneer veneer-text">Вадим & Мария</div>
             <div class="hero-date">29 июня 2026</div>
         </div>
-        <!-- Таймер больше не здесь -->
     </div>
-    <!-- НОВЫЙ ТАЙМЕР ВНИЗУ -->
+    <!-- Таймер внизу -->
     <div class="hero-timer-wrapper">
         <div class="countdown-wrapper">
             <div class="counter-grid" id="countdownTimer">
@@ -857,14 +872,15 @@
     <section id="invitation">
         <div class="container">
             <h2 class="section-title fade-up">Наши дорогие родные и друзья!</h2>
-            <div class="invite-text fade-up-delayed">
-                <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
-                <div class="mobile-scroll-hint scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
-            </div>
+            <!-- Фото между заголовком и текстом -->
             <div class="invite-photo fade-up-delayed">
                 <div class="img-card">
                     <img src="couple2.jpg" alt="Вадим и Мария">
                 </div>
+            </div>
+            <div class="invite-text fade-up-delayed">
+                <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
+                <div class="mobile-scroll-hint scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
             </div>
         </div>
     </section>
@@ -872,7 +888,7 @@
     <section id="location">
         <div class="container">
             <h2 class="section-title fade-up">Место и время</h2>
-            <div class="grid-2 fade-up-delayed" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+            <div class="grid-2 fade-up-delayed">
                 <div class="img-card">
                     <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
@@ -922,7 +938,6 @@
                 
                 <div class="scroll-hint" onclick="scrollToNext()">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
                 
-                <!-- Женские фото: первое -->
                 <div class="dress-gallery" style="margin-bottom: 20px;">
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                 </div>
@@ -1051,7 +1066,6 @@
         </div>
     </section>
 
-    <!-- ФИНАЛЬНОЕ ФОТО -->
     <section id="final">
         <div class="container">
             <div class="final-photo-wrapper fade-up">
@@ -1076,71 +1090,47 @@
     };
     history.scrollRestoration = 'manual';
 
-    // === НАВИГАЦИЯ ===
+    // === НАВИГАЦИЯ (плавный скролл к разделам) ===
     const navbar = document.querySelector('.navbar');
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
+    const navLinksList = document.querySelectorAll('.nav-links a');
+    
+    function scrollToSection(targetId) {
+        const target = document.getElementById(targetId);
+        if (target) {
+            const navbarHeight = navbar.offsetHeight;
+            const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: elementPosition - navbarHeight - 20, behavior: 'smooth' });
+        }
+    }
+
+    navLinksList.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
-            if (!targetId) return;
-            const target = document.getElementById(targetId);
-            if (target) {
-                const navbarHeight = navbar.offsetHeight;
-                const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-                window.scrollTo({ top: elementPosition - navbarHeight - 10, behavior: 'smooth' });
+            if (targetId) {
+                scrollToSection(targetId);
             }
+            // Закрыть мобильное меню
             document.getElementById('navLinks').classList.remove('active');
         });
     });
 
-    // === ОТПРАВКА ФОРМЫ (FormSubmit) ===
-    async function sendToEmail(formData) {
-        const emailUrl = 'https://formsubmit.co/ajax/masha1z@bk.ru';
-        const payload = {
-            _subject: 'Новый ответ на приглашение на свадьбу',
-            _captcha: 'false',
-            _template: 'table',
-            'Имя': formData.fullname,
-            'Присутствие': formData.attendance,
-            'Напитки': formData.drinks,
-            'Аллергии': formData.allergies,
-            'Контакт': formData.contact
-        };
-        try {
-            const response = await fetch(emailUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            const result = await response.json();
-            console.log('FormSubmit ответ:', result);
-            // Успех, если статус 200 и result.success === true
-            return response.ok && result.success === true;
-        } catch (error) {
-            console.error('Ошибка при отправке на почту:', error);
-            return false;
+    // Закрытие меню при клике вне его области
+    document.addEventListener('click', function(event) {
+        const nav = document.getElementById('navLinks');
+        const burger = document.getElementById('burgerMenu');
+        if (nav.classList.contains('active') && !nav.contains(event.target) && !burger.contains(event.target)) {
+            nav.classList.remove('active');
         }
-    }
+    });
 
-    // Анимация появления
-    const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1, rootMargin: "0px 0px 100px 0px" });
-    fadeElements.forEach(el => observer.observe(el));
-
-    // Бургер-меню
-    const burger = document.getElementById('burgerMenu');
-    const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => navLinks.classList.toggle('active'));
-
-    // Обработка отправки формы
+    // === ФОРМА ОТПРАВКИ (FormSubmit) ===
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
+        
         const fullname = document.getElementById('fullname').value.trim();
         const attendanceRadio = document.querySelector('input[name="attendance"]:checked');
         if (!fullname || !attendanceRadio) {
@@ -1153,24 +1143,51 @@
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
-        const formData = { fullname, attendance, drinks, allergies, contact };
+        const payload = {
+            _subject: 'Новый ответ на приглашение на свадьбу',
+            _captcha: 'false',
+            'Имя': fullname,
+            'Присутствие': attendance,
+            'Напитки': drinks,
+            'Аллергии': allergies,
+            'Контакт': contact
+        };
 
-        const emailSent = await sendToEmail(formData);
-
-        if (emailSent) {
-            messageDiv.innerHTML = `Спасибо, ${fullname}! Мы получили ваш ответ.`;
-            console.log('Письмо успешно отправлено');
-        } else {
-            // Показываем ошибку, но если письмо всё же ушло (например, из-за неправильного ответа сервера),
-            // то пользователь не должен видеть ошибку. Но по нашему коду emailSent === false только при реальной ошибке.
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/masha1z@bk.ru', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const result = await response.json();
+            if (response.ok && result.success === true) {
+                messageDiv.innerHTML = `Спасибо, ${fullname}! Мы получили ваш ответ.`;
+                messageDiv.style.color = '#2c6e3f';
+                form.reset();
+            } else {
+                throw new Error('Ошибка сервера');
+            }
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
             messageDiv.innerHTML = `Спасибо, ${fullname}! (Ошибка отправки, попробуйте позже или напишите нам напрямую)`;
-            console.error('Не удалось отправить данные');
+            messageDiv.style.color = '#b48c48';
         }
-        form.reset();
-        setTimeout(() => messageDiv.innerHTML = '', 5000);
+        setTimeout(() => {
+            messageDiv.innerHTML = '';
+            messageDiv.style.color = '#b48c48';
+        }, 5000);
     });
 
-    // Таймер обратного отсчёта
+    // === АНИМАЦИЯ ПОЯВЛЕНИЯ ===
+    const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px 100px 0px" });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // === ТАЙМЕР ОБРАТНОГО ОТСЧЁТА ===
     function updateCountdown() {
         const weddingDate = new Date(2026, 5, 29, 0, 0, 0).getTime();
         const now = new Date().getTime();
@@ -1191,7 +1208,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Прокрутка по стрелкам
+    // === ПРОКРУТКА ПО СТРЕЛКАМ ===
     function scrollToNext() {
         const sections = document.querySelectorAll('.hero, section');
         let current = -1;
@@ -1202,6 +1219,11 @@
         if (current !== -1 && current+1 < sections.length) sections[current+1].scrollIntoView({ behavior: 'smooth' });
         else if (current === -1 && sections.length) sections[0].scrollIntoView({ behavior: 'smooth' });
     }
+
+    // Бургер-меню
+    const burger = document.getElementById('burgerMenu');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => navLinks.classList.toggle('active'));
 </script>
 </body>
 </html>
