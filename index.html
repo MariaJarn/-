@@ -66,12 +66,13 @@
         .small-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            color: var(--text-soft);
+            color: #b0a394;  /* более мягкий и бледный */
+            font-weight: 300;
         }
 
         .radio-hint {
             font-size: 0.75rem;
-            margin-left: 38px; /* смещены вправо */
+            margin-left: 48px; /* смещены правее */
         }
 
         h1, h2, h3, .nav-links a, .btn, .timeline-time, .form-label, .counter-number {
@@ -228,7 +229,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 10vh 0 5vh 0;
+            padding: 10vh 0 10vh 0;  /* увеличен нижний отступ для опускания конструкции */
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -260,14 +261,14 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            margin-bottom: 4vh; /* смещено вниз */
+            margin-bottom: 0;  /* убран лишний отступ */
         }
 
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 12px 20px;
+            padding: 8px 20px 16px 20px;  /* вытянут вверх */
             max-width: 360px;
             width: 90%;
             text-align: center;
@@ -306,16 +307,13 @@
 
         @media (max-width: 768px) {
             .countdown-wrapper {
-                padding: 8px 15px;
+                padding: 6px 15px 12px 15px;
                 max-width: 320px;
             }
             .counter-number {
                 font-size: 1rem;
                 padding: 3px 6px;
                 min-width: 36px;
-            }
-            .hero-bottom {
-                margin-bottom: 5vh;
             }
         }
 
@@ -410,8 +408,8 @@
 
         /* Секция приглашения */
         .invite-photo {
-            max-width: 440px; /* уменьшено */
-            margin: 0 auto 30px;
+            max-width: 400px;  /* уменьшено */
+            margin: 0 auto 15px;  /* отступ уменьшен */
         }
         .invite-text {
             text-align: center;
@@ -502,7 +500,9 @@
         .timeline-sub {
             display: block;
             margin-top: 5px;
-            font-style: italic; /* курсив */
+            font-style: italic;
+            font-weight: 300;
+            color: #b0a394;
         }
 
         @media (max-width: 700px) {
@@ -551,7 +551,7 @@
             transition: transform 0.3s;
         }
 
-        /* Дресс-код — новые стили: центрирование, скруглённые рамки */
+        /* Дресс-код — градиентный фон с эффектом ткани */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -590,16 +590,20 @@
             text-align: center;
             max-width: 700px;
             margin: 20px auto;
-            padding: 15px 20px;
-            border-top: 2px solid var(--gold-light);
-            border-bottom: 2px solid var(--gold-light);
-            border-radius: 30px;
+            padding: 20px 25px;
+            border-radius: 40px;
+            background: radial-gradient(circle at 30% 40%, rgba(228,196,142,0.12) 0%, rgba(212,175,106,0.05) 70%, rgba(228,196,142,0.02) 100%),
+                        repeating-linear-gradient(45deg, rgba(212,175,106,0.03) 0px, rgba(212,175,106,0.03) 2px, transparent 2px, transparent 8px);
+            box-shadow: 0 8px 20px -10px rgba(0,0,0,0.05);
         }
         .dresscode-left p {
             margin-bottom: 10px;
         }
         .dresscode-left p:last-child {
             margin-bottom: 0;
+        }
+        .dresscode-left p + p {
+            margin-top: 0;
         }
 
         /* ----- БЛОК ДАРОВ ----- */
@@ -642,7 +646,7 @@
         .form-card {
             background: var(--white-linen);
             border-radius: 48px;
-            padding: 40px 30px 25px 30px; /* уменьшен нижний отступ */
+            padding: 40px 30px 25px 30px;
             box-shadow: var(--shadow-premium);
             max-width: 920px;
             margin: 0 auto;
@@ -935,8 +939,7 @@
                 </div>
                 
                 <div class="dresscode-left main-text">
-                    <p>Милым дамам предлагаем надеть коктейльные или вечерние платья.</p>
-                    <p>Будем благодарны, если белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
+                    <p>Милым дамам предлагаем надеть коктейльные или вечерние платья.<br>Будем благодарны, если белый останется привилегией невесты.<br>А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
                 </div>
                 
                 <div class="dress-gallery" style="margin-top: 20px;">
@@ -954,7 +957,8 @@
                 </div>
                 
                 <div class="dresscode-left main-text">
-                    Джентльменов будем рады видеть в классике. Светлые тона в особом почёте, чёрный вовсе не обязателен.
+                    <p>Джентльменов будем рады видеть<br>в классике.</p>
+                    <p>Светлые тона в особом почёте, чёрный вовсе не обязателен.</p>
                 </div>
             </div>
         </div>
@@ -1054,7 +1058,7 @@
                     </div>
                     <div id="formMessage" style="margin-top: 15px; text-align: center; font-weight: 500;"></div>
                 </form>
-                <div class="scroll-hint" style="margin-top: 10px;" onclick="scrollToNext()">↓ КОЕ-ЧТО ДЛЯ ВАС ↓</div>
+                <div class="scroll-hint" style="margin-top: 10px;" onclick="scrollToNext()">↓ И ЕЩЁ КОЕ-ЧТО ОТ НАС ↓</div>
             </div>
         </div>
     </section>
@@ -1110,11 +1114,11 @@
         }
     });
 
-    // === ФОРМА ОТПРАВКИ (FormSubmit) ===
+    // === ФОРМА ОТПРАВКИ (FormSubmit) — исправленная версия ===
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const fullname = document.getElementById('fullname').value.trim();
@@ -1129,34 +1133,39 @@
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
-        fetch('https://formsubmit.co/ajax/masha1z@bk.ru', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                _subject: 'Новый ответ на свадебное приглашение',
-                name: fullname,
-                attendance: attendance,
-                drinks: drinks,
-                allergies: allergies,
-                contact: contact,
-                _captcha: 'false'
-            })
-        })
-        .then(response => {
+        const payload = {
+            _subject: 'Новый ответ на свадебное приглашение',
+            _captcha: 'false',
+            name: fullname,
+            attendance: attendance,
+            drinks: drinks,
+            allergies: allergies,
+            contact: contact
+        };
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/masha1z@bk.ru', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+            
             if (response.ok) {
                 messageDiv.innerHTML = 'Спасибо, ' + fullname + '! Ваш ответ отправлен. Мы свяжемся при необходимости.';
                 messageDiv.style.color = '#2c6e3f';
                 form.reset();
-                setTimeout(() => messageDiv.innerHTML = '', 5000);
             } else {
-                throw new Error();
+                throw new Error('Сервер вернул ошибку');
             }
-        })
-        .catch(() => {
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
             messageDiv.innerHTML = 'Ошибка отправки. Попробуйте позже или напишите нам напрямую.';
             messageDiv.style.color = '#b48c48';
-            setTimeout(() => messageDiv.innerHTML = '', 5000);
-        });
+        }
+        setTimeout(() => messageDiv.innerHTML = '', 5000);
     });
 
     // === АНИМАЦИЯ ПОЯВЛЕНИЯ ===
