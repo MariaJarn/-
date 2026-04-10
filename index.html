@@ -209,7 +209,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 10vh 0 12vh 0;  /* уменьшен верхний отступ для поднятия заголовка */
+            padding: 10vh 0 12vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -240,9 +240,9 @@
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 80px;
-            padding: 16px 5px 28px;  /* увеличен нижний отступ для баланса */
+            padding: 20px 5px 20px;  /* сбалансированные отступы */
             max-width: 550px;
-            margin: 8vh auto 0;      /* смещён ниже */
+            margin: 6vh auto 0;      /* уменьшен отступ сверху */
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
         }
@@ -279,7 +279,7 @@
 
         .hero .scroll-hint {
             position: absolute;
-            bottom: 1.2rem;   /* опущена стрелка */
+            bottom: 1.2rem;
             left: 0;
             right: 0;
             margin-top: 0;
@@ -368,7 +368,6 @@
             align-items: center;
         }
 
-        /* Фотографии без подложек — убраны фон, тень, паддинг */
         .img-card {
             border-radius: 32px;
             overflow: hidden;
@@ -417,7 +416,7 @@
             box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
-        /* Таймлайн — полностью переписан */
+        /* Таймлайн — исправленная линия */
         .timeline-elegant {
             max-width: 800px;
             margin: 0 auto;
@@ -426,12 +425,12 @@
         .timeline-elegant:before {
             content: '';
             position: absolute;
-            left: 38px;
+            left: 21px;          /* центр иконки (42px/2) */
             top: 21px;
             bottom: 21px;
             width: 2px;
             background: linear-gradient(to bottom, var(--gold-light), var(--rose-powder), var(--gold-light));
-            transform: translateX(-50%);
+            z-index: 1;
         }
         .timeline-node {
             display: flex;
@@ -439,13 +438,14 @@
             position: relative;
             padding-left: 90px;
             align-items: center;
+            z-index: 2;
         }
         .timeline-node:last-child {
             margin-bottom: 0;
         }
         .timeline-icon {
             position: absolute;
-            left: 18px;
+            left: 0;
             top: 0;
             width: 42px;
             height: 42px;
@@ -457,7 +457,7 @@
             color: var(--gold-dark);
             font-size: 1.3rem;
             box-shadow: 0 0 0 5px var(--bg-cream), 0 0 0 7px var(--gold-light);
-            z-index: 2;
+            z-index: 3;
         }
         .timeline-time {
             font-size: 1.9rem;
@@ -507,7 +507,7 @@
             transition: transform 0.3s;
         }
 
-        /* Дресс-код */
+        /* Дресс-код — убраны подложки */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -518,16 +518,24 @@
         .dress-card {
             width: 280px;
             text-align: center;
-            background: var(--white-linen);
-            border-radius: 36px;
-            padding: 20px 12px;
-            box-shadow: var(--shadow-glow);
+            /* Убраны фон, тень, паддинг */
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            border-radius: 32px;
+            overflow: hidden;
         }
         .dress-card img {
             width: 100%;
             height: auto;
-            border-radius: 24px;
-            object-fit: contain;
+            border-radius: 32px;
+            display: block;
+        }
+        @media (max-width: 640px) {
+            .dress-card {
+                width: 100%;
+                max-width: 320px;
+            }
         }
 
         /* ----- БЛОК ДАРОВ ----- */
@@ -738,7 +746,7 @@
             <li><a href="#schedule">Программа</a></li>
             <li><a href="#dresscode">Дресс-код</a></li>
             <li><a href="#gifts">Пожелания</a></li>
-            <li><a href="#rsvp">Подтверждение присутствия</a></li> <!-- переименовано -->
+            <li><a href="#rsvp">Подтверждение присутствия</a></li>
         </ul>
     </div>
 </nav>
@@ -761,7 +769,7 @@
             </div>
         </div>
     </div>
-    <div class="scroll-hint" onclick="scrollToNext()">↓ ЛИСТАЙТЕ ВНИЗ ↓</div> <!-- изменён текст -->
+    <div class="scroll-hint" onclick="scrollToNext()">↓ ЛИСТАЙТЕ ВНИЗ ↓</div>
 </div>
 
 <main>
@@ -801,7 +809,6 @@
     <section id="schedule">
         <div class="container">
             <h2 class="section-title fade-up">План торжества</h2>
-            <!-- Таймлайн переписан заново -->
             <div class="timeline-elegant fade-up-delayed">
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub">лёгкие закуски и напитки</span></div></div>
                 <div class="timeline-node"><div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub">самый трогательный момент</span></div></div>
@@ -816,7 +823,9 @@
         <div class="container">
             <h2 class="section-title fade-up">Дресс-код</h2>
             <div class="fade-up-delayed" style="text-align: center;">
-                <!-- Палитра цветов -->
+                <!-- Восстановленный текст перед палитрой -->
+                <p style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-dark);">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
+                
                 <div class="palette-grid">
                     <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f, #a15252);"></div>
                     <div class="palette-item" style="background: linear-gradient(145deg, #a55b4b, #c2816e);"></div>
@@ -829,19 +838,17 @@
                     <div class="palette-item" style="background: linear-gradient(145deg, #1a3a4a, #2c5b72);"></div>
                 </div>
                 
-                <!-- Текст для дам (стилистика как у абзаца "Мы не настаиваем...") -->
-                <p style="margin: 20px 0 20px; font-size: 1.2rem; color: var(--text-dark);">Милым дамам предлагаем надеть коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
+                <!-- Текст для дам (такой же стиль) -->
+                <p style="margin: 30px 0 20px; font-size: 1.2rem; color: var(--text-dark);">Милым дамам предлагаем надеть коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
                 
-                <!-- Две женские фотографии -->
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                     <div class="dress-card"><img src="women2.jpg" alt="Женский образ 2"></div>
                 </div>
                 
                 <!-- Текст для джентльменов -->
-                <p style="margin: 20px 0 20px; font-size: 1.2rem; color: var(--text-dark);">Джентльменам — классические костюмы. Светлые тона в особом почёте, чёрный вовсе не обязателен.</p>
+                <p style="margin: 30px 0 20px; font-size: 1.2rem; color: var(--text-dark);">Джентльменам — классические костюмы. Светлые тона в особом почёте, чёрный вовсе не обязателен.</p>
                 
-                <!-- Одна мужская фотография -->
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
                 </div>
@@ -855,11 +862,10 @@
             <div class="gifts-text fade-up-delayed">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <!-- подписаны имена: Вадим М. и Мария пока что Ж. -->
                 <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
-                    <img src="bank.jpg" alt="Семейный банк" style="transform: rotate(-90deg);">
+                    <img src="bank.jpg" alt="Семейный банк"> <!-- убрана трансформация -->
                 </div>
                 
                 <div class="divider-elegant">
@@ -874,6 +880,8 @@
                     <img src="gift.jpg" alt="Подарки: книга и вино">
                 </div>
             </div>
+            <!-- Плавающая стрелка "ФОРМА ПОДТВЕРЖДЕНИЯ" -->
+            <div class="scroll-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
         </div>
     </section>
 
@@ -886,7 +894,6 @@
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
                 <p style="margin-bottom: 16px; color: var(--text-dark); white-space: nowrap;">Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
                 <p style="color: var(--text-dark);">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
-                <!-- Дополнительный абзац -->
                 <p style="margin-top: 12px; color: var(--text-dark);">Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
             </div>
             <div class="form-card fade-up-delayed">
@@ -926,10 +933,12 @@
                     <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48;"></div>
                 </form>
             </div>
+            <!-- Плавающая стрелка "ДО ВСТРЕЧИ" под кнопкой -->
+            <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ДО ВСТРЕЧИ ↓</div>
         </div>
     </section>
 
-    <!-- ФИНАЛЬНОЕ ФОТО И ПОДПИСЬ ПОСЛЕ ФОРМЫ -->
+    <!-- ФИНАЛЬНОЕ ФОТО (без стрелки, она перенесена в RSVP) -->
     <section id="final">
         <div class="container">
             <div class="final-photo-wrapper fade-up">
@@ -939,7 +948,6 @@
                     <img src="final.jpg" alt="Вадим и Мария">
                 </div>
             </div>
-            <div class="scroll-hint" style="margin-top: 30px;">↓ ДО ВСТРЕЧИ ↓</div>
         </div>
     </section>
 </main>
@@ -983,6 +991,29 @@
         }
     }
 
+    // === ОТПРАВКА НА ПОЧТУ (FormSubmit) ===
+    async function sendToEmail(formData) {
+        const emailUrl = 'https://formsubmit.co/ajax/masha1z@bk.ru';
+        const payload = {
+            name: formData.fullname,
+            attendance: formData.attendance,
+            drinks: formData.drinks,
+            allergies: formData.allergies,
+            contact: formData.contact
+        };
+        try {
+            const response = await fetch(emailUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Ошибка отправки на почту:', error);
+            return false;
+        }
+    }
+
     // Анимация
     const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
     const observer = new IntersectionObserver((entries) => {
@@ -1015,7 +1046,7 @@
         });
     });
 
-    // Форма с отправкой в Telegram
+    // Форма с отправкой в Telegram и на почту
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
     form.addEventListener('submit', async function(e) {
@@ -1032,6 +1063,10 @@
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
+        // Данные для отправки
+        const formData = { fullname, attendance, drinks, allergies, contact };
+
+        // Отправка в Telegram
         const telegramMessage = `
 🕊️ <b>Новый ответ на приглашение</b>
 👤 <b>Имя:</b> ${fullname}
@@ -1040,12 +1075,15 @@
 ⚠️ <b>Аллергии:</b> ${allergies}
 📞 <b>Контакты:</b> ${contact}
         `.trim();
+        const telegramSent = await sendToTelegram(telegramMessage);
 
-        const sent = await sendToTelegram(telegramMessage);
-        if (sent) {
+        // Отправка на почту
+        const emailSent = await sendToEmail(formData);
+
+        if (telegramSent || emailSent) {
             messageDiv.innerHTML = `Спасибо, ${fullname}! Ваш ответ отправлен.`;
         } else {
-            messageDiv.innerHTML = `Спасибо, ${fullname}! (Отправка в Telegram не настроена, но мы вас услышали)`;
+            messageDiv.innerHTML = `Спасибо, ${fullname}! (Возникла ошибка при отправке, но мы вас услышали)`;
         }
         form.reset();
         setTimeout(() => messageDiv.innerHTML = '', 5000);
