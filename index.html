@@ -235,39 +235,35 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
+        /* НОВЫЙ ТАЙМЕР ВНИЗУ HERO */
+        .hero-timer-wrapper {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 5;
+        }
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 20px 5px 20px;
+            padding: 12px 20px;
             max-width: 480px;
-            margin: 24vh auto 0;
+            width: 90%;
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
-
-        @media (max-width: 768px) {
-            .countdown-wrapper {
-                margin-top: 32vh;
-                margin-bottom: 20px;
-                padding: 16px 5px 16px;
-            }
-        }
-
         .counter-grid {
             display: flex;
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
         }
-
         .counter-item {
             text-align: center;
         }
-
         .counter-number {
             font-size: 1.2rem;
             font-weight: 700;
@@ -278,13 +274,25 @@
             min-width: 40px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
-
         .counter-label {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 6px;
             color: var(--text-soft);
+        }
+        @media (max-width: 768px) {
+            .hero-timer-wrapper {
+                bottom: 70px;
+            }
+            .countdown-wrapper {
+                padding: 8px 12px;
+            }
+            .counter-number {
+                font-size: 1rem;
+                padding: 2px 6px;
+                min-width: 35px;
+            }
         }
 
         .hero .scroll-hint {
@@ -375,7 +383,21 @@
             transform: translateY(0);
         }
 
-        /* В секции приглашения — текст и фото в колонку */
+        /* Фото — общие правила для скругления и пропорций */
+        .img-card {
+            border-radius: 32px;
+            overflow: hidden;
+            display: block;
+            width: 100%;
+        }
+        .img-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Секция приглашения: текст и фото в колонку */
         .invite-text {
             text-align: center;
             margin-bottom: 40px;
@@ -815,14 +837,16 @@
             <div class="hero-veneer veneer-text">Вадим & Мария</div>
             <div class="hero-date">29 июня 2026</div>
         </div>
-        <div class="hero-bottom">
-            <div class="countdown-wrapper fade-up">
-                <div class="counter-grid" id="countdownTimer">
-                    <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
-                    <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
-                    <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
-                    <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
-                </div>
+        <!-- Таймер больше не здесь -->
+    </div>
+    <!-- НОВЫЙ ТАЙМЕР ВНИЗУ -->
+    <div class="hero-timer-wrapper">
+        <div class="countdown-wrapper">
+            <div class="counter-grid" id="countdownTimer">
+                <div class="counter-item"><span class="counter-number" id="days">00</span><div class="counter-label">Дней</div></div>
+                <div class="counter-item"><span class="counter-number" id="hours">00</span><div class="counter-label">Часов</div></div>
+                <div class="counter-item"><span class="counter-number" id="minutes">00</span><div class="counter-label">Минут</div></div>
+                <div class="counter-item"><span class="counter-number" id="seconds">00</span><div class="counter-label">Секунд</div></div>
             </div>
         </div>
     </div>
@@ -1052,7 +1076,7 @@
     };
     history.scrollRestoration = 'manual';
 
-    // === НАВИГАЦИЯ (динамическое смещение) ===
+    // === НАВИГАЦИЯ ===
     const navbar = document.querySelector('.navbar');
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -1063,15 +1087,13 @@
             if (target) {
                 const navbarHeight = navbar.offsetHeight;
                 const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-                // Прокручиваем так, чтобы заголовок секции оказался под меню + небольшой отступ
                 window.scrollTo({ top: elementPosition - navbarHeight - 10, behavior: 'smooth' });
             }
-            // Закрываем мобильное меню
             document.getElementById('navLinks').classList.remove('active');
         });
     });
 
-    // === ОТПРАВКА НА ПОЧТУ (FormSubmit) ===
+    // === ОТПРАВКА ФОРМЫ (FormSubmit) ===
     async function sendToEmail(formData) {
         const emailUrl = 'https://formsubmit.co/ajax/masha1z@bk.ru';
         const payload = {
@@ -1092,6 +1114,7 @@
             });
             const result = await response.json();
             console.log('FormSubmit ответ:', result);
+            // Успех, если статус 200 и result.success === true
             return response.ok && result.success === true;
         } catch (error) {
             console.error('Ошибка при отправке на почту:', error);
@@ -1099,10 +1122,7 @@
         }
     }
 
-    // === TELEGRAM (опционально) — оставлен для совместимости, но не используется ===
-    // Можно удалить, но оставим как заглушку
-
-    // Анимация появления (раньше)
+    // Анимация появления
     const fadeElements = document.querySelectorAll('.fade-up, .fade-up-delayed');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1115,7 +1135,6 @@
     const burger = document.getElementById('burgerMenu');
     const navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', () => navLinks.classList.toggle('active'));
-    // Закрытие при клике на ссылку уже обработано выше
 
     // Обработка отправки формы
     const form = document.getElementById('weddingForm');
@@ -1142,6 +1161,8 @@
             messageDiv.innerHTML = `Спасибо, ${fullname}! Мы получили ваш ответ.`;
             console.log('Письмо успешно отправлено');
         } else {
+            // Показываем ошибку, но если письмо всё же ушло (например, из-за неправильного ответа сервера),
+            // то пользователь не должен видеть ошибку. Но по нашему коду emailSent === false только при реальной ошибке.
             messageDiv.innerHTML = `Спасибо, ${fullname}! (Ошибка отправки, попробуйте позже или напишите нам напрямую)`;
             console.error('Не удалось отправить данные');
         }
