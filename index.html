@@ -240,9 +240,9 @@
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 80px;
-            padding: 20px 5px 20px;  /* сбалансированные отступы */
+            padding: 20px 5px 20px;
             max-width: 550px;
-            margin: 6vh auto 0;      /* уменьшен отступ сверху */
+            margin: 9vh auto 0;      /* ещё ниже */
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
         }
@@ -416,7 +416,7 @@
             box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
-        /* Таймлайн — исправленная линия */
+        /* Таймлайн — десктопная линия */
         .timeline-elegant {
             max-width: 800px;
             margin: 0 auto;
@@ -425,7 +425,7 @@
         .timeline-elegant:before {
             content: '';
             position: absolute;
-            left: 21px;          /* центр иконки (42px/2) */
+            left: 21px;
             top: 21px;
             bottom: 21px;
             width: 2px;
@@ -481,14 +481,43 @@
             margin-top: 5px;
         }
 
+        /* Мобильная версия таймлайна — свои линии между иконками */
         @media (max-width: 700px) {
+            .timeline-elegant:before {
+                display: none;
+            }
             .timeline-node {
                 flex-direction: column;
                 align-items: flex-start;
                 padding-left: 80px;
+                margin-bottom: 45px;
+                position: relative;
             }
-            .timeline-time { margin-bottom: 8px; }
-            .timeline-desc { padding-left: 0; }
+            .timeline-node:last-child {
+                margin-bottom: 0;
+            }
+            .timeline-node:not(:last-child):after {
+                content: '';
+                position: absolute;
+                left: 21px;
+                top: 42px;
+                width: 2px;
+                height: calc(100% + 10px); /* соединяет текущую иконку со следующей */
+                background: linear-gradient(to bottom, var(--gold-light), var(--rose-powder));
+                z-index: 1;
+            }
+            .timeline-time { 
+                margin-bottom: 8px; 
+                font-size: 1.6rem;
+            }
+            .timeline-desc { 
+                padding-left: 0; 
+                font-size: 1.2rem;
+            }
+            .timeline-icon {
+                left: 0;
+                top: 0;
+            }
         }
 
         /* Палитра */
@@ -507,7 +536,7 @@
             transition: transform 0.3s;
         }
 
-        /* Дресс-код — убраны подложки */
+        /* Дресс-код — убраны подложки, уменьшен шрифт */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -518,7 +547,6 @@
         .dress-card {
             width: 280px;
             text-align: center;
-            /* Убраны фон, тень, паддинг */
             background: transparent;
             box-shadow: none;
             padding: 0;
@@ -536,6 +564,14 @@
                 width: 100%;
                 max-width: 320px;
             }
+        }
+
+        /* Стили для текстов дресс-кода — уменьшенный размер */
+        .dresscode-text {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin: 20px 0;
+            line-height: 1.4;
         }
 
         /* ----- БЛОК ДАРОВ ----- */
@@ -698,15 +734,22 @@
         }
         .final-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--gold-dark);
-            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
         .final-subtitle {
             font-family: 'Great Vibes', cursive;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--gold-dark);
             margin-bottom: 25px;
+        }
+        .final-star {
+            font-size: 2rem;
+            color: var(--gold-mid);
+            margin-top: 15px;
+            letter-spacing: 8px;
         }
 
         footer {
@@ -823,8 +866,7 @@
         <div class="container">
             <h2 class="section-title fade-up">Дресс-код</h2>
             <div class="fade-up-delayed" style="text-align: center;">
-                <!-- Восстановленный текст перед палитрой -->
-                <p style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-dark);">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
+                <p class="dresscode-text">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
                 
                 <div class="palette-grid">
                     <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f, #a15252);"></div>
@@ -838,16 +880,15 @@
                     <div class="palette-item" style="background: linear-gradient(145deg, #1a3a4a, #2c5b72);"></div>
                 </div>
                 
-                <!-- Текст для дам (такой же стиль) -->
-                <p style="margin: 30px 0 20px; font-size: 1.2rem; color: var(--text-dark);">Милым дамам предлагаем надеть коктейльные или вечерние платья. Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
+                <p class="dresscode-text">Милым дамам предлагаем надеть коктейльные или вечерние платья.</p>
+                <p class="dresscode-text">Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
                 
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                     <div class="dress-card"><img src="women2.jpg" alt="Женский образ 2"></div>
                 </div>
                 
-                <!-- Текст для джентльменов -->
-                <p style="margin: 30px 0 20px; font-size: 1.2rem; color: var(--text-dark);">Джентльменам — классические костюмы. Светлые тона в особом почёте, чёрный вовсе не обязателен.</p>
+                <p class="dresscode-text">Джентльменов будем рады видеть в классических костюмах. Светлые тона в особом почёте, чёрный вовсе не обязателен.</p>
                 
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
@@ -865,7 +906,7 @@
                 <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
-                    <img src="bank.jpg" alt="Семейный банк"> <!-- убрана трансформация -->
+                    <img src="bank.jpg" alt="Семейный банк">
                 </div>
                 
                 <div class="divider-elegant">
@@ -880,7 +921,6 @@
                     <img src="gift.jpg" alt="Подарки: книга и вино">
                 </div>
             </div>
-            <!-- Плавающая стрелка "ФОРМА ПОДТВЕРЖДЕНИЯ" -->
             <div class="scroll-hint" onclick="scrollToNext()">↓ ФОРМА ПОДТВЕРЖДЕНИЯ ↓</div>
         </div>
     </section>
@@ -889,21 +929,22 @@
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
             <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <p style="margin-bottom: 12px; color: var(--text-dark);">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
-                <p style="margin-bottom: 6px; color: var(--text-dark);">Заполните форму ниже или свяжитесь с нами напрямую:</p>
+                <!-- Увеличенный текст -->
+                <p style="margin-bottom: 12px; color: var(--text-dark); font-size: 1.2rem;">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
+                <p style="margin-bottom: 6px; color: var(--text-dark); font-size: 1.2rem;">Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
                 <p style="margin-bottom: 16px; color: var(--text-dark); white-space: nowrap;">Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
-                <p style="color: var(--text-dark);">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
-                <p style="margin-top: 12px; color: var(--text-dark);">Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
+                <p style="color: var(--text-dark); font-size: 1.2rem;">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
+                <p style="margin-top: 12px; color: var(--text-dark); font-size: 1.2rem;">Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
             </div>
             <div class="form-card fade-up-delayed">
                 <form id="weddingForm">
                     <div class="form-group">
-                        <label class="form-label">Ваше имя и фамилия *</label>
+                        <label class="form-label">Ваше имя и фамилия</label> <!-- звездочка убрана -->
                         <input type="text" id="fullname" required placeholder="Александра Петрова">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Вы сможете присутствовать? *</label>
+                        <label class="form-label">Вы сможете присутствовать?</label> <!-- звездочка убрана -->
                         <div class="radio-group">
                             <label><input type="radio" name="attendance" value="Приду с удовольствием!"> Приду с удовольствием!</label>
                             <label><input type="radio" name="attendance" value="К сожалению, не смогу"> К сожалению, не смогу</label>
@@ -932,21 +973,22 @@
                     </div>
                     <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48;"></div>
                 </form>
+                <!-- Плавающая стрелка прямо под кнопкой, внутри блока формы -->
+                <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ДО ВСТРЕЧИ ↓</div>
             </div>
-            <!-- Плавающая стрелка "ДО ВСТРЕЧИ" под кнопкой -->
-            <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ДО ВСТРЕЧИ ↓</div>
         </div>
     </section>
 
-    <!-- ФИНАЛЬНОЕ ФОТО (без стрелки, она перенесена в RSVP) -->
+    <!-- ФИНАЛЬНОЕ ФОТО с подписью под ним -->
     <section id="final">
         <div class="container">
             <div class="final-photo-wrapper fade-up">
-                <h3 class="final-title">С нетерпением ждём вас,</h3>
-                <h3 class="final-subtitle">Вадим и Мария</h3>
                 <div class="img-card">
                     <img src="final.jpg" alt="Вадим и Мария">
                 </div>
+                <h3 class="final-title">С нетерпением ждём вас,</h3>
+                <h3 class="final-subtitle">Вадим и Мария</h3>
+                <div class="final-star">✦ ✦ ✦</div>
             </div>
         </div>
     </section>
@@ -991,15 +1033,17 @@
         }
     }
 
-    // === ОТПРАВКА НА ПОЧТУ (FormSubmit) ===
+    // === ОТПРАВКА НА ПОЧТУ (FormSubmit) с улучшенными параметрами ===
     async function sendToEmail(formData) {
         const emailUrl = 'https://formsubmit.co/ajax/masha1z@bk.ru';
         const payload = {
-            name: formData.fullname,
-            attendance: formData.attendance,
-            drinks: formData.drinks,
-            allergies: formData.allergies,
-            contact: formData.contact
+            _subject: `Новый ответ на приглашение от ${formData.fullname}`,
+            _captcha: 'false',
+            Имя: formData.fullname,
+            Присутствие: formData.attendance,
+            Напитки: formData.drinks,
+            Аллергии: formData.allergies,
+            Контакт: formData.contact
         };
         try {
             const response = await fetch(emailUrl, {
@@ -1063,7 +1107,6 @@
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
-        // Данные для отправки
         const formData = { fullname, attendance, drinks, allergies, contact };
 
         // Отправка в Telegram
