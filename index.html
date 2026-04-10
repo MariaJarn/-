@@ -35,7 +35,7 @@
         }
 
         html {
-            scroll-padding-top: 90px;
+            scroll-padding-top: 110px; /* увеличен, чтобы заголовок был виден */
             overflow-x: hidden;
             max-width: 100vw;
         }
@@ -240,9 +240,9 @@
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 80px;
-            padding: 20px 5px 20px;
+            padding: 12px 5px 16px;   /* уменьшена высота */
             max-width: 550px;
-            margin: 9vh auto 0;      /* ещё ниже */
+            margin: 11vh auto 0;      /* ещё ниже */
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
         }
@@ -259,21 +259,21 @@
         }
 
         .counter-number {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--gold-dark);
             background: white;
-            padding: 6px 12px;
+            padding: 4px 10px;
             border-radius: 40px;
-            min-width: 50px;
+            min-width: 45px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .counter-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 10px;
+            margin-top: 6px;
             color: var(--text-soft);
         }
 
@@ -296,6 +296,11 @@
             padding: 15px 15px;
             position: relative;
             background: transparent;
+        }
+
+        /* дополнительный отступ перед заголовком в секции приглашения */
+        #invitation {
+            padding-top: 40px;
         }
 
         .section-title {
@@ -416,7 +421,7 @@
             box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
-        /* Таймлайн — десктопная линия */
+        /* Таймлайн */
         .timeline-elegant {
             max-width: 800px;
             margin: 0 auto;
@@ -481,7 +486,6 @@
             margin-top: 5px;
         }
 
-        /* Мобильная версия таймлайна — свои линии между иконками */
         @media (max-width: 700px) {
             .timeline-elegant:before {
                 display: none;
@@ -491,10 +495,6 @@
                 align-items: flex-start;
                 padding-left: 80px;
                 margin-bottom: 45px;
-                position: relative;
-            }
-            .timeline-node:last-child {
-                margin-bottom: 0;
             }
             .timeline-node:not(:last-child):after {
                 content: '';
@@ -502,7 +502,7 @@
                 left: 21px;
                 top: 42px;
                 width: 2px;
-                height: calc(100% + 10px); /* соединяет текущую иконку со следующей */
+                height: calc(100% + 10px);
                 background: linear-gradient(to bottom, var(--gold-light), var(--rose-powder));
                 z-index: 1;
             }
@@ -513,10 +513,6 @@
             .timeline-desc { 
                 padding-left: 0; 
                 font-size: 1.2rem;
-            }
-            .timeline-icon {
-                left: 0;
-                top: 0;
             }
         }
 
@@ -536,7 +532,7 @@
             transition: transform 0.3s;
         }
 
-        /* Дресс-код — убраны подложки, уменьшен шрифт */
+        /* Дресс-код */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -566,12 +562,25 @@
             }
         }
 
-        /* Стили для текстов дресс-кода — уменьшенный размер */
-        .dresscode-text {
+        /* Общие стили для текстовых блоков дресс-кода с выравниванием по левому краю и полоской */
+        .dresscode-block {
+            text-align: left;
+            max-width: 700px;
+            margin: 20px auto;
+            padding-left: 20px;
+            border-left: 3px solid var(--gold-light);
+        }
+        .dresscode-large {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+        .dresscode-small {
             font-size: 1rem;
             color: var(--text-dark);
-            margin: 20px 0;
-            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .dresscode-small:last-child {
+            margin-bottom: 0;
         }
 
         /* ----- БЛОК ДАРОВ ----- */
@@ -657,8 +666,9 @@
         }
         .radio-group label, .checkbox-group label {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
             font-weight: normal;
             cursor: pointer;
             font-size: 1rem;
@@ -670,7 +680,13 @@
         }
         .radio-group input, .checkbox-group input {
             width: auto;
-            margin-right: 4px;
+            margin-right: 8px;
+            margin-bottom: 2px;
+        }
+        .radio-hint {
+            font-size: 0.75rem;
+            color: rgba(107, 93, 83, 0.6);
+            margin-left: 26px;
         }
         @media (min-width: 600px) {
             .radio-group {
@@ -743,19 +759,19 @@
             font-family: 'Great Vibes', cursive;
             font-size: 1.8rem;
             color: var(--gold-dark);
-            margin-bottom: 25px;
+            margin-bottom: 5px;
         }
         .final-star {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--gold-mid);
-            margin-top: 15px;
-            letter-spacing: 8px;
+            margin-top: 5px;
+            letter-spacing: 2px;
         }
 
         footer {
             background: #f1ebe3;
             text-align: center;
-            padding: 45px 20px;
+            padding: 25px 20px;  /* уменьшен padding */
             color: var(--text-soft);
             border-top: 1px solid rgba(212, 175, 106, 0.2);
             font-size: 1rem;
@@ -842,7 +858,7 @@
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
                     <p style="font-size: 1.1rem; margin: 15px 0; color: var(--text-dark);">Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
-                    <p style="margin-top: 35px; color: var(--text-dark);"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
+                    <p style="margin-top: 35px; color: var(--text-dark); font-size: 1.2rem;"><strong>Дата:</strong> 29 июня 2026 года<br><strong>Сбор гостей с 16:00</strong></p>
                 </div>
             </div>
         </div>
@@ -859,14 +875,18 @@
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub">обнимашки и тёплые прощания</span></div></div>
             </div>
         </div>
-        <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
+        <!-- увеличенные отступы для стрелки -->
+        <div class="scroll-hint" style="margin: 40px 0 40px;" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
     </section>
 
     <section id="dresscode">
         <div class="container">
             <h2 class="section-title fade-up">Дресс-код</h2>
-            <div class="fade-up-delayed" style="text-align: center;">
-                <p class="dresscode-text">Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.</p>
+            <div class="fade-up-delayed">
+                <!-- крупный текст -->
+                <div class="dresscode-block dresscode-large">
+                    Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.
+                </div>
                 
                 <div class="palette-grid">
                     <div class="palette-item" style="background: linear-gradient(145deg, #7b2f2f, #a15252);"></div>
@@ -880,15 +900,26 @@
                     <div class="palette-item" style="background: linear-gradient(145deg, #1a3a4a, #2c5b72);"></div>
                 </div>
                 
-                <p class="dresscode-text">Милым дамам предлагаем надеть коктейльные или вечерние платья.</p>
-                <p class="dresscode-text">Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
+                <!-- возвращённая стрелка -->
+                <div class="scroll-hint" style="margin: 30px 0 30px;" onclick="scrollToNext()">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
+                
+                <!-- текст для дам (мелкий, с полоской) -->
+                <div class="dresscode-block dresscode-small">
+                    Милым дамам предлагаем надеть коктейльные или вечерние платья.
+                </div>
+                <div class="dresscode-block dresscode-small">
+                    Будем благодарны, если в этот день белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.
+                </div>
                 
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                     <div class="dress-card"><img src="women2.jpg" alt="Женский образ 2"></div>
                 </div>
                 
-                <p class="dresscode-text">Джентльменов будем рады видеть в классических костюмах. Светлые тона в особом почёте, чёрный вовсе не обязателен.</p>
+                <!-- текст для джентльменов -->
+                <div class="dresscode-block dresscode-small">
+                    Джентльменов будем рады видеть в классических костюмах. Светлые тона в особом почёте, чёрный вовсе не обязателен.
+                </div>
                 
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
@@ -915,7 +946,8 @@
                     <span class="divider-line"></span>
                 </div>
                 
-                <p>Пожалуйста, не дарите нам цветы — мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина.</p>
+                <!-- новый текст -->
+                <p>Мы просим не дарить нам цветы, ведь мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина. Так наша домашняя библиотека и винотека наполнятся смыслом.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 25px auto;">
                     <img src="gift.jpg" alt="Подарки: книга и вино">
@@ -929,7 +961,6 @@
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
             <div class="fade-up-delayed" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <!-- Увеличенный текст -->
                 <p style="margin-bottom: 12px; color: var(--text-dark); font-size: 1.2rem;">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
                 <p style="margin-bottom: 6px; color: var(--text-dark); font-size: 1.2rem;">Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p style="margin-bottom: 2px; color: var(--text-dark);">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
@@ -940,15 +971,27 @@
             <div class="form-card fade-up-delayed">
                 <form id="weddingForm">
                     <div class="form-group">
-                        <label class="form-label">Ваше имя и фамилия</label> <!-- звездочка убрана -->
+                        <label class="form-label">Ваше имя и фамилия</label>
                         <input type="text" id="fullname" required placeholder="Александра Петрова">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Вы сможете присутствовать?</label> <!-- звездочка убрана -->
+                        <label class="form-label">Вы сможете присутствовать?</label>
                         <div class="radio-group">
-                            <label><input type="radio" name="attendance" value="Приду с удовольствием!"> Приду с удовольствием!</label>
-                            <label><input type="radio" name="attendance" value="К сожалению, не смогу"> К сожалению, не смогу</label>
-                            <label><input type="radio" name="attendance" value="Пока в раздумьях"> Пока в раздумьях</label>
+                            <label>
+                                <input type="radio" name="attendance" value="Приду с удовольствием!"> 
+                                <span>Приду с удовольствием!</span>
+                                <span class="radio-hint">(Правильный ответ)</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="attendance" value="К сожалению, не смогу"> 
+                                <span>К сожалению, не смогу</span>
+                                <span class="radio-hint">(Нежелательный ответ)</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="attendance" value="Пока в раздумьях, уточню до 01.05.2026"> 
+                                <span>Пока в раздумьях, уточню до 01.05.2026</span>
+                                <span class="radio-hint">(Подозрительный ответ)</span>
+                            </label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -973,13 +1016,13 @@
                     </div>
                     <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48;"></div>
                 </form>
-                <!-- Плавающая стрелка прямо под кнопкой, внутри блока формы -->
+                <!-- стрелка под кнопкой -->
                 <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ДО ВСТРЕЧИ ↓</div>
             </div>
         </div>
     </section>
 
-    <!-- ФИНАЛЬНОЕ ФОТО с подписью под ним -->
+    <!-- ФИНАЛЬНОЕ ФОТО -->
     <section id="final">
         <div class="container">
             <div class="final-photo-wrapper fade-up">
@@ -988,7 +1031,7 @@
                 </div>
                 <h3 class="final-title">С нетерпением ждём вас,</h3>
                 <h3 class="final-subtitle">Вадим и Мария</h3>
-                <div class="final-star">✦ ✦ ✦</div>
+                <div class="final-star">✦</div>
             </div>
         </div>
     </section>
@@ -1000,44 +1043,16 @@
 </footer>
 
 <script>
-    // Принудительный скролл в начало при загрузке
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     };
     history.scrollRestoration = 'manual';
 
-    // === TELEGRAM BOT INTEGRATION ===
-    const TELEGRAM_TOKEN = '8502606446:AAGREGXzyG0ImVrMajSScfPn-XArAPn7eiE';
-    const TELEGRAM_CHAT_ID = 'ЗАМЕНИТЕ_НА_ВАШ_CHAT_ID'; // ⚠️ ВАЖНО: Укажите ваш Chat ID
-
-    async function sendToTelegram(message) {
-        if (TELEGRAM_CHAT_ID.includes('ЗАМЕНИТЕ')) {
-            console.warn('Telegram Chat ID не указан. Сообщение не отправлено.');
-            return false;
-        }
-        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML'
-                })
-            });
-            return response.ok;
-        } catch (error) {
-            console.error('Ошибка отправки в Telegram:', error);
-            return false;
-        }
-    }
-
-    // === ОТПРАВКА НА ПОЧТУ (FormSubmit) с улучшенными параметрами ===
+    // === ОТПРАВКА НА ПОЧТУ (FormSubmit AJAX) ===
     async function sendToEmail(formData) {
         const emailUrl = 'https://formsubmit.co/ajax/masha1z@bk.ru';
         const payload = {
-            _subject: `Новый ответ на приглашение от ${formData.fullname}`,
+            _subject: 'Новый ответ на приглашение на свадьбу',
             _captcha: 'false',
             Имя: formData.fullname,
             Присутствие: formData.attendance,
@@ -1054,6 +1069,26 @@
             return response.ok;
         } catch (error) {
             console.error('Ошибка отправки на почту:', error);
+            return false;
+        }
+    }
+
+    // === TELEGRAM (опционально) ===
+    const TELEGRAM_TOKEN = '8502606446:AAGREGXzyG0ImVrMajSScfPn-XArAPn7eiE';
+    const TELEGRAM_CHAT_ID = 'ЗАМЕНИТЕ_НА_ВАШ_CHAT_ID';
+
+    async function sendToTelegram(message) {
+        if (TELEGRAM_CHAT_ID.includes('ЗАМЕНИТЕ')) return false;
+        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: 'HTML' })
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Ошибка Telegram:', error);
             return false;
         }
     }
@@ -1075,7 +1110,7 @@
         link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
 
-    // Скролл
+    // Плавный скролл по якорям
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1083,14 +1118,14 @@
             if (!targetId) return;
             const target = document.getElementById(targetId);
             if (target) {
-                const offset = 90;
+                const offset = 110;
                 const elementPosition = target.getBoundingClientRect().top + window.scrollY;
                 window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
             }
         });
     });
 
-    // Форма с отправкой в Telegram и на почту
+    // Обработка формы
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
     form.addEventListener('submit', async function(e) {
@@ -1109,24 +1144,24 @@
 
         const formData = { fullname, attendance, drinks, allergies, contact };
 
-        // Отправка в Telegram
+        // Отправка на почту
+        const emailSent = await sendToEmail(formData);
+        
+        // Отправка в Telegram (если настроен)
         const telegramMessage = `
-🕊️ <b>Новый ответ на приглашение</b>
+🕊️ <b>Новый ответ</b>
 👤 <b>Имя:</b> ${fullname}
 ✅ <b>Присутствие:</b> ${attendance}
 🥂 <b>Напитки:</b> ${drinks}
 ⚠️ <b>Аллергии:</b> ${allergies}
-📞 <b>Контакты:</b> ${contact}
+📞 <b>Контакт:</b> ${contact}
         `.trim();
         const telegramSent = await sendToTelegram(telegramMessage);
 
-        // Отправка на почту
-        const emailSent = await sendToEmail(formData);
-
-        if (telegramSent || emailSent) {
-            messageDiv.innerHTML = `Спасибо, ${fullname}! Ваш ответ отправлен.`;
+        if (emailSent || telegramSent) {
+            messageDiv.innerHTML = `Спасибо, ${fullname}! Мы получили ваш ответ.`;
         } else {
-            messageDiv.innerHTML = `Спасибо, ${fullname}! (Возникла ошибка при отправке, но мы вас услышали)`;
+            messageDiv.innerHTML = `Спасибо, ${fullname}! (Ошибка отправки, попробуйте позже или напишите нам напрямую)`;
         }
         form.reset();
         setTimeout(() => messageDiv.innerHTML = '', 5000);
