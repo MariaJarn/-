@@ -1111,7 +1111,7 @@
                     const navbarHeight = navbar.offsetHeight;
                     const elementPosition = target.getBoundingClientRect().top + window.scrollY;
                     // Увеличен отступ до 30px для точного позиционирования заголовка
-                    window.scrollTo({ top: elementPosition - navbarHeight - 0, behavior: 'smooth' });
+                    window.scrollTo({ top: elementPosition - navbarHeight - 2, behavior: 'smooth' });
                 }
             }
             document.getElementById('navLinks').classList.remove('active');
