@@ -55,29 +55,23 @@
         }
 
         /* Единый стиль для основного текста */
-        .main-text, 
-        .invite-text p,
-        .location-description p,
-        .dresscode-center,
-        .dresscode-left,
-        .gifts-text p:not(.contacts-small),
-        .final-title {
+        .main-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             color: var(--text-dark);
-            line-height: 1.4;
+            line-height: 1.3;  /* уменьшен межстрочный интервал */
         }
 
         /* Уточнения, мелкий текст */
-        .small-text, 
-        .contacts-small,
-        .radio-hint,
-        .timeline-sub {
+        .small-text {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             color: var(--text-soft);
         }
+
         .radio-hint {
             font-size: 0.75rem;
+            margin-left: 32px;  /* выравнивание под текстом, а не под кнопкой */
         }
 
         h1, h2, h3, .nav-links a, .btn, .timeline-time, .form-label, .counter-number {
@@ -261,10 +255,10 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Таймер — короче, выше */
+        /* Таймер — изменённые пропорции */
         .hero-timer-wrapper {
             position: absolute;
-            bottom: 70px;
+            bottom: 50px;
             left: 0;
             right: 0;
             display: flex;
@@ -275,8 +269,8 @@
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 6px 20px;
-            max-width: 360px;
+            padding: 12px 15px 6px 15px;
+            max-width: 300px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
@@ -284,47 +278,47 @@
         .counter-grid {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         .counter-item {
             text-align: center;
         }
         .counter-number {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--gold-dark);
             background: white;
-            padding: 3px 8px;
+            padding: 2px 6px;
             border-radius: 30px;
-            min-width: 38px;
+            min-width: 34px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
         .counter-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 4px;
+            margin-top: 2px;
             color: var(--text-soft);
         }
         @media (max-width: 768px) {
             .hero-timer-wrapper {
-                bottom: 65px;
+                bottom: 45px;
             }
             .countdown-wrapper {
-                padding: 4px 12px;
-                max-width: 320px;
+                padding: 8px 12px 4px 12px;
+                max-width: 260px;
             }
             .counter-number {
-                font-size: 1rem;
-                padding: 2px 6px;
-                min-width: 32px;
+                font-size: 0.9rem;
+                padding: 1px 4px;
+                min-width: 28px;
             }
         }
 
         .hero .scroll-hint {
             position: absolute;
-            bottom: 1.5rem;
+            bottom: 1rem;
             left: 0;
             right: 0;
             margin-top: 0;
@@ -506,9 +500,6 @@
         }
         .timeline-sub {
             display: block;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 400;
-            font-style: normal;
             margin-top: 5px;
         }
 
@@ -588,13 +579,15 @@
             }
         }
 
-        .dresscode-center,
-        .dresscode-left {
+        .dresscode-center {
+            text-align: center;
             max-width: 700px;
             margin: 20px auto;
         }
         .dresscode-left {
             text-align: justify;
+            max-width: 700px;
+            margin: 20px auto;
             padding-left: 20px;
             border-left: 3px solid var(--gold-light);
         }
@@ -815,6 +808,14 @@
                 padding: 10px 15px;
             }
         }
+
+        /* Дополнительное выравнивание для текста RSVP */
+        .rsvp-info p {
+            margin-bottom: 12px;
+        }
+        .rsvp-info p:last-of-type {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -866,8 +867,8 @@
                     <img src="couple2.jpg" alt="Вадим и Мария">
                 </div>
             </div>
-            <div class="invite-text fade-up">
-                <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
+            <div class="invite-text fade-up main-text">
+                <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы!<br>Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
                 <div class="mobile-scroll-hint scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
             </div>
         </div>
@@ -880,7 +881,7 @@
                 <div class="img-card">
                     <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
-                <div class="location-description">
+                <div class="location-description main-text">
                     <h3 style="font-size: 2.2rem; font-family: 'Playfair Display'; color: var(--gold-dark);">Celebrio Hall</h3>
                     <p>Банкетный зал и парк у реки<br>Парк им. 1 Мая, Центральный проезд, 7 ст4</p>
                     <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-gold"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
@@ -959,10 +960,10 @@
     <section id="gifts">
         <div class="container">
             <h2 class="section-title fade-up">О дарах сердца</h2>
-            <div class="gifts-text fade-up">
+            <div class="gifts-text fade-up main-text">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <p class="contacts-small small-text">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                <p class="small-text">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 30px auto;">
                     <img src="bank.jpg" alt="Семейный банк">
@@ -974,7 +975,8 @@
                     <span class="divider-line"></span>
                 </div>
                 
-                <p>Пожалуйста, не дарите нам цветы, мы не успеем насладиться их красотой. Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина. Так наша домашняя библиотека и винотека наполнятся смыслом.</p>
+                <p>Пожалуйста, не дарите нам цветы, мы не успеем насладиться их красотой.</p>
+                <p>Если для вас важно сделать нам комплимент, мы будем рады вашей любимой книге с тёплыми словами внутри или бутылке красного вина. Так наша домашняя библиотека и винотека наполнятся смыслом.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 30px auto;">
                     <img src="gift.jpg" alt="Подарки: книга и вино">
@@ -987,13 +989,13 @@
     <section id="rsvp">
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
-            <div class="fade-up" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <p style="margin-bottom: 12px;">Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
-                <p style="margin-bottom: 6px;">Заполните форму ниже или свяжитесь с нами напрямую:</p>
-                <p style="margin-bottom: 2px;">Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
-                <p style="margin-bottom: 16px; white-space: nowrap;">Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
+            <div class="fade-up rsvp-info main-text" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
+                <p>Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
+                <p>Заполните форму ниже или свяжитесь с нами напрямую:</p>
+                <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
+                <p>Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
                 <p>Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
-                <p style="margin-top: 12px;">Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
+                <p>Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
             </div>
             <div class="form-card fade-up">
                 <form id="weddingForm">
@@ -1009,21 +1011,21 @@
                                     <input type="radio" name="attendance" value="Приду с удовольствием!" id="attend_yes">
                                     <label for="attend_yes">Приду с удовольствием!</label>
                                 </div>
-                                <div class="radio-hint small-text">(Правильный ответ)</div>
+                                <div class="radio-hint">(Правильный ответ)</div>
                             </div>
                             <div class="radio-option">
                                 <div class="radio-row">
                                     <input type="radio" name="attendance" value="К сожалению, не смогу" id="attend_no">
                                     <label for="attend_no">К сожалению, не смогу</label>
                                 </div>
-                                <div class="radio-hint small-text">(Нежелательный ответ)</div>
+                                <div class="radio-hint">(Нежелательный ответ)</div>
                             </div>
                             <div class="radio-option">
                                 <div class="radio-row">
                                     <input type="radio" name="attendance" value="Пока в раздумьях, уточню до 01.05.2026" id="attend_maybe">
                                     <label for="attend_maybe">Пока в раздумьях, уточню до 01.05.2026</label>
                                 </div>
-                                <div class="radio-hint small-text">(Подозрительный ответ)</div>
+                                <div class="radio-hint">(Подозрительный ответ)</div>
                             </div>
                         </div>
                     </div>
@@ -1049,7 +1051,7 @@
                     </div>
                     <div id="formMessage" style="margin-top: 15px; text-align: center; color: #b48c48;"></div>
                 </form>
-                <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ДО ВСТРЕЧИ ↓</div>
+                <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ТУТ СМОТРИМ В ВАШИ ГЛАЗА, ЧТОБЫ ВЫ ПРИНЯЛИ ПРАВИЛЬНОЕ РЕШЕНИЕ ↓</div>
             </div>
         </div>
     </section>
@@ -1105,7 +1107,7 @@
         }
     });
 
-    // === ФОРМА ОТПРАВКИ (FormSubmit) ===
+    // === ФОРМА ОТПРАВКИ (FormSubmit) — полностью переписана ===
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
@@ -1127,6 +1129,7 @@
         const payload = {
             _subject: 'Новый ответ на приглашение на свадьбу',
             _captcha: 'false',
+            _template: 'table',
             'Имя': fullname,
             'Присутствие': attendance,
             'Напитки': drinks,
@@ -1141,21 +1144,21 @@
                 body: JSON.stringify(payload)
             });
             const result = await response.json();
+            console.log('Ответ FormSubmit:', result);
             if (response.ok && result.success === true) {
                 messageDiv.innerHTML = `Спасибо, ${fullname}! Мы получили ваш ответ.`;
                 messageDiv.style.color = '#2c6e3f';
                 form.reset();
             } else {
-                throw new Error('Ошибка сервера');
+                throw new Error('Ошибка при отправке');
             }
         } catch (error) {
-            console.error('Ошибка отправки:', error);
+            console.error('Ошибка:', error);
             messageDiv.innerHTML = `Спасибо, ${fullname}! (Ошибка отправки, попробуйте позже или напишите нам напрямую)`;
             messageDiv.style.color = '#b48c48';
         }
         setTimeout(() => {
             messageDiv.innerHTML = '';
-            messageDiv.style.color = '#b48c48';
         }, 5000);
     });
 
