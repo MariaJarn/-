@@ -236,16 +236,19 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* ТАЙМЕР — переписан */
+        /* ТАЙМЕР — отцентрирован по вертикали, опущен ниже */
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 8px 5px 12px;
+            padding: 20px 5px 20px;   /* увеличены отступы для центрирования содержимого */
             max-width: 480px;
-            margin: 14vh auto 0;
+            margin: 16vh auto 0;      /* опущен ниже */
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .counter-grid {
@@ -274,7 +277,7 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 4px;
+            margin-top: 6px;
             color: var(--text-soft);
         }
 
@@ -759,12 +762,6 @@
             margin-top: 20px;
             margin-bottom: 10px;
         }
-        .final-subtitle {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
-            color: var(--gold-dark);
-            margin-bottom: 5px;
-        }
         .final-star {
             font-size: 1.8rem;
             color: var(--gold-mid);
@@ -842,7 +839,7 @@
             <div class="grid-2">
                 <div class="invite-text fade-up-delayed">
                     <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы! Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
-                    <div class="mobile-scroll-hint scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
+                    <div class="mobile-scroll-hint scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
                 </div>
                 <div class="img-card fade-up-delayed">
                     <img src="couple2.jpg" alt="Вадим и Мария">
@@ -873,9 +870,9 @@
         <div class="container">
             <h2 class="section-title fade-up">План торжества</h2>
             <div class="timeline-elegant fade-up-delayed">
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub">лёгкие закуски и напитки</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub">самый трогательный момент</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub">тёплая атмосфера</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub">Вас ждут новые знакомства, лёгкие закуски и прохладительные напитки</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub">Самый трогательный момент нашего праздника</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub">Время танцев и безудержного веселья</span></div></div>
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub">обнимашки и тёплые прощания</span></div></div>
             </div>
         </div>
@@ -886,7 +883,6 @@
         <div class="container">
             <h2 class="section-title fade-up">Дресс-код</h2>
             <div class="fade-up-delayed">
-                <!-- Крупный текст с центрированием -->
                 <div class="dresscode-center">
                     Мы не настаиваем на чётком соблюдении дресс-кода, но будем рады, если вы поддержите настроение нашей цветовой палитры.
                 </div>
@@ -905,30 +901,29 @@
                 
                 <div class="scroll-hint" style="margin: 30px 0 30px;" onclick="scrollToNext()">↓ ПРИМЕРЫ НАРЯДОВ ↓</div>
                 
-                <!-- Текст для дам (одна сплошная полоса) -->
-                <div class="dresscode-left">
-                    Милым дамам предлагаем надеть коктейльные или вечерние платья. Будем благодарны, если белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.
-                </div>
-                
+                <!-- Женские фото ПЕРЕД текстом -->
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="women.jpg" alt="Женский образ"></div>
                     <div class="dress-card"><img src="women2.jpg" alt="Женский образ 2"></div>
                 </div>
                 
-                <!-- Разделитель -->
+                <div class="dresscode-left">
+                    Милым дамам предлагаем надеть коктейльные или вечерние платья. Будем благодарны, если белый останется привилегией невесты. А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.
+                </div>
+                
                 <div class="divider-elegant">
                     <span class="divider-line"></span>
                     <span class="divider-icon">✦</span>
                     <span class="divider-line"></span>
                 </div>
                 
-                <!-- Текст для джентльменов -->
-                <div class="dresscode-left">
-                    Джентльменов будем рады видеть в классических костюмах. Светлые тона в особом почёте, чёрный вовсе не обязателен.
-                </div>
-                
+                <!-- Мужские фото ПЕРЕД текстом -->
                 <div class="dress-gallery">
                     <div class="dress-card"><img src="men.jpg" alt="Мужской образ"></div>
+                </div>
+                
+                <div class="dresscode-left">
+                    Джентльменов будем рады видеть в классических костюмах. Светлые тона в особом почёте, чёрный вовсе не обязателен.
                 </div>
             </div>
         </div>
@@ -1039,8 +1034,7 @@
                 <div class="img-card">
                     <img src="final.jpg" alt="Вадим и Мария">
                 </div>
-                <h3 class="final-title">С нетерпением ждём вас,</h3>
-                <h3 class="final-subtitle">Вадим и Мария</h3>
+                <div class="final-title">Ждём вас с любовью и трепетом, Вадим и Мария</div>
                 <div class="final-star">✦</div>
             </div>
         </div>
@@ -1058,21 +1052,17 @@
     };
     history.scrollRestoration = 'manual';
 
-    // === ОТПРАВКА НА ПОЧТУ через Web3Forms (альтернатива FormSubmit) ===
+    // === ОТПРАВКА НА ПОЧТУ через FormSubmit (AJAX) ===
     async function sendToEmail(formData) {
-        // Используем бесплатный сервис Web3Forms (не требует бэкенда)
-        const accessKey = '4e6e6c6e-6d1c-4c7e-8a1a-9f2b3c4d5e6f'; // публичный тестовый ключ, замените на свой при необходимости
-        const emailUrl = 'https://api.web3forms.com/submit';
+        const emailUrl = 'https://formsubmit.co/ajax/masha1z@bk.ru';
         const payload = {
-            access_key: accessKey,
-            subject: 'Новый ответ на приглашение на свадьбу',
-            from_name: formData.fullname,
-            name: formData.fullname,
-            attendance: formData.attendance,
-            drinks: formData.drinks,
-            allergies: formData.allergies,
-            contact: formData.contact,
-            _captcha: 'false'
+            _subject: 'Новый ответ на приглашение на свадьбу',
+            _captcha: 'false',
+            Имя: formData.fullname,
+            Присутствие: formData.attendance,
+            Напитки: formData.drinks,
+            Аллергии: formData.allergies,
+            Контакт: formData.contact
         };
         try {
             const response = await fetch(emailUrl, {
@@ -1081,8 +1071,8 @@
                 body: JSON.stringify(payload)
             });
             const result = await response.json();
-            console.log('Web3Forms response:', result);
-            return response.ok && result.success;
+            console.log('FormSubmit response:', result);
+            return response.ok && result.success !== false;
         } catch (error) {
             console.error('Ошибка отправки на почту:', error);
             return false;
@@ -1160,7 +1150,7 @@
 
         const formData = { fullname, attendance, drinks, allergies, contact };
 
-        // Отправка на почту через Web3Forms
+        // Отправка на почту
         const emailSent = await sendToEmail(formData);
         
         // Отправка в Telegram (если настроен)
