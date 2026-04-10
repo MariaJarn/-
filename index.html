@@ -71,7 +71,7 @@
 
         .radio-hint {
             font-size: 0.75rem;
-            margin-left: 32px;
+            margin-left: 38px; /* смещены вправо */
         }
 
         h1, h2, h3, .nav-links a, .btn, .timeline-time, .form-label, .counter-number {
@@ -255,13 +255,12 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Таймер и стрелка внизу hero — обычный поток */
         .hero-bottom {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            margin-bottom: 2vh;
+            margin-bottom: 4vh; /* смещено вниз */
         }
 
         .countdown-wrapper {
@@ -316,7 +315,7 @@
                 min-width: 36px;
             }
             .hero-bottom {
-                margin-bottom: 3vh;
+                margin-bottom: 5vh;
             }
         }
 
@@ -411,7 +410,7 @@
 
         /* Секция приглашения */
         .invite-photo {
-            max-width: 500px;
+            max-width: 440px; /* уменьшено */
             margin: 0 auto 30px;
         }
         .invite-text {
@@ -503,6 +502,7 @@
         .timeline-sub {
             display: block;
             margin-top: 5px;
+            font-style: italic; /* курсив */
         }
 
         @media (max-width: 700px) {
@@ -551,7 +551,7 @@
             transition: transform 0.3s;
         }
 
-        /* Дресс-код */
+        /* Дресс-код — новые стили: центрирование, скруглённые рамки */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -587,11 +587,13 @@
             margin: 20px auto;
         }
         .dresscode-left {
-            text-align: justify;
+            text-align: center;
             max-width: 700px;
             margin: 20px auto;
-            padding-left: 20px;
-            border-left: 3px solid var(--gold-light);
+            padding: 15px 20px;
+            border-top: 2px solid var(--gold-light);
+            border-bottom: 2px solid var(--gold-light);
+            border-radius: 30px;
         }
         .dresscode-left p {
             margin-bottom: 10px;
@@ -640,7 +642,7 @@
         .form-card {
             background: var(--white-linen);
             border-radius: 48px;
-            padding: 40px 30px;
+            padding: 40px 30px 25px 30px; /* уменьшен нижний отступ */
             box-shadow: var(--shadow-premium);
             max-width: 920px;
             margin: 0 auto;
@@ -1052,7 +1054,7 @@
                     </div>
                     <div id="formMessage" style="margin-top: 15px; text-align: center; font-weight: 500;"></div>
                 </form>
-                <div class="scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ КОЕ-ЧТО ДЛЯ ВАС ↓</div>
+                <div class="scroll-hint" style="margin-top: 10px;" onclick="scrollToNext()">↓ КОЕ-ЧТО ДЛЯ ВАС ↓</div>
             </div>
         </div>
     </section>
@@ -1108,7 +1110,7 @@
         }
     });
 
-    // === ФОРМА ОТПРАВКИ (FormSubmit) — по инструкции ===
+    // === ФОРМА ОТПРАВКИ (FormSubmit) ===
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
