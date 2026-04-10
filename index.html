@@ -20,7 +20,7 @@
             --gold-mid: #d4af6a;
             --gold-dark: #b48c48;
             --rose-powder: #e3cbc1;
-            --text-dark: #3a2e26;
+            --text-dark: #3b2a1f;  /* темно-шоколадный */
             --text-soft: #6b5d53;
             --white-linen: #ffffff;
             --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(212, 175, 106, 0.1);
@@ -66,13 +66,13 @@
         .small-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            color: #b0a394;  /* более мягкий и бледный */
+            color: #b0a394;
             font-weight: 300;
         }
 
         .radio-hint {
             font-size: 0.75rem;
-            margin-left: 48px; /* смещены правее */
+            margin-left: 48px;
         }
 
         h1, h2, h3, .nav-links a, .btn, .timeline-time, .form-label, .counter-number {
@@ -229,7 +229,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 10vh 0 10vh 0;  /* увеличен нижний отступ для опускания конструкции */
+            padding: 10vh 0 8vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
@@ -261,18 +261,23 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            margin-bottom: 0;  /* убран лишний отступ */
+            margin-bottom: 2vh;
         }
 
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 60px;
-            padding: 8px 20px 16px 20px;  /* вытянут вверх */
+            padding: 0;
             max-width: 360px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(212,175,106,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 85px;
         }
 
         .counter-grid {
@@ -307,13 +312,16 @@
 
         @media (max-width: 768px) {
             .countdown-wrapper {
-                padding: 6px 15px 12px 15px;
                 max-width: 320px;
+                min-height: 75px;
             }
             .counter-number {
                 font-size: 1rem;
                 padding: 3px 6px;
                 min-width: 36px;
+            }
+            .hero-bottom {
+                margin-bottom: 4vh;
             }
         }
 
@@ -408,8 +416,8 @@
 
         /* Секция приглашения */
         .invite-photo {
-            max-width: 400px;  /* уменьшено */
-            margin: 0 auto 15px;  /* отступ уменьшен */
+            max-width: 400px;
+            margin: 0 auto 15px;
         }
         .invite-text {
             text-align: center;
@@ -551,7 +559,7 @@
             transition: transform 0.3s;
         }
 
-        /* Дресс-код — градиентный фон с эффектом ткани */
+        /* Дресс-код — новая элегантная заливка */
         .dress-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -592,18 +600,15 @@
             margin: 20px auto;
             padding: 20px 25px;
             border-radius: 40px;
-            background: radial-gradient(circle at 30% 40%, rgba(228,196,142,0.12) 0%, rgba(212,175,106,0.05) 70%, rgba(228,196,142,0.02) 100%),
-                        repeating-linear-gradient(45deg, rgba(212,175,106,0.03) 0px, rgba(212,175,106,0.03) 2px, transparent 2px, transparent 8px);
-            box-shadow: 0 8px 20px -10px rgba(0,0,0,0.05);
+            background: rgba(228,196,142,0.06);
+            border: 1px solid rgba(212,175,106,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
         .dresscode-left p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .dresscode-left p:last-child {
             margin-bottom: 0;
-        }
-        .dresscode-left p + p {
-            margin-top: 0;
         }
 
         /* ----- БЛОК ДАРОВ ----- */
@@ -623,6 +628,11 @@
             color: var(--gold-dark);
             text-decoration: none;
             border-bottom: 1px dashed var(--gold-light);
+        }
+        .contacts-small {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #5a4a3e; /* темнее, чем было */
         }
         .divider-elegant {
             display: flex;
@@ -757,7 +767,7 @@
         @media (max-width: 800px) {
             .mobile-scroll-hint {
                 display: block;
-                margin: 15px 0 5px;
+                margin: 15px 0 30px; /* увеличен нижний отступ */
             }
         }
         @keyframes bounce {
@@ -876,7 +886,7 @@
             </div>
             <div class="invite-text fade-up main-text">
                 <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы!<br>Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
-                <div class="mobile-scroll-hint scroll-hint" style="margin-top: 30px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
+                <div class="mobile-scroll-hint scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
             </div>
         </div>
     </section>
@@ -939,7 +949,8 @@
                 </div>
                 
                 <div class="dresscode-left main-text">
-                    <p>Милым дамам предлагаем надеть коктейльные или вечерние платья.<br>Будем благодарны, если белый останется привилегией невесты.<br>А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
+                    <p>Милым дамам предлагаем надеть коктейльные или вечерние платья.</p>
+                    <p>Будем благодарны, если белый останется привилегией невесты.<br>А вдохновением для цвета вашего наряда пусть послужит природа: зелень, терракота, бордо, пыльная роза, небесная гамма и всё, что подскажет вам фантазия.</p>
                 </div>
                 
                 <div class="dress-gallery" style="margin-top: 20px;">
@@ -970,7 +981,7 @@
             <div class="gifts-text fade-up main-text">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего — порадуйте нас конвертом или переводом на карты Сбера, Т-Банка или Газпромбанка по нашим номерам:</p>
-                <p class="small-text">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 
                 <div class="img-card" style="max-width: 400px; margin: 30px auto;">
                     <img src="bank.jpg" alt="Семейный банк">
@@ -1098,7 +1109,8 @@
                 if (target) {
                     const navbarHeight = navbar.offsetHeight;
                     const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: elementPosition - navbarHeight - 20, behavior: 'smooth' });
+                    // Увеличен отступ до 30px для точного позиционирования заголовка
+                    window.scrollTo({ top: elementPosition - navbarHeight - 30, behavior: 'smooth' });
                 }
             }
             document.getElementById('navLinks').classList.remove('active');
@@ -1114,7 +1126,7 @@
         }
     });
 
-    // === ФОРМА ОТПРАВКИ (FormSubmit) — исправленная версия ===
+    // === ФОРМА ОТПРАВКИ (FormSubmit) ===
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
