@@ -21,7 +21,7 @@
             --gold-dark: #b48c48;
             --rose-powder: #e3cbc1;
             --dusty-pink: #d4b4c4;
-            --text-dark: #7a5a48;
+            --text-dark: #7a5a48; /* шоколадный, не тёмный */
             --text-soft: #6b5d53;
             --white-linen: #ffffff;
             --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(212, 175, 106, 0.1);
@@ -555,7 +555,7 @@
         .invite-text-simple {
             text-align: center;
             max-width: 800px;
-            margin: 40px auto 20px;
+            margin: 20px auto 20px; /* уменьшен отступ сверху */
         }
 
         /* Изящная кнопка 2ГИС */
@@ -608,6 +608,7 @@
         .bank-details {
             font-size: 1rem;
             margin-top: 5px;
+            margin-bottom: 0; /* убран отступ снизу */
         }
         .bank-details .phone-link {
             font-size: 1rem;
@@ -620,7 +621,7 @@
             font-size: 0.85rem;
             color: #b8a898;
             letter-spacing: 0.3px;
-            margin-top: 0;
+            margin-top: 0; /* убран отступ */
         }
 
         /* Объемная кнопка с переливом */
@@ -1021,6 +1022,9 @@
             section {
                 padding: 10px 15px;
             }
+            .location-info {
+                margin-top: 0;
+            }
         }
     </style>
 </head>
@@ -1103,11 +1107,11 @@
                 <div class="img-card">
                     <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
-                <div class="location-description main-text location-info">
+                <div class="location-description main-text location-info" style="margin-top: 0;">
                     <div class="venue-name" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, #b48c48, #e4c48e, #d4af6a); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.5rem;">Celebrio Hall</div>
                     <div class="venue-sub" style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(107, 76, 58, 0.7); margin-bottom: 20px;">Банкетный зал и парк у реки</div>
                     
-                    <div class="address-line"><span class="address-label">Адрес площадки:</span> Парк им. 1 Мая, Центральный проезд, 7 ст4</div>
+                    <div class="address-line"><span class="address-label">Адрес площадки:</span><br> Парк им. 1 Мая, Центральный проезд, 7 ст4</div>
                     <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
                     <div class="datetime-info">
                         <strong>Дата:</strong> 29 июня 2026<br>
@@ -1400,7 +1404,7 @@
         });
     }
 
-    // Отправка формы
+    // Отправка формы через FormSubmit (рабочий вариант с двумя адресами)
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
@@ -1424,24 +1428,21 @@
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
-        const payload = {
-            _subject: 'Новый ответ на свадебное приглашение',
-            _captcha: 'false',
-            name: fullname,
-            attendance: attendance,
-            drinks: drinksStr,
-            allergies: allergies,
-            contact: contact
-        };
+        // Используем FormData для отправки (формат application/x-www-form-urlencoded)
+        const formData = new FormData();
+        formData.append('_subject', 'Новый ответ на свадебное приглашение');
+        formData.append('_cc', 'vadik0597@yandex.ru'); // копия второму адресу
+        formData.append('_captcha', 'false');
+        formData.append('name', fullname);
+        formData.append('attendance', attendance);
+        formData.append('drinks', drinksStr);
+        formData.append('allergies', allergies);
+        formData.append('contact', contact);
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/masha1z@bk.ru,vadik0597@yandex.ru', {
+            const response = await fetch('https://formsubmit.co/ajax/masha1z@bk.ru', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(payload)
+                body: formData
             });
             
             if (response.ok) {
