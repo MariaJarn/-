@@ -555,8 +555,19 @@
         .invite-text-simple {
             text-align: center;
             max-width: 800px;
-            margin: 15px auto 20px; /* уменьшили отступ сверху на 5px */
+            margin: 15px auto 20px;
         }
+        /* Добавляем отступы после указанных абзацев */
+        .invite-text-simple p:first-of-type {
+            margin-bottom: 1.2em;
+        }
+        .dresscode-left p:first-of-type {
+            margin-bottom: 1.2em;
+        }
+        .dresscode-left p:last-of-type {
+            margin-top: 0;
+        }
+        /* Для блока "в классике" это последний абзац в dresscode-left, отступ сверху не нужен */
 
         /* Изящная кнопка 2ГИС */
         .btn-map {
@@ -1125,7 +1136,8 @@
                 <span class="divider-line"></span>
             </div>
             <div class="invite-text-simple fade-up main-text">
-                <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы!</p></p>Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
+                <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы!</p>
+                <p>Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
             </div>
             <div class="mobile-scroll-hint scroll-hint" style="margin-top: 55px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
         </div>
@@ -1234,7 +1246,7 @@
                 <p>Если душа просит большего, мы будем рады лёгким конвертам для свершения мечт нашей молодой семьи.</p>
                 <p>На случай, если строгая простота цифр вам милее шелеста бумаги, мы оставляем свои банковские явки и пароли:</p>
                 <div class="bank-details">
-                    <p>Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.<br>
+                    <p>Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 </div>
                 <div class="bank-small">(Сбер, Т-Банк, Газпромбанк)</div>
                 
@@ -1362,6 +1374,13 @@
 </div>
 
 <script>
+    // Принудительная прокрутка в начало страницы при загрузке (даже после обновления)
+    window.scrollTo(0, 0);
+    // Также отключаем автосохранение позиции прокрутки браузером
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
     // Прелоадер
     const preloader = document.getElementById('preloader');
     const counterDisplay = document.getElementById('counterDisplay');
@@ -1401,7 +1420,7 @@
         }
     }
 
-    // Плавная навигация с корректным смещением (увеличили отступ для пункта "Приглашение")
+    // Плавная навигация с корректным смещением
     const navbar = document.querySelector('.navbar');
     const navLinksAnchors = document.querySelectorAll('.nav-links a');
     
@@ -1414,7 +1433,6 @@
                 if (target) {
                     const navbarHeight = navbar.offsetHeight;
                     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-                    // Для секции приглашения увеличиваем отступ, чтобы не видно было низа hero
                     let offset = navbarHeight + 20;
                     if (targetId === 'invitation') {
                         offset = navbarHeight + 40;
