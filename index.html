@@ -19,7 +19,7 @@
             --gold-light: #e4c48e;
             --gold-mid: #d4af6a;
             --gold-dark: #b48c48;
-            --rose-powder: #e3cbc1;
+            --rose-powder: #d8b4c0;
             --text-dark: #6b4c3a;
             --text-soft: #6b5d53;
             --white-linen: #ffffff;
@@ -54,7 +54,7 @@
             max-width: 100vw;
         }
 
-        /* -------------------- ПРЕЛОАДЕР (СО ЗВЁЗДОЧКАМИ) -------------------- */
+        /* -------------------- ПРЕЛОАДЕР (С ✦) -------------------- */
         .preloader {
             position: fixed;
             top: 0;
@@ -81,7 +81,7 @@
             position: relative;
             z-index: 2;
         }
-        /* Звёздочки на фоне прелоадера */
+        /* Звёздочки ✦ на фоне */
         .preloader-stars {
             position: absolute;
             top: 0;
@@ -90,16 +90,17 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            font-family: 'Great Vibes', cursive;
         }
-        .preloader-stars i {
+        .star-symbol {
             position: absolute;
-            color: rgba(212, 175, 106, 0.3);
-            font-size: 1.2rem;
-            animation: twinkle 2s infinite alternate;
+            color: rgba(212, 175, 106, 0.4);
+            font-size: 1.6rem;
+            animation: twinkle 2.5s infinite alternate;
         }
         @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 0.7; transform: scale(1.2); }
+            0% { opacity: 0.2; transform: scale(0.7); }
+            100% { opacity: 0.8; transform: scale(1.2); }
         }
         .preloader-ring {
             width: 90px;
@@ -121,13 +122,6 @@
             color: var(--gold-dark);
             margin-bottom: 10px;
         }
-        .preloader-sub {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            color: var(--text-soft);
-            margin-bottom: 20px;
-        }
         .preloader-counter {
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
@@ -146,7 +140,7 @@
         /* Основной контент */
         .main-content {
             opacity: 0;
-            transition: opacity 1s ease 0.2s;
+            transition: opacity 0.8s ease;
         }
         .main-content.visible {
             opacity: 1;
@@ -286,7 +280,7 @@
             }
         }
 
-        /* ----- HERO (без зума, с плавным появлением) ----- */
+        /* ----- HERO (без зума, с анимацией после прелоадера) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -340,10 +334,9 @@
             margin-bottom: 1rem;
             color: rgba(255,248,235,0.95);
             opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 0.3s;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
         }
-
         .hero-date {
             font-size: 1.6rem;
             font-weight: 400;
@@ -355,25 +348,9 @@
             letter-spacing: 3px;
             font-family: 'Cormorant Garamond', serif;
             opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 0.6s;
+            transform: translateY(30px);
+            transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-top {
-            margin-bottom: 350px;
-        }
-
         .hero-bottom {
             display: flex;
             flex-direction: column;
@@ -382,8 +359,15 @@
             margin-bottom: 2vh;
             margin-top: 450px;
             opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 0.9s;
+            transform: translateY(30px);
+            transition: opacity 1s ease 0.4s, transform 1s ease 0.4s;
+        }
+        /* Класс для запуска анимации после прелоадера */
+        .hero-animate .hero-veneer,
+        .hero-animate .hero-date,
+        .hero-animate .hero-bottom {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .countdown-wrapper {
@@ -573,46 +557,46 @@
             box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
-        /* КАЛЕНДАРЬ — маленькая элегантная карточка */
+        /* МИНИ-КАЛЕНДАРЬ (уменьшенный) */
         .mini-calendar {
-            max-width: 320px;
-            margin: 20px auto 30px;
+            max-width: 280px;
+            margin: 30px auto 20px;
             background: rgba(255, 255, 245, 0.7);
             backdrop-filter: blur(4px);
-            border-radius: 28px;
-            padding: 12px 12px 16px;
+            border-radius: 24px;
+            padding: 8px 8px 12px;
             box-shadow: var(--shadow-glow);
             border: 1px solid rgba(212, 175, 106, 0.3);
             text-align: center;
         }
         .mini-calendar .cal-header {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--gold-dark);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             letter-spacing: 1px;
         }
         .mini-calendar .cal-weekdays {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            margin-bottom: 8px;
-            font-size: 0.7rem;
+            gap: 2px;
+            margin-bottom: 5px;
+            font-size: 0.6rem;
             font-weight: 600;
             color: var(--text-soft);
         }
         .mini-calendar .cal-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
+            gap: 3px;
         }
         .mini-calendar .cal-day {
             aspect-ratio: 1 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             font-weight: 500;
             background: transparent;
             border-radius: 50%;
@@ -623,23 +607,22 @@
         }
         .wedding-heart-day {
             background: transparent;
-            position: relative;
         }
-        .heart-icon-static {
+        .heart-icon-pulse {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: #e34234;
-            width: 32px;
-            height: 32px;
+            background: var(--rose-powder);
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(227,66,52,0.4);
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(216, 180, 192, 0.6);
             animation: heartbeat 1.2s ease infinite;
         }
-        .heart-icon-static span {
+        .heart-icon-pulse span {
             color: white;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-family: 'Playfair Display', serif;
         }
         @keyframes heartbeat {
@@ -649,8 +632,8 @@
             45% { transform: scale(1.15); }
         }
         .mini-calendar .cal-caption {
-            font-size: 0.7rem;
-            margin-top: 12px;
+            font-size: 0.65rem;
+            margin-top: 8px;
             color: var(--gold-dark);
             font-style: italic;
         }
@@ -1024,13 +1007,12 @@
 </head>
 <body>
 
-<!-- ПРЕЛОАДЕР СО ЗВЁЗДОЧКАМИ -->
+<!-- ПРЕЛОАДЕР СО ЗВЁЗДОЧКАМИ ✦ -->
 <div class="preloader" id="preloader">
     <div class="preloader-stars" id="starsContainer"></div>
     <div class="preloader-content">
         <div class="preloader-ring"></div>
-        <div class="preloader-text">Вадим & Мария</div>
-        <div class="preloader-sub">Свадебное Приглашение</div>
+        <div class="preloader-text">Интригующий заголовок</div>
         <div class="preloader-counter" id="counterDisplay">0<span>%</span></div>
     </div>
 </div>
@@ -1112,19 +1094,6 @@
     <section id="schedule">
         <div class="container">
             <h2 class="section-title fade-up">План торжества</h2>
-            
-            <!-- МИНИ-КАЛЕНДАРЬ (маленькая элегантная карточка) -->
-            <div class="mini-calendar fade-up">
-                <div class="cal-header">Июнь 2026</div>
-                <div class="cal-weekdays">
-                    <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
-                </div>
-                <div class="cal-days" id="miniCalendarDays"></div>
-                <div class="cal-caption">
-                    <i class="fas fa-heart" style="color: #e34234;"></i> день нашей любви
-                </div>
-            </div>
-            
             <div class="timeline-elegant fade-up">
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub small-text">Вас ждут новые знакомства, лёгкие закуски и прохладительные напитки</span></div></div>
                 <div class="timeline-node"><div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub small-text">Самый трогательный момент нашего праздника</span></div></div>
@@ -1289,6 +1258,17 @@
                 <div class="img-card">
                     <img src="final.jpg" alt="Вадим и Мария">
                 </div>
+                <!-- КАЛЕНДАРЬ ПЕРЕМЕЩЁН СЮДА, ПОД ТРЕТЬЕ ФОТО -->
+                <div class="mini-calendar fade-up">
+                    <div class="cal-header">Июнь 2026</div>
+                    <div class="cal-weekdays">
+                        <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                    </div>
+                    <div class="cal-days" id="miniCalendarDays"></div>
+                    <div class="cal-caption">
+                        <i class="fas fa-heart" style="color: #d8b4c0;"></i> день, когда мы станем семьей
+                    </div>
+                </div>
                 <div class="final-title">Ждём с любовью и трепетом, Вадим и Мария</div>
                 <div class="final-star">✦</div>
             </div>
@@ -1316,6 +1296,9 @@
             clearInterval(interval);
             preloader.classList.add('hide');
             mainContent.classList.add('visible');
+            // Запускаем анимацию hero
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) heroContent.classList.add('hero-animate');
             setTimeout(() => {
                 if (preloader) preloader.style.display = 'none';
             }, 1000);
@@ -1323,13 +1306,14 @@
         counterDisplay.innerHTML = count + '<span>%</span>';
     }, 70);
 
-    // Генерация звёздочек на фоне прелоадера
+    // Генерация звёздочек ✦ на фоне прелоадера
     const starsContainer = document.getElementById('starsContainer');
     if (starsContainer) {
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('i');
-            star.className = 'fas fa-star';
-            const size = Math.random() * 14 + 8;
+        for (let i = 0; i < 60; i++) {
+            const star = document.createElement('div');
+            star.className = 'star-symbol';
+            star.textContent = '✦';
+            const size = Math.random() * 18 + 12;
             star.style.fontSize = size + 'px';
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
@@ -1339,7 +1323,7 @@
         }
     }
 
-    // Генерация мини-календаря (июнь 2026) с красным бьющимся сердцем и цифрой 26
+    // Генерация мини-календаря (июнь 2026) с сердцем пыльной розы и цифрой 29
     function buildMiniCalendar() {
         const year = 2026;
         const month = 5; // июнь
@@ -1361,13 +1345,13 @@
             dayDiv.className = 'cal-day';
             if (d === weddingDay) {
                 dayDiv.classList.add('wedding-heart-day');
-                dayDiv.innerHTML = `<div class="heart-icon-static"><span>26</span></div>`;
+                dayDiv.innerHTML = `<div class="heart-icon-pulse"><span>29</span></div>`;
             } else {
                 dayDiv.textContent = d;
             }
             container.appendChild(dayDiv);
         }
-        // Дополнительные пустые ячейки для ровной сетки (не обязательно)
+        // Дополнительные пустые ячейки для ровной сетки
         const totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
         const remaining = totalCells - (startOffset + daysInMonth);
         for (let i = 0; i < remaining; i++) {
@@ -1379,7 +1363,7 @@
     }
     buildMiniCalendar();
 
-    // Навигация (бургер, скролл и т.д.)
+    // Навигация
     const navbar = document.querySelector('.navbar');
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -1523,4 +1507,4 @@
     }
 </script>
 </body>
-</html> 
+</html>
