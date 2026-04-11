@@ -20,7 +20,7 @@
             --gold-mid: #d4af6a;
             --gold-dark: #b48c48;
             --rose-powder: #e3cbc1;
-            --text-dark: #6b4c3a;  /* мягкий-шоколадный */
+            --text-dark: #6b4c3a;  /* мягкий шоколадный */
             --text-soft: #6b5d53;
             --white-linen: #ffffff;
             --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(212, 175, 106, 0.1);
@@ -226,17 +226,17 @@
             z-index: 2;
             width: 100%;
             height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;   /* ← уберите это */
-    padding: 10vh 0 8vh 0;
-}
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10vh 0 8vh 0;
             max-width: 90%;
             margin: 0 auto;
             animation: fadeInDown 1.2s ease-out;
         }
 
         .hero-veneer {
+            font-family: 'Great Vibes', cursive;
             font-size: 2.8rem;
             letter-spacing: 4px;
             font-weight: 400;
@@ -263,7 +263,7 @@
             align-items: center;
             gap: 4px;
             margin-bottom: 2vh;
-            marjin-top:200px;
+            margin-top: 25px;  /* добавили отступ сверху 25px */
         }
 
         .countdown-wrapper {
@@ -294,22 +294,20 @@
         }
 
         .counter-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;           /* фиксированная ширина */
-    height: 30px;          /* фиксированная высота */
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gold-dark);
-    background: white;
-    border-radius: 50%;    /* идеальный круг */
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    /* убираем старые padding, min-width */
-    padding: 0;
-    min-width: auto;
-        
-         }
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            padding: 0;
+            min-width: auto;
+        }
 
         .counter-label {
             font-size: 0.7rem;
@@ -326,12 +324,13 @@
                 padding-top: 10px;
             }
             .counter-number {
-    width: 42px;
-    height: 42px;
-    font-size: 1.2rem;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
             }
             .hero-bottom {
                 margin-bottom: 4vh;
+                margin-top: 25px;
             }
         }
 
@@ -642,7 +641,7 @@
         .contacts-small {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            color: #5a4a3e; /* темнее, чем было */
+            color: #5a4a3e;
         }
         .divider-elegant {
             display: flex;
@@ -777,7 +776,7 @@
         @media (max-width: 800px) {
             .mobile-scroll-hint {
                 display: block;
-                margin: 15px 0 30px; /* увеличен нижний отступ */
+                margin: 15px 0 30px;
             }
         }
         @keyframes bounce {
@@ -1119,7 +1118,6 @@
                 if (target) {
                     const navbarHeight = navbar.offsetHeight;
                     const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-                    // Увеличен отступ до 30px для точного позиционирования заголовка
                     window.scrollTo({ top: elementPosition - navbarHeight - 2, behavior: 'smooth' });
                 }
             }
