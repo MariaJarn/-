@@ -34,7 +34,7 @@
             box-sizing: border-box;
         }
 
-        html {
+        html, body {
             overflow-x: hidden;
             max-width: 100vw;
         }
@@ -177,6 +177,7 @@
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 32px;
+            width: 100%;
         }
 
         /* ----- НАВИГАЦИЯ ----- */
@@ -277,7 +278,7 @@
             }
         }
 
-        /* ----- HERO ----- */
+        /* ----- HERO (анимация через JS) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -320,7 +321,6 @@
             padding: 10vh 0 8vh 0;
             max-width: 90%;
             margin: 0 auto;
-            animation: fadeInDown 1.2s ease-out;
         }
 
         .hero-veneer {
@@ -331,8 +331,10 @@
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
             margin-bottom: 1rem;
             color: rgba(255,248,235,0.95);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
         .hero-date {
             font-size: 1.6rem;
             font-weight: 400;
@@ -343,11 +345,10 @@
             backdrop-filter: blur(4px);
             letter-spacing: 3px;
             font-family: 'Cormorant Garamond', serif;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
         }
-        .hero-top {
-            margin-bottom: 350px;
-        }
-
         .hero-bottom {
             display: flex;
             flex-direction: column;
@@ -355,6 +356,20 @@
             gap: 4px;
             margin-bottom: 2vh;
             margin-top: 450px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+        }
+        /* Класс, который добавляется после прелоадера */
+        .hero-content.animate-hero .hero-veneer,
+        .hero-content.animate-hero .hero-date,
+        .hero-content.animate-hero .hero-bottom {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-top {
+            margin-bottom: 350px;
         }
 
         .countdown-wrapper {
@@ -431,11 +446,6 @@
             margin: 10px 0 0 0;
             color: rgba(255,255,255,0.8);
             animation: bounce 2s infinite;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ----- СЕКЦИИ ----- */
@@ -970,7 +980,7 @@
 </nav>
 
 <div class="hero">
-    <div class="hero-content">
+    <div class="hero-content" id="heroContent">
         <div class="hero-top">
             <div class="hero-veneer veneer-text">Вадим & Мария</div>
             <div class="hero-date">29 июня 2026</div>
@@ -1221,15 +1231,17 @@
     const preloader = document.getElementById('preloader');
     const counterDisplay = document.getElementById('counterDisplay');
     const mainContent = document.getElementById('mainContent');
+    const heroContent = document.getElementById('heroContent');
     let count = 0;
     const interval = setInterval(() => {
-        // Медленный рост: +1..3 каждые 100 мс → примерно 10 секунд до 100
         count += Math.floor(Math.random() * 3) + 1;
         if (count >= 100) {
             count = 100;
             clearInterval(interval);
             preloader.classList.add('hide');
             mainContent.classList.add('visible');
+            // Запускаем анимацию hero
+            if (heroContent) heroContent.classList.add('animate-hero');
             setTimeout(() => {
                 if (preloader) preloader.style.display = 'none';
             }, 1000);
@@ -1397,7 +1409,7 @@
 
     const burger = document.getElementById('burgerMenu');
     const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    if (burger) burger.addEventListener('click', () => navLinks.classList.toggle('active'));
 </script>
 </body>
 </html>
