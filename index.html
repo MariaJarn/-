@@ -226,7 +226,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* изменено с space-between */
+            justify-content: flex-start;
             padding: 10vh 0 8vh 0;
             max-width: 90%;
             margin: 0 auto;
@@ -255,8 +255,8 @@
             font-family: 'Cormorant Garamond', serif;
         }
         .hero-top {
-    margin-bottom: 350px;   /* регулируйте нужное расстояние */
-}
+            margin-bottom: 350px;
+        }
 
         .hero-bottom {
             display: flex;
@@ -264,14 +264,14 @@
             align-items: center;
             gap: 4px;
             margin-bottom: 2vh;
-            margin-top: 450px; /* отступ сверху 25px */
+            margin-top: 450px;
         }
 
         .countdown-wrapper {
             background: rgba(255,255,245,0.5);
             backdrop-filter: blur(8px);
             border-radius: 80px;
-            padding: 0;
+            padding: 0 0 5px 0;  /* добавлен отступ снизу 5px */
             max-width: 360px;
             width: 90%;
             text-align: center;
@@ -323,6 +323,7 @@
                 max-width: 320px;
                 min-height: 70px;
                 padding-top: 10px;
+                padding-bottom: 5px;
             }
             .counter-number {
                 width: 42px;
@@ -337,7 +338,7 @@
 
         .hero .scroll-hint {
             position: static;
-            margin: 0;
+            margin: 10px 0 0 0;  /* увеличен отступ сверху на 10px */
             color: rgba(255,255,255,0.8);
             animation: bounce 2s infinite;
         }
@@ -722,6 +723,16 @@
             width: auto;
             margin: 0;
         }
+        /* Стиль для поля ввода "Свой вариант" */
+        .custom-drink-input {
+            margin-left: 28px;
+            margin-top: 6px;
+            width: calc(100% - 28px);
+            display: none;
+        }
+        .custom-drink-input.active {
+            display: block;
+        }
         @media (min-width: 600px) {
             .radio-group {
                 flex-direction: row;
@@ -915,8 +926,8 @@
             <div class="timeline-elegant fade-up">
                 <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-time">16:00</div><div class="timeline-desc">Сбор гостей и фуршет <span class="timeline-sub small-text">Вас ждут новые знакомства, лёгкие закуски и прохладительные напитки</span></div></div>
                 <div class="timeline-node"><div class="timeline-icon"><span style="font-size: 2rem; font-weight: bold; color: var(--gold-dark);">⚭</span></div><div class="timeline-time">16:30</div><div class="timeline-desc">Свадебная церемония <span class="timeline-sub small-text">Самый трогательный момент нашего праздника</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub small-text">Время танцев и безудержного веселья</span></div></div>
-                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества <span class="timeline-sub small-text">Обнимашки и тёплые прощания</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-time">17:00</div><div class="timeline-desc">Банкет и вечеринка <span class="timeline-sub small-text">Время вкусной еды и танцев</span></div></div>
+                <div class="timeline-node"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-time">22:30</div><div class="timeline-desc">Окончание торжества</div></div>
             </div>
         </div>
         <div class="scroll-hint" onclick="scrollToNext()">↓ ПОЖЕЛАНИЯ И ПОДСКАЗКИ ↓</div>
@@ -1008,7 +1019,7 @@
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
             <div class="fade-up rsvp-info main-text" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <p>Очень ждём вашего ответа до <strong>01.05.2026</strong>.</p>
+                <p>Очень ждём вашего ответа до <strong>15.05.2026</strong>.</p>
                 <p>Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
                 <p>Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
@@ -1040,8 +1051,8 @@
                             </div>
                             <div class="radio-option">
                                 <div class="radio-row">
-                                    <input type="radio" name="attendance" value="Пока в раздумьях, уточню до 01.05.2026" id="attend_maybe">
-                                    <label for="attend_maybe">Пока в раздумьях, уточню до 01.05.2026</label>
+                                    <input type="radio" name="attendance" value="Пока в раздумьях, уточню до 15.05.2026" id="attend_maybe">
+                                    <label for="attend_maybe">Пока в раздумьях, уточню до 15.05.2026</label>
                                 </div>
                                 <div class="radio-hint">(Подозрительный ответ)</div>
                             </div>
@@ -1049,11 +1060,19 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Предпочтения по напиткам</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="drinks" value="Безалкогольные"> Безалкогольные</label>
-                            <label><input type="checkbox" name="drinks" value="Вино красное"> Вино красное</label>
-                            <label><input type="checkbox" name="drinks" value="Вино белое"> Вино белое</label>
+                        <div class="checkbox-group" id="drinksGroup">
+                            <label><input type="checkbox" name="drinks" value="Безалкогольные напитки"> Безалкогольные напитки</label>
+                            <label><input type="checkbox" name="drinks" value="Шампанское"> Шампанское</label>
+                            <label><input type="checkbox" name="drinks" value="Белое вино"> Белое вино</label>
+                            <label><input type="checkbox" name="drinks" value="Красное вино"> Красное вино</label>
                             <label><input type="checkbox" name="drinks" value="Коньяк"> Коньяк</label>
+                            <label><input type="checkbox" name="drinks" value="Виски"> Виски</label>
+                            <label>
+                                <input type="checkbox" name="drinks" value="Свой вариант" id="customDrinkCheckbox"> Свой вариант
+                            </label>
+                        </div>
+                        <div id="customDrinkInputContainer" style="margin-top: 10px; display: none;">
+                            <input type="text" id="customDrinkText" placeholder="Ваш вариант напитка" style="width: 100%;">
                         </div>
                     </div>
                     <div class="form-group">
@@ -1123,6 +1142,17 @@
         }
     });
 
+    // Обработка "Свой вариант" для напитков
+    const customCheckbox = document.getElementById('customDrinkCheckbox');
+    const customInputContainer = document.getElementById('customDrinkInputContainer');
+    const customInput = document.getElementById('customDrinkText');
+    if (customCheckbox) {
+        customCheckbox.addEventListener('change', function() {
+            customInputContainer.style.display = this.checked ? 'block' : 'none';
+            if (!this.checked) customInput.value = '';
+        });
+    }
+
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
@@ -1137,7 +1167,12 @@
         }
 
         const attendance = attendanceRadio.value;
-        const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked')).map(cb => cb.value).join(', ') || 'не указано';
+        let drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked')).map(cb => cb.value);
+        if (customCheckbox && customCheckbox.checked && customInput.value.trim()) {
+            drinks = drinks.filter(v => v !== 'Свой вариант');
+            drinks.push(customInput.value.trim());
+        }
+        const drinksStr = drinks.join(', ') || 'не указано';
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
@@ -1146,7 +1181,7 @@
             _captcha: 'false',
             name: fullname,
             attendance: attendance,
-            drinks: drinks,
+            drinks: drinksStr,
             allergies: allergies,
             contact: contact
         };
@@ -1162,9 +1197,12 @@
             });
             
             if (response.ok) {
-                messageDiv.innerHTML = 'Спасибо, ' + fullname + '! Ваш ответ отправлен. Мы свяжемся при необходимости.';
+                messageDiv.innerHTML = 'Спасибо, ' + fullname + '! Мы уже получили ваш ответ ♡';
                 messageDiv.style.color = '#2c6e3f';
                 form.reset();
+                if (customInputContainer) customInputContainer.style.display = 'none';
+                if (customInput) customInput.value = '';
+                if (customCheckbox) customCheckbox.checked = false;
             } else {
                 throw new Error('Сервер вернул ошибку');
             }
