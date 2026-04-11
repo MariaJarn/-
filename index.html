@@ -602,7 +602,11 @@
             color: var(--gold-dark);
         }
 
-        /* Название зала увеличенное, золотой градиент */
+        /* Название зала увеличенное, золотой градиент, центровка */
+        .venue-wrapper {
+            text-align: center;
+            margin-bottom: 30px;
+        }
         .venue-name {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
@@ -618,23 +622,52 @@
             font-size: 1.1rem;
             color: rgba(107, 76, 58, 0.7);
             letter-spacing: 0.5px;
-            margin-bottom: 20px;
+            max-width: 280px;
+            margin: 0 auto;
         }
 
         /* Увеличенный шрифт реквизитов */
-        .small-phone {
+        .bank-details {
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .bank-details .phone-link {
             font-size: 1rem;
         }
-        .small-phone .phone-link {
-            font-size: 1rem;
-        }
-
-        /* Убираем лишний отступ между реквизитами и банками */
         .bank-small {
             font-size: 0.85rem;
             color: #b8a898;
             letter-spacing: 0.3px;
             margin-top: 2px;
+        }
+
+        /* Объемная кнопка с переливом */
+        .btn-submit {
+            background: linear-gradient(135deg, #b48c48, #d4af6a, #e4c48e, #b48c48);
+            background-size: 200% 200%;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Playfair Display', serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(180, 140, 72, 0.4);
+            animation: shimmer 3s ease infinite;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(180, 140, 72, 0.6);
+            background: linear-gradient(135deg, #d4af6a, #e4c48e, #b48c48, #d4af6a);
+            background-size: 200% 200%;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Стилизация радио и чекбоксов в золотой градиент */
@@ -667,31 +700,6 @@
             letter-spacing: 2px;
             animation: gentlePulse 2s ease-in-out infinite;
             display: inline-block;
-        }
-
-        /* Остальные стили */
-        .btn-gold {
-            display: inline-block;
-            background: var(--gold-dark);
-            color: white;
-            padding: 14px 36px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: var(--transition-smooth);
-            border: 1px solid transparent;
-            margin-top: 25px;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .btn-gold:hover {
-            background: transparent;
-            border-color: var(--gold-dark);
-            color: var(--gold-dark);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 20px -12px rgba(180,140,72,0.3);
         }
 
         .timeline-elegant {
@@ -864,25 +872,24 @@
             margin-bottom: 18px;
         }
         .phone-link {
-            font-size: 1.2rem;
             font-weight: 600;
             color: var(--gold-dark);
             text-decoration: none;
             border-bottom: 1px dashed var(--gold-light);
         }
 
-        .contacts-small {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: #5a4a3e;
-            margin-bottom: 0;
+        .rsvp-contacts {
+            font-size: 1rem;
+            margin: 15px 0;
         }
-
-        .rsvp-contacts-small {
+        .rsvp-contacts .phone-link {
             font-size: 1rem;
         }
-        .rsvp-contacts-small .phone-link {
-            font-size: 1rem;
+        .rsvp-sub {
+            font-size: 0.85rem;
+            color: #b0a394;
+            margin-top: 5px;
+            margin-bottom: 15px;
         }
 
         .form-card {
@@ -963,22 +970,6 @@
                 gap: 24px;
             }
         }
-        button {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-mid));
-            border: none;
-            padding: 14px 28px;
-            border-radius: 60px;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            width: 100%;
-            font-family: 'Playfair Display', serif;
-            transition: opacity 0.3s;
-        }
-        button:active {
-            transform: scale(0.98);
-        }
 
         .form-message-success {
             margin-top: 15px;
@@ -1056,6 +1047,9 @@
             }
             section {
                 padding: 10px 15px;
+            }
+            .venue-wrapper {
+                margin-top: 20px;
             }
         }
     </style>
@@ -1136,16 +1130,17 @@
     <section id="location">
         <div class="container">
             <h2 class="section-title fade-up">Место и время</h2>
+            <div class="venue-wrapper fade-up">
+                <div class="venue-name">Celebrio Hall</div>
+                <div class="venue-sub">Банкетный зал и парк у реки</div>
+            </div>
             <div class="grid-2 fade-up">
                 <div class="img-card">
                     <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
                 <div class="location-description main-text">
-                    <div class="venue-name">Celebrio Hall</div>
-                    <div class="venue-sub">Банкетный зал и парк у реки</div>
-                    <!-- Рамка для адреса и кнопки -->
-                    <div class="text-frame" style="margin-top: 5px; padding: 20px 20px;">
-                        <p>Парк им. 1 Мая,<br>Центральный проезд, 7 ст4</p>
+                    <div class="text-frame" style="margin-top: 0; padding: 20px 20px;">
+                        <p><strong>Адрес площадки:</strong><br>Парк им. 1 Мая,<br>Центральный проезд, 7 ст4</p>
                         <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
                         <div class="datetime-info">
                             <strong>Дата:</strong> 29 июня 2026<br>
@@ -1231,8 +1226,8 @@
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
                 <p>Если душа просит большего, мы будем рады лёгким конвертам для свершения мечт нашей молодой семьи.</p>
                 <p>На случай, если строгая простота цифр вам милее шелеста бумаги, мы оставляем свои банковские явки и пароли:</p>
-                <div class="small-phone">
-                    <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                <div class="bank-details">
+                    <p>Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
                 </div>
                 <div class="bank-small">(Сбер, Т-Банк, Газпромбанк)</div>
                 
@@ -1264,10 +1259,11 @@
             <div class="fade-up rsvp-info main-text" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
                 <p>Очень ждём вашего ответа до <strong>15.05.2026</strong>.</p>
                 <p>Заполните форму ниже или свяжитесь с нами напрямую:</p>
-                <div class="rsvp-contacts-small">
-                    <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, MAX)</p>
-                    <p>Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, MAX)</p>
+                <div class="rsvp-contacts">
+                    <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a></p>
+                    <p>Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a></p>
                 </div>
+                <div class="rsvp-sub">(Telegram, MAX, VK)</div>
                 <p>Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
                 <p>Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
             </div>
@@ -1329,7 +1325,7 @@
                         <input type="text" id="contact" placeholder="+7 ... или @username">
                     </div>
                     <div class="form-group">
-                        <button type="submit">Отправить ответ</button>
+                        <button type="submit" class="btn-submit">Отправить ответ</button>
                     </div>
                     <div id="formMessage" class="form-message-success" style="display: none;"></div>
                 </form>
@@ -1399,7 +1395,7 @@
         }
     }
 
-    // ---------- ОСТАЛЬНОЙ СКРИПТ с плавной навигацией ----------
+    // ---------- ПЛАВНАЯ НАВИГАЦИЯ С КОРРЕКТНЫМ СМЕЩЕНИЕМ ----------
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     };
@@ -1417,12 +1413,11 @@
                 if (target) {
                     const navbarHeight = navbar.offsetHeight;
                     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: targetPosition - navbarHeight - 15,
-                            behavior: 'smooth'
-                        });
-                    }, 10);
+                    // Смещаем так, чтобы после навигации был виден заголовок секции
+                    window.scrollTo({
+                        top: targetPosition - navbarHeight - 20,
+                        behavior: 'smooth'
+                    });
                 }
             }
             document.getElementById('navLinks').classList.remove('active');
@@ -1437,6 +1432,7 @@
         }
     });
 
+    // Обработка "Свой вариант" для напитков
     const customCheckbox = document.getElementById('customDrinkCheckbox');
     const customInputContainer = document.getElementById('customDrinkInputContainer');
     const customInput = document.getElementById('customDrinkText');
@@ -1447,6 +1443,7 @@
         });
     }
 
+    // -------------------- ОТПРАВКА ФОРМЫ (исправлено) --------------------
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
@@ -1509,6 +1506,7 @@
         }
     });
 
+    // Анимация появления элементов при скролле
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1517,6 +1515,7 @@
     }, { threshold: 0.1, rootMargin: "0px 0px 100px 0px" });
     fadeElements.forEach(el => observer.observe(el));
 
+    // Таймер обратного отсчёта
     function updateCountdown() {
         const weddingDate = new Date(2026, 5, 29, 0, 0, 0).getTime();
         const now = new Date().getTime();
