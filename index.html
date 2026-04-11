@@ -21,7 +21,7 @@
             --gold-dark: #b48c48;
             --rose-powder: #e3cbc1;
             --dusty-pink: #d4b4c4;
-            --text-dark: #7a5a48; /* шоколадный, не тёмный */
+            --text-dark: #7a5a48;
             --text-soft: #6b5d53;
             --white-linen: #ffffff;
             --shadow-premium: 0 30px 50px -20px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(212, 175, 106, 0.1);
@@ -555,7 +555,7 @@
         .invite-text-simple {
             text-align: center;
             max-width: 800px;
-            margin: 20px auto 20px; /* уменьшен отступ сверху */
+            margin: 15px auto 20px; /* уменьшили отступ сверху на 5px */
         }
 
         /* Изящная кнопка 2ГИС */
@@ -590,25 +590,56 @@
             color: var(--gold-dark);
         }
 
-        .location-info {
-            text-align: center;
-            max-width: 400px;
-            margin: 0 auto;
+        /* НОВЫЙ ЭСТЕТИЧНЫЙ БЛОК ЛОКАЦИИ */
+        .location-card {
+            background: rgba(255, 255, 245, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 48px;
+            padding: 30px 30px;
+            box-shadow: var(--shadow-glow);
+            border: 1px solid rgba(212, 175, 106, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+        .venue-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #b48c48, #e4c48e, #d4af6a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.25rem;
+        }
+        .venue-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: rgba(107, 76, 58, 0.7);
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
         }
         .address-line {
             font-size: 1rem;
             margin: 10px 0;
+            line-height: 1.4;
         }
         .address-label {
             font-weight: 600;
             color: var(--gold-dark);
+        }
+        .location-icon {
+            font-size: 1.4rem;
+            color: var(--gold-mid);
+            margin-right: 8px;
         }
 
         /* Увеличенный шрифт реквизитов */
         .bank-details {
             font-size: 1rem;
             margin-top: 5px;
-            margin-bottom: 0; /* убран отступ снизу */
+            margin-bottom: 0;
         }
         .bank-details .phone-link {
             font-size: 1rem;
@@ -621,7 +652,7 @@
             font-size: 0.85rem;
             color: #b8a898;
             letter-spacing: 0.3px;
-            margin-top: 0; /* убран отступ */
+            margin-top: 0;
         }
 
         /* Объемная кнопка с переливом */
@@ -1022,7 +1053,7 @@
             section {
                 padding: 10px 15px;
             }
-            .location-info {
+            .location-card {
                 margin-top: 0;
             }
         }
@@ -1105,17 +1136,23 @@
             <h2 class="section-title fade-up">Место и время</h2>
             <div class="grid-2 fade-up">
                 <div class="img-card">
-                    <img src="venue.jpg" alt="Celebrio Hall - банкетный зал и парк у реки">
+                    <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
-                <div class="location-description main-text location-info" style="margin-top: 0;">
-                    <div class="venue-name" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, #b48c48, #e4c48e, #d4af6a); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.5rem;">Celebrio Hall</div>
-            
+                <div class="location-card">
+                    <div class="venue-name">Celebrio Hall</div>
+                    <div class="venue-sub">Банкетный зал и парк у реки</div>
                     
-                    <div class="address-line"><span class="address-label">Адрес площадки: Парк им. 1 Мая, </span><br> Центральный проезд, 7 ст4</div>
+                    <div class="address-line">
+                        <i class="fas fa-map-marker-alt location-icon"></i>
+                        <span class="address-label">Адрес площадки:</span><br>
+                        Парк им. 1 Мая, Центральный проезд, 7 ст4
+                    </div>
+                    
                     <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
+                    
                     <div class="datetime-info">
-                        <strong>Дата:</strong> 29 июня 2026<br>
-                        <strong>Сбор гостей с 16:00</strong>
+                        <strong><i class="far fa-calendar-alt"></i> Дата:</strong> 29 июня 2026<br>
+                        <strong><i class="far fa-clock"></i> Сбор гостей с 16:00</strong>
                     </div>
                 </div>
             </div>
@@ -1364,12 +1401,11 @@
         }
     }
 
-    // Плавная навигация
-    window.onbeforeunload = function () { window.scrollTo(0, 0); };
-    history.scrollRestoration = 'manual';
-
+    // Плавная навигация с корректным смещением (увеличили отступ для пункта "Приглашение")
     const navbar = document.querySelector('.navbar');
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
+    const navLinksAnchors = document.querySelectorAll('.nav-links a');
+    
+    navLinksAnchors.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
@@ -1378,7 +1414,15 @@
                 if (target) {
                     const navbarHeight = navbar.offsetHeight;
                     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({ top: targetPosition - navbarHeight - 20, behavior: 'smooth' });
+                    // Для секции приглашения увеличиваем отступ, чтобы не видно было низа hero
+                    let offset = navbarHeight + 20;
+                    if (targetId === 'invitation') {
+                        offset = navbarHeight + 40;
+                    }
+                    window.scrollTo({
+                        top: targetPosition - offset,
+                        behavior: 'smooth'
+                    });
                 }
             }
             document.getElementById('navLinks').classList.remove('active');
@@ -1404,7 +1448,7 @@
         });
     }
 
-    // Отправка формы через FormSubmit (рабочий вариант с двумя адресами)
+    // Отправка формы через FormSubmit
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
@@ -1428,10 +1472,9 @@
         const allergies = document.getElementById('allergies').value.trim() || 'не указано';
         const contact = document.getElementById('contact').value.trim() || 'не указано';
 
-        // Используем FormData для отправки (формат application/x-www-form-urlencoded)
         const formData = new FormData();
         formData.append('_subject', 'Новый ответ на свадебное приглашение');
-        formData.append('_cc', 'vadik0597@yandex.ru'); // копия второму адресу
+        formData.append('_cc', 'vadik0597@yandex.ru');
         formData.append('_captcha', 'false');
         formData.append('name', fullname);
         formData.append('attendance', attendance);
