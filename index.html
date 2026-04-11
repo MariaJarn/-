@@ -567,7 +567,7 @@
         .invite-text-simple {
             text-align: center;
             max-width: 800px;
-            margin: 15px auto 0;  /* поднят на 5px (было 20px) */
+            margin: 15px auto 0;  /* поднят на 5px */
         }
 
         /* Изящная кнопка 2ГИС */
@@ -1446,7 +1446,7 @@
         });
     }
 
-    // -------------------- ОТПРАВКА ФОРМЫ (НА ДВЕ ПОЧТЫ) --------------------
+    // -------------------- ОТПРАВКА ФОРМЫ (ИСПРАВЛЕНО: ДВЕ ПОЧТЫ) --------------------
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
@@ -1472,7 +1472,6 @@
 
         const payload = {
             _subject: 'Новый ответ на свадебное приглашение',
-            _to: 'masha1z@bk.ru,vadik0597@yandex.ru',
             _captcha: 'false',
             name: fullname,
             attendance: attendance,
@@ -1482,7 +1481,8 @@
         };
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/masha1z@bk.ru', {
+            // Отправка на оба адреса через запятую в URL
+            const response = await fetch('https://formsubmit.co/ajax/masha1z@bk.ru,vadik0597@yandex.ru', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
