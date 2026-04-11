@@ -144,7 +144,7 @@
             opacity: 1;
         }
 
-        /* ----- ОСТАЛЬНЫЕ СТИЛИ (ваши, без изменений) ----- */
+        /* ----- ОБЩИЕ СТИЛИ ----- */
         .main-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
@@ -279,7 +279,7 @@
             }
         }
 
-        /* ----- HERO (анимация через JS, очень медленная) ----- */
+        /* ----- HERO (анимация после загрузки с задержкой 1с) ----- */
         .hero {
             position: relative;
             height: 100vh;
@@ -334,7 +334,7 @@
             color: rgba(255,248,235,0.95);
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: opacity 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
         .hero-date {
             font-size: 1.6rem;
@@ -348,7 +348,7 @@
             font-family: 'Cormorant Garamond', serif;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.3s, transform 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.3s;
+            transition: opacity 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.4s, transform 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.4s;
         }
         .hero-bottom {
             display: flex;
@@ -359,9 +359,8 @@
             margin-top: 450px;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.6s, transform 1.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.6s;
+            transition: opacity 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.8s, transform 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.8s;
         }
-        /* Класс, который добавляется после прелоадера */
         .hero-content.animate-hero .hero-veneer,
         .hero-content.animate-hero .hero-date,
         .hero-content.animate-hero .hero-bottom {
@@ -513,6 +512,32 @@
             transform: translateY(0);
         }
 
+        /* РАМКА ДЛЯ ТЕКСТА (как у dresscode-left) */
+        .text-frame {
+            text-align: center;
+            max-width: 820px;
+            margin: 30px auto 20px;
+            padding: 25px 30px;
+            border-radius: 40px;
+            background: rgba(228,196,142,0.06);
+            border: 1px solid rgba(212,175,106,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .text-frame p {
+            margin-bottom: 18px;
+        }
+        .text-frame p:last-child {
+            margin-bottom: 0;
+        }
+        .invite-text-frame {
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+        .rsvp-info-frame {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
         .img-card {
             border-radius: 32px;
             overflow: hidden;
@@ -529,11 +554,6 @@
         .invite-photo {
             max-width: 400px;
             margin: 0 auto 15px;
-        }
-        .invite-text {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .btn-gold {
@@ -719,7 +739,7 @@
             margin-bottom: 0;
         }
 
-        /* Обновлённый блок подарков */
+        /* Блок подарков — рамка вокруг части текста */
         .gifts-text {
             text-align: center;
             max-width: 820px;
@@ -731,13 +751,13 @@
             margin-bottom: 18px;
         }
         .bank-details {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #a08c7a;
             margin-top: 5px;
         }
         .bank-small {
-            font-size: 0.7rem;
-            color: #c0b0a0;
+            font-size: 0.9rem;
+            color: #b8a898;
             letter-spacing: 0.3px;
             margin-top: 8px;
         }
@@ -874,7 +894,6 @@
             transform: scale(0.98);
         }
 
-        /* Сообщение после отправки формы — пудровый цвет, не пропадает */
         .form-message-success {
             margin-top: 15px;
             text-align: center;
@@ -1032,10 +1051,11 @@
                     <img src="couple2.jpg" alt="Вадим и Мария">
                 </div>
             </div>
-            <div class="invite-text fade-up main-text">
+            <!-- Текст приглашения в рамке -->
+            <div class="text-frame invite-text-frame fade-up main-text">
                 <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы!<br>Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
-                <div class="mobile-scroll-hint scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
             </div>
+            <div class="mobile-scroll-hint scroll-hint" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
         </div>
     </section>
 
@@ -1128,10 +1148,13 @@
             <h2 class="section-title fade-up">О дарах сердца</h2>
             <div class="gifts-text fade-up main-text">
                 <p><strong>Ваше присутствие — главный подарок для нас.</strong></p>
-                <p>Если душа просит большего, мы будем рады лёгким конвертам для свершения мечт нашей молодой семьи.</p>
-                <p>Если строгая простота цифр вам милее шелеста бумаги, мы оставляем свои банковские явки и пароли:</p>
-                <p class="contacts-small">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
-                <div class="bank-small">(Сбер, Т-Банк, Газпромбанк)</div>
+                <!-- Рамка для части текста от "Если душа..." до названий банков -->
+                <div class="text-frame" style="margin-top: 10px;">
+                    <p>Если душа просит большего, мы будем рады лёгким конвертам для свершения мечт нашей молодой семьи.</p>
+                    <p>Если строгая простота цифр вам милее шелеста бумаги, мы оставляем свои банковские явки и пароли:</p>
+                    <p class="contacts-small" style="font-size: 1.1rem;">Жених: <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> Вадим М.<br>Невеста: <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> Мария пока что Ж.</p>
+                    <div class="bank-small" style="font-size: 0.9rem; margin-top: 5px;">(Сбер, Т-Банк, Газпромбанк)</div>
+                </div>
                 
                 <div class="img-card" style="max-width: 400px; margin: 30px auto;">
                     <img src="bank.jpg" alt="Семейный банк">
@@ -1157,11 +1180,12 @@
     <section id="rsvp">
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
-            <div class="fade-up rsvp-info main-text" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
+            <!-- Сообщение о присутствии в рамке -->
+            <div class="text-frame rsvp-info-frame fade-up main-text">
                 <p>Очень ждём вашего ответа до <strong>15.05.2026</strong>.</p>
                 <p>Заполните форму ниже или свяжитесь с нами напрямую:</p>
-                <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, смс)</p>
-                <p>Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, смс)</p>
+                <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a> (Telegram, MAX)</p>
+                <p>Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a> (Telegram, MAX)</p>
                 <p>Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
                 <p>Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
             </div>
@@ -1253,22 +1277,23 @@
 </div> <!-- .main-content -->
 
 <script>
-    // -------------------- ПРЕЛОАДЕР (короче: ~5 секунд) --------------------
+    // -------------------- ПРЕЛОАДЕР (около 5 секунд) --------------------
     const preloader = document.getElementById('preloader');
     const counterDisplay = document.getElementById('counterDisplay');
     const mainContent = document.getElementById('mainContent');
     const heroContent = document.getElementById('heroContent');
     let count = 0;
     const interval = setInterval(() => {
-        count += Math.floor(Math.random() * 6) + 2;  // быстрее: +2..7 за 100мс → ~5-6 сек до 100
+        count += Math.floor(Math.random() * 6) + 2;
         if (count >= 100) {
             count = 100;
             clearInterval(interval);
             preloader.classList.add('hide');
             mainContent.classList.add('visible');
-            // Запускаем анимацию hero
-            if (heroContent) heroContent.classList.add('animate-hero');
-            // Удаляем прелоадер из DOM через небольшую задержку, чтобы исчезновение было синхронным
+            // Ждём 1 секунду после исчезновения прелоадера, затем запускаем анимацию hero
+            setTimeout(() => {
+                if (heroContent) heroContent.classList.add('animate-hero');
+            }, 1000);
             setTimeout(() => {
                 if (preloader) preloader.style.display = 'none';
             }, 200);
@@ -1292,7 +1317,7 @@
         }
     }
 
-    // ---------- ВАШ ОСТАЛЬНОЙ СКРИПТ (БЕЗ ИЗМЕНЕНИЙ) ----------
+    // ---------- ОСТАЛЬНОЙ СКРИПТ ----------
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     };
@@ -1323,7 +1348,6 @@
         }
     });
 
-    // Обработка "Свой вариант" для напитков
     const customCheckbox = document.getElementById('customDrinkCheckbox');
     const customInputContainer = document.getElementById('customDrinkInputContainer');
     const customInput = document.getElementById('customDrinkText');
@@ -1380,7 +1404,7 @@
             if (response.ok) {
                 messageDiv.style.display = 'block';
                 messageDiv.innerHTML = 'Спасибо, ' + fullname + '! Мы уже получили ваш ответ ♡';
-                messageDiv.style.color = '#d4b4c4'; // пудровый
+                messageDiv.style.color = '#d4b4c4';
                 form.reset();
                 if (customInputContainer) customInputContainer.style.display = 'none';
                 if (customInput) customInput.value = '';
@@ -1394,7 +1418,6 @@
             messageDiv.innerHTML = 'Ошибка отправки. Попробуйте позже или напишите нам напрямую.';
             messageDiv.style.color = '#b48c48';
         }
-        // Сообщение НЕ пропадает (убрали setTimeout)
     });
 
     const fadeElements = document.querySelectorAll('.fade-up');
