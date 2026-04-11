@@ -293,15 +293,22 @@
         }
 
         .counter-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold-dark);
-            background: white;
-            padding: 6px 10px;
-            border-radius: 60px;
-            min-width: 50px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;           /* фиксированная ширина */
+    height: 56px;          /* фиксированная высота */
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold-dark);
+    background: white;
+    border-radius: 50%;    /* идеальный круг */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    /* убираем старые padding, min-width */
+    padding: 0;
+    min-width: auto;
+        
+         }
 
         .counter-label {
             font-size: 0.7rem;
@@ -318,11 +325,9 @@
                 padding-top: 10px;
             }
             .counter-number {
-                font-size: 1rem;
-                padding: 3px 6px;
-                min-width: 36px;
-                border-radius: 50px;!important;
-                padding: 12px 10px;
+    width: 46px;
+    height: 46px;
+    font-size: 1.2rem;
             }
             .hero-bottom {
                 margin-bottom: 4vh;
