@@ -567,7 +567,7 @@
         .invite-text-simple {
             text-align: center;
             max-width: 800px;
-            margin: 20px auto 0;
+            margin: 15px auto 0;  /* поднят на 5px (было 20px) */
         }
 
         /* Изящная кнопка 2ГИС */
@@ -602,14 +602,19 @@
             color: var(--gold-dark);
         }
 
-        /* Название зала увеличенное, золотой градиент, центровка */
-        .venue-wrapper {
+        /* Рамка для названия зала и подзаголовка */
+        .venue-frame {
             text-align: center;
-            margin-bottom: 30px;
+            max-width: 450px;
+            margin: 0 auto 30px;
+            padding: 20px 20px 15px;
+            border-radius: 40px;
+            background: rgba(228,196,142,0.06);
+            border: 1px solid rgba(212,175,106,0.3);
         }
         .venue-name {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, #b48c48, #e4c48e, #d4af6a);
             -webkit-background-clip: text;
@@ -622,8 +627,7 @@
             font-size: 1.1rem;
             color: rgba(107, 76, 58, 0.7);
             letter-spacing: 0.5px;
-            max-width: 280px;
-            margin: 0 auto;
+            margin-top: -5px;  /* поднят на 5px */
         }
 
         /* Увеличенный шрифт реквизитов */
@@ -638,7 +642,7 @@
             font-size: 0.85rem;
             color: #b8a898;
             letter-spacing: 0.3px;
-            margin-top: 2px;
+            margin-top: 0;  /* убран отступ */
         }
 
         /* Объемная кнопка с переливом */
@@ -726,7 +730,7 @@
             z-index: 2;
         }
         .timeline-node:last-child {
-            margin-bottom: 0;
+            margin-bottom: 5px;  /* увеличен отступ от окончания торжества */
         }
         .timeline-icon {
             position: absolute;
@@ -879,16 +883,16 @@
         }
 
         .rsvp-contacts {
-            font-size: 1rem;
-            margin: 15px 0;
+            font-size: 1.2rem;  /* основной размер */
+            margin: 15px 0 0;
         }
         .rsvp-contacts .phone-link {
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
         .rsvp-sub {
             font-size: 0.85rem;
             color: #b0a394;
-            margin-top: 5px;
+            margin-top: 0;      /* убран отступ сверху */
             margin-bottom: 15px;
         }
 
@@ -1048,7 +1052,7 @@
             section {
                 padding: 10px 15px;
             }
-            .venue-wrapper {
+            .venue-frame {
                 margin-top: 20px;
             }
         }
@@ -1123,14 +1127,15 @@
             <div class="invite-text-simple fade-up main-text">
                 <p>С огромной радостью и трепетом в сердцах мы приглашаем вас присоединиться к значимому для нас событию — дню нашей свадьбы!<br>Этот день станет началом новой главы в нашей совместной жизни, и мы хотим разделить его с самыми дорогими для нас людьми.</p>
             </div>
-            <div class="mobile-scroll-hint scroll-hint" style="margin-top: 60px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
+            <div class="mobile-scroll-hint scroll-hint" style="margin-top: 55px;" onclick="scrollToNext()">↓ ПОДРОБНОСТИ ↓</div>
         </div>
     </section>
 
     <section id="location">
         <div class="container">
             <h2 class="section-title fade-up">Место и время</h2>
-            <div class="venue-wrapper fade-up">
+            <!-- Рамка для названия зала и подзаголовка -->
+            <div class="venue-frame fade-up">
                 <div class="venue-name">Celebrio Hall</div>
                 <div class="venue-sub">Банкетный зал и парк у реки</div>
             </div>
@@ -1139,8 +1144,8 @@
                     <img src="venue.jpg" alt="Celebrio Hall">
                 </div>
                 <div class="location-description main-text">
-                    <div class="text-frame" style="margin-top: 0; padding: 20px 20px;">
-                        <p><strong>Адрес площадки:</strong><br>Парк им. 1 Мая,<br>Центральный проезд, 7 ст4</p>
+                    <div class="text-frame" style="margin-top: -5px; padding: 20px 20px;">  <!-- поднята рамка с адресом -->
+                        <p><strong class="datetime-info" style="display: block; text-align: center;">Адрес площадки:</strong>Парк им. 1 Мая,<br>Центральный проезд, 7 ст4</p>
                         <a href="https://2gis.ru/krasnoyarsk/geo/70000001052237987" target="_blank" class="btn-map"><i class="fas fa-map-marked-alt"></i> Построить маршрут в 2ГИС</a>
                         <div class="datetime-info">
                             <strong>Дата:</strong> 29 июня 2026<br>
@@ -1257,14 +1262,14 @@
         <div class="container">
             <h2 class="section-title fade-up">Сообщите о вашем присутствии</h2>
             <div class="fade-up rsvp-info main-text" style="text-align:center; max-width: 720px; margin: 0 auto 25px;">
-                <p>Очень ждём вашего ответа до <strong>15.05.2026</strong>.</p>
+                <p style="margin-bottom: 15px;">Очень ждём вашего ответа до <strong>15.05.2026</strong>.</p>
                 <p>Заполните форму ниже или свяжитесь с нами напрямую:</p>
                 <div class="rsvp-contacts">
                     <p>Вадим — <a href="tel:+79333257111" class="phone-link">8 933 325-71-11</a></p>
                     <p>Мария — <a href="tel:+79041114089" class="phone-link">8 904 111-40-89</a></p>
                 </div>
                 <div class="rsvp-sub">(Telegram, MAX, VK)</div>
-                <p>Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
+                <p style="margin-bottom: 15px;">Если вы будете с парой, просьба заполнить разные заявки, поделившись ссылкой на это приглашение.</p>
                 <p>Если вы будете с детками до 5 лет, просим сообщить об этом заранее.</p>
             </div>
             <div class="form-card fade-up">
@@ -1329,8 +1334,7 @@
                     </div>
                     <div id="formMessage" class="form-message-success" style="display: none;"></div>
                 </form>
-                <div class="scroll-hint" style="margin-top: 10px; margin-bottom: 5px;" onclick="scrollToNext()">↓ И ЕЩЁ КОЕ-ЧТО ОТ НАС ↓</div>
-                <div style="text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--dusty-pink);">♥</div>
+                <div class="scroll-hint" style="margin-top: 10px; margin-bottom: 5px;" onclick="scrollToNext()">↓ И ЕЩЁ КОЕ-ЧТО ОТ НАС ↓<br>♥</div>
             </div>
         </div>
     </section>
@@ -1413,7 +1417,6 @@
                 if (target) {
                     const navbarHeight = navbar.offsetHeight;
                     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-                    // Смещаем так, чтобы после навигации был виден заголовок секции
                     window.scrollTo({
                         top: targetPosition - navbarHeight - 20,
                         behavior: 'smooth'
@@ -1443,7 +1446,7 @@
         });
     }
 
-    // -------------------- ОТПРАВКА ФОРМЫ (исправлено) --------------------
+    // -------------------- ОТПРАВКА ФОРМЫ (НА ДВЕ ПОЧТЫ) --------------------
     const form = document.getElementById('weddingForm');
     const messageDiv = document.getElementById('formMessage');
 
@@ -1469,6 +1472,7 @@
 
         const payload = {
             _subject: 'Новый ответ на свадебное приглашение',
+            _to: 'masha1z@bk.ru,vadik0597@yandex.ru',
             _captcha: 'false',
             name: fullname,
             attendance: attendance,
